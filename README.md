@@ -7,7 +7,7 @@ A web application that displays data on Pokémon from the [PokéAPI](https://Pok
 
 ### Linting
 
-I made the TSC about as strict as possible (minus a couple ridiculous things, and a couple checks that I feel do not belong in a compiler).
+I made the TSC about as strict as possible (minus a couple ridiculous things and a couple checks that I feel do not belong in a compiler).
 
 I used ESLint with recommended settings for this project, and tweaked it as necessary to get good behavior.  I would like to eventually make my own ESLintRC from scratch again.  The last one I made, I made on my work laptop during work hours for my last job;  so I unfortunately no longer have access to it.
 
