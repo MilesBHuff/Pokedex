@@ -109,7 +109,7 @@
         // "jsxFactory": null,
         // "jsxFragmentFactory": null,
         // "jsxImportSource": null,
-        "lib": ["ESNext"],
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
         // "moduleDetection": "auto",
         // "noLib": false,
         // "reactNamespace": null,
