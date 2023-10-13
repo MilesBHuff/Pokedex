@@ -25,3 +25,31 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+# vite-template-redux
+
+Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+
+```sh
+npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
+```
+
+## Goals
+
+- Easy migration from Create React App or Vite
+- As beginner friendly as Create React App
+- Optimized performance compared to Create React App
+- Customizable without ejecting
+
+## Scripts
+
+- `dev`/`start` - start dev server and open browser
+- `build` - build for production
+- `preview` - locally preview production build
+- `test` - launch test runner
+
+## Inspiration
+
+- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
+- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
+- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
