@@ -6,12 +6,12 @@ module.exports = {
     parserOptions: {
         tsconfigRootDir: '.',
         project: 'tsconfig.json',
-        createDefaultProgram: true, //BUG:  Workaround for parserOptions.project not working correctly in editors (https://github.com/typescript-eslint/typescript-eslint/issues/864#issuecomment-523213273)
-        ecmaVersion: 'es2024',
         sourceType: 'module',
+        ecmaVersion: 'es2024',
         ecmaFeatures: {
             impliedStrict: true,
         },
+        createDefaultProgram: true, //BUG:  Workaround for parserOptions.project not working correctly in editors (https://github.com/typescript-eslint/typescript-eslint/issues/864#issuecomment-523213273)
     },
     plugins: [
         'react-refresh',
