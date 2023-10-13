@@ -7,7 +7,7 @@ module.exports = {
         tsconfigRootDir: '.',
         project: 'tsconfig.json',
         createDefaultProgram: true, //BUG:  Workaround for parserOptions.project not working correctly in editors (https://github.com/typescript-eslint/typescript-eslint/issues/864#issuecomment-523213273)
-        ecmaVersion: '2021',
+        ecmaVersion: 'es2024',
         sourceType: 'module',
         ecmaFeatures: {
             impliedStrict: true,
