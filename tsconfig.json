@@ -45,7 +45,9 @@
         // "rootDir": null,
         // "rootDirs": null,
         // "typeRoots": null,
-        // "types": null,
+        "types": [
+            "testing-library__jest-dom"
+        ],
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         * Emit */

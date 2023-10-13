@@ -10,4 +10,17 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
+    // server: {
+    //     open: true,
+    // },
+    // build: {
+    //     outDir: "build",
+    //     sourcemap: true,
+    // },
+    // test: {
+    //     globals: true,
+    //     environment: "jsdom",
+    //     setupFiles: "src/setupTests",
+    //     mockReset: true,
+    // },
 });

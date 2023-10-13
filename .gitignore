@@ -1,5 +1,6 @@
 ## Version control
 .git/
+.pnp.*
 package-lock.json
 ## Use `npm-shrinkwrap.json` instead of `package-lock.json`.
 
@@ -13,6 +14,8 @@ yarn-debug.log*
 yarn-error.log*
 
 ## Dynamic/Unversionable
+build/
+coverage/
 dist/
 dist-ssr/
 node_modules/
