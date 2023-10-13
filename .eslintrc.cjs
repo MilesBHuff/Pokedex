@@ -16,10 +16,10 @@ module.exports = {
     plugins: [
         'react-refresh',
     ],
-    
+
     ignorePatterns: [
         '.eslintrc.cjs',
-        'dist', 
+        'dist',
     ],
 
     env: {
@@ -37,8 +37,8 @@ module.exports = {
     rules: {
         'react-refresh/only-export-components': [
             'warn',
-            { allowConstantExport: true },
+            {allowConstantExport: true},
         ],
     },
     overrides: {},
-}
+};
