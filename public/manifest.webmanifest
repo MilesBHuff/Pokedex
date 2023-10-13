@@ -1,0 +1,33 @@
+{
+	"start_url": "http://localhost:5173",
+	"scope": "/",
+
+	"background_color": "#fff",
+	"theme_color": "#df2f2f",
+
+	"display": "browser",
+	"orientation": "portrait-primary",
+
+	"icons": [{
+		"type": "image/svg+xml",
+		"src": "/favicon.svg"
+	}, {
+		"type": "image/x-icon",
+		"src": "/favicon.ico"
+	}],
+
+	"lang": "en-US",
+	"dir": "ltr",
+
+	"short_name": "Pokédex",
+	"name": "Unofficial Pokédex",
+	"description": "A web application that displays data on Pokémon®. Not affiliated with Nintendo®.",
+
+	"iarc_rating_id": "",
+	"categories": ["reference"],
+
+	"related_applications": [],
+	"prefer_related_applications": false,
+
+	"screenshots": []
+}
