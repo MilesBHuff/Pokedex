@@ -1,25 +1,157 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "references": [{
+        "path": "./tsconfig.node.json"
+    }],
+    "include": [
+        "src"
+    ],
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    /* https://www.typescriptlang.org/tsconfig */
+    "compilerOptions": {
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Type Checking */
+        "allowUnreachableCode": false, // This is not the concern of a compiler -- please use a linter to detect this.
+        "allowUnusedLabels": false, // This is not the concern of a compiler -- please use a linter to detect this.
+        "alwaysStrict": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": false, // This is not the concern of a compiler -- please use a linter to detect this.
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true, // This is not the concern of a compiler -- please use a linter to detect this.
+        "noUnusedParameters": true, // This is not the concern of a compiler -- please use a linter to detect this.
+        "strict": true,
+        //NOTE:  The strict-mode settings are omitted here, since they are implicit in the above.
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Modules */
+        "allowImportingTsExtensions": true,
+        "allowUmdGlobalAccess": false,
+        "baseUrl": ".",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        // "moduleSuffixes": null,
+        "noResolve": false,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "resolveJsonModule": true,
+        // "rootDir": null,
+        // "rootDirs": null,
+        // "typeRoots": null,
+        // "types": null,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Emit */
+        // "declaration": null,
+        // "declarationDir": null,
+        // "declarationMap": null,
+        "downlevelIteration": true,
+        // "emitBOM": false,
+        "emitDeclarationOnly": false,
+        "importHelpers": true,
+        "importsNotUsedAsValues": "error",
+        // "inlineSourceMap": false,
+        // "inlineSources": false,
+        // "mapRoot": null,
+        "newLine": "LF",
+        "noEmit": true,
+        // "noEmitHelpers": false,
+        // "noEmitOnError": false,
+        // "outDir": "dist",
+        // "outFile": null,
+        "preserveConstEnums": false,
+        "preserveValueImports": true,
+        "removeComments": true,
+        // "sourceMap": true,
+        // "sourceRoot": null,
+        "stripInternal": true,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * JavaScript Support */
+        "allowJs": true,
+        "checkJs": true,
+        // "maxNodeModuleJsDepth": 0,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Editor Support */
+        // "disableSizeLimit": false,
+        // "plugins": null,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Interop Constraints */
+        // "allowSyntheticDefaultImports": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "preserveSymlinks": true,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Backwards Compatibility */
+        // "charset": "utf-8",
+        // "keyofStringsOnly": true,
+        // "noImplicitUseStrict": false,
+        "noStrictGenericChecks": false,
+        // "out": null,
+        "suppressExcessPropertyErrors": false,
+        "suppressImplicitAnyIndexErrors": false,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Language and Environment */
+        // "emitDecoratorMetadata": null,
+        "experimentalDecorators": true,
+        "jsx": "react-jsx",
+        // "jsxFactory": null,
+        // "jsxFragmentFactory": null,
+        // "jsxImportSource": null,
+        "lib": ["ESNext"],
+        // "moduleDetection": "auto",
+        // "noLib": false,
+        // "reactNamespace": null,
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Compiler Diagnostics */
+        // "diagnostics": false,
+        // "explainFiles": false,
+        // "extendedDiagnostics": false,
+        // "generateCpuProfile": false,
+        // "listEmittedFiles": false,
+        // "listFiles": false,
+        // "traceResolution": false,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Projects */
+        "composite": true,
+        // "disableReferencedProjectLoad": false,
+        // "disableSolutionSearching": false,
+        // "disableSourceOfProjectReferenceRedirect": false,
+        "incremental": true,
+        // "tsBuildInfoFile": null,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Output Formatting */
+        "noErrorTruncation": false,
+        "preserveWatchOutput": false,
+        "pretty": true,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Completeness */
+        // "skipDefaultLibCheck": false,
+        // "skipLibCheck": true,
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Command Line */
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * Watch Options */
+        "assumeChangesOnlyAffectDirectDependencies": false
+    }
 }
