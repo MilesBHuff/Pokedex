@@ -9,3 +9,16 @@ The primary accent color, `#DF2F2F`, is inspired by the red used in Pokéballs, 
 The secondary accent color, `#757575`, is inspired by the grey band in Pokéballs, and is designed to meet the same contrast criteria as the primary accent color.
 
 Both colors are used in the Pokéball favicon, which I created from scratch for this project.
+
+
+## Legal
+
+### Copyright
+
+Copyright © from 2023 by [Miles Bradley Huff](https://GitHub.com/MilesBHuff), per the terms of the Lesser Affero General Public License (v3.0 or later), the terms of which may be found in `LICENSE.txt`.
+
+### Trademarks
+
+Pokémon® and Pokédex® are registered trademarks of [Nintendo of America Inc](https://www.nintendo.com/us).
+
+<!--- "Pokéball" is, interestingly, *not* a registered trademark of Nintendo;  please see [here](https://tmsearch.uspto.gov/bin/gate.exe?f=searchss&state=4801:tkjnd1.1.1). -->
