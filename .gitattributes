@@ -6,28 +6,36 @@
 
 ## Scripts
 ## -----------------------------------------------------------------------------
-*.js        text
-*.ts        text
+*.js  text
+*.jsx text
+*.ts  text
+*.tsx text
 
 ## Pages (client-side)
 ## -----------------------------------------------------------------------------
-*.htm   text diff=html
-*.html  text diff=html
-*.xhtml text diff=xml
+*.htm   text
+*.html  text
+*.xhtml text
+*.xml   text
 
 ## Styling
 ## -----------------------------------------------------------------------------
-*.css    text diff=css
+*.css  text
+*.less text
+*.sass text
+*.scss text
 
 ## Serialization
 ## -----------------------------------------------------------------------------
-*.json       text
+*.json  text
+*.jsonc text
 #NOTE: Set the below to `text` if `format-package-lock` in `.npmrc` is `true`.
 package-lock.json   binary
 npm-shrinkwrap.json binary
 
 ## Documentation
 ## -----------------------------------------------------------------------------
+*.md  text
 *.pdf binary
 *.rst text
 *.txt text
@@ -38,12 +46,9 @@ npm-shrinkwrap.json binary
 *.jpg binary
 *.png binary
 *.xcf binary
-
-## Audio
-## -----------------------------------------------------------------------------
-*.oga binary
-*.ogg binary
+*.svg binary
+#NOTE: Set the above to `text` if you're actually hand-editing the SVGs in your project.
 
 ## Unversionable
 ## -----------------------------------------------------------------------------
-dist/**
+dist/** binary

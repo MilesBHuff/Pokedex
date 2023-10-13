@@ -1,51 +1,44 @@
 ## Version control
 .git/
 package-lock.json
+## Use `npm-shrinkwrap.json` instead of `package-lock.json`.
+
+## Logs
+logs/
+*.log
+lerna-debug.log*
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 ## Dynamic/Unversionable
 dist/
+dist-ssr/
 node_modules/
 *.bak
-*.log
 *.old
-*.swp
 *.tmp
 *.tsbuildinfo
 
 ## IDEs
+.idea/
 .vscode/
+!.vscode/extensions.json
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
+*.sw?
+*.swp
 
 ## System files
 .directory
 .DS_Store
+.fuse_hidden*
 desktop.ini
 thumbs.db
-.fuse_hidden*
 
-# Files to keep, in spite of the above rules
-!.keep
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
+## Special
 *.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+!.keep
