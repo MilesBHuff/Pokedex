@@ -1,3 +1,30 @@
+## Version control
+.git/
+package-lock.json
+
+## Dynamic/Unversionable
+dist/
+node_modules/
+*.bak
+*.log
+*.old
+*.swp
+*.tmp
+*.tsbuildinfo
+
+## IDEs
+.vscode/
+
+## System files
+.directory
+.DS_Store
+desktop.ini
+thumbs.db
+.fuse_hidden*
+
+# Files to keep, in spite of the above rules
+!.keep
+
 # Logs
 logs
 *.log
