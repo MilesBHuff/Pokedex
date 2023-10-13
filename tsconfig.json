@@ -56,7 +56,6 @@
         // "emitBOM": false,
         "emitDeclarationOnly": false,
         "importHelpers": true,
-        "importsNotUsedAsValues": "error",
         // "inlineSourceMap": false,
         // "inlineSources": false,
         // "mapRoot": null,
@@ -66,8 +65,7 @@
         // "noEmitOnError": false,
         // "outDir": "dist",
         // "outFile": null,
-        "preserveConstEnums": false,
-        "preserveValueImports": true,
+        // "preserveConstEnums": false,
         "removeComments": true,
         // "sourceMap": true,
         // "sourceRoot": null,
@@ -91,6 +89,7 @@
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
         "preserveSymlinks": true,
+        "verbatimModuleSyntax": false,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         * Backwards Compatibility */
