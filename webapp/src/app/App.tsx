@@ -1,5 +1,5 @@
 import logo from "../res/logo.svg";
-import "./App.css";
+import "./App.scss";
 import {Counter} from "./redux/counter/Counter";
 
 function App() {
