@@ -20,5 +20,5 @@ Copyright © from 2023 by [Miles Bradley Huff](https://GitHub.com/MilesBHuff), p
 ### Trademarks
 
 Pokémon® and Pokédex® are registered trademarks of [Nintendo of America Inc](https://www.Nintendo.com/US).  
-This project is independent from and unassociated with Nintendo.  
+This project is independent from and unassociated with Nintendo®.  
 <!--- "Pokéball" is, interestingly, *not* a registered trademark of Nintendo;  please see [here](https://tmsearch.uspto.gov/bin/gate.exe?f=searchss&state=4801:tkjnd1.1.1). -->
