@@ -1,6 +1,8 @@
-# Pokédex
+# Unofficial Pokédex
 
-A simple Pokédex web-app meant to demonstrate my abilities to a hiring authority.
+A web application that displays data on Pokémon from the [PokéAPI](https://PokeAPI.co).
+
+(This project exists solely to demonstrate my abilities to a particular hiring authority.)
 
 ## About the theme and artwork
 
@@ -10,7 +12,6 @@ The secondary accent color, `#757575`, is inspired by the grey band in Pokéball
 
 Both colors are used in the Pokéball favicon, which I created from scratch for this project.
 
-
 ## Legal
 
 ### Copyright
@@ -19,6 +20,6 @@ Copyright © from 2023 by [Miles Bradley Huff](https://GitHub.com/MilesBHuff), p
 
 ### Trademarks
 
-Pokémon® and Pokédex® are registered trademarks of [Nintendo of America Inc](https://www.nintendo.com/us).
+Pokémon® and Pokédex® are registered trademarks of [Nintendo of America Inc](https://www.Nintendo.com/US).  This project is independent from and unassociated with Nintendo.
 
 <!--- "Pokéball" is, interestingly, *not* a registered trademark of Nintendo;  please see [here](https://tmsearch.uspto.gov/bin/gate.exe?f=searchss&state=4801:tkjnd1.1.1). -->

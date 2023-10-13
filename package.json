@@ -2,7 +2,7 @@
   "name": "pokedex",
   "version": "1.0.0",
   "license": "LAGPL-3.0-or-later",
-  "description": "A simple Pokédex web-app meant to demonstrate my abilities to a hiring authority.",
+  "description": "A web application that displays data on Pokémon®. Not affiliated with Nintendo®.",
   "keywords": [
     "demo",
     "Pokédex",
