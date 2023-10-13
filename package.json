@@ -1,7 +1,7 @@
 {
   "name": "pokedex",
   "version": "1.0.0",
-  "license": "AGPL-3.0-or-later",
+  "license": "LAGPL-3.0-or-later",
   "description": "A simple Pokédex web-app meant to demonstrate my abilities to a hiring authority.",
   "keywords": [
     "demo",

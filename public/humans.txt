@@ -1,6 +1,6 @@
 /* SITE */
 	Language:  English
-	License:  AGPL v3+
+	License:  LAGPL3+ (Lesser Affero General Public License version 3.0 or later)
 	GitHub:  https://github.com/MilesBHuff/Pokedex
 
 /* TEAM */
