@@ -1,0 +1,9 @@
+/* SITE */
+	Language:  English
+	License:  AGPL v3+
+	GitHub:  https://github.com/MilesBHuff/Pokedex
+
+/* TEAM */
+	Lead Developer:  Miles Bradley Huff
+ 	Email:  MilesBHuff@NoReply.GitHub.com
+	From:  United States of America

@@ -1,22 +1,35 @@
 <!doctype html>
 <html lang="en-US">
     <head>
+        <!-- Basic -->
         <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html"/>
         <base target="_blank" href="/" />
-        <link rel="robots" type="text/plain" href="/robots.txt" />
 
+        <!-- Robots -->
+        <link rel="robots" type="text/plain" href="/robots.txt" />
+        <meta name="revisit-after" content="90 day" />
+
+        <!-- Theming -->
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="background-color" content="#fff" />
         <meta name="theme-color" content="#000" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
+        <!-- About -->
         <title>Pokédex</title>
         <meta description="A simple Pokédex web-app meant to demonstrate my abilities to a hiring authority." />
         <meta keywords="demo, Pokédex, React, Vite" />
-        <meta author="Miles Bradley Huff" />
+        <link rel="author" type="text/plain" href="/humans.txt" />
 
+        <!-- Dependencies -->
         <script type="module" src="/src/main.tsx"></script>
     </head>
 
-    <body id="root"></body>
+    <body>
+        <nostyle>Styles are not loaded.</nostyle>
+        <noscript>This website requires JavaScript to work.</noscript>
+        
+        <div id="root"></div>
+    </body>
 </html>
