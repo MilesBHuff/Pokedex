@@ -5,7 +5,7 @@ A web application that displays data on Pokémon from the [PokéAPI](https://Pok
 
 ## About the theme and artwork
 
-The primary accent color, `#DF2F2F`, is inspired by the red used in Pokéballs, and is designed to meet WCAG AA when placed against either white or black, as well as to have about the same contrast ratio for both.  
+The primary accent color, `#DF2F2F`, is inspired by the red used in Pokéballs, and is designed to meet [WCAG AA](https://www.w3.org/WAI/WCAG2AA-Conformance) when placed against either white or black, as well as to have about the same contrast ratio for both.  
 
 The secondary accent color, `#757575`, is inspired by the grey band in Pokéballs, and is designed to meet the same contrast criteria as the primary accent color.  
 
