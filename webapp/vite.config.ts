@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import path from 'node:path';
 import {fileURLToPath, URL} from 'node:url';
 import {defineConfig} from 'vitest/config';
 
@@ -10,19 +11,26 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
+            "/src": path.resolve(process.cwd(), "src"),
         },
     },
     server: {
         open: false,
     },
+    root: 'src',
     build: {
-        outDir: 'dist',
+        outDir: '../dist',
         sourcemap: true,
+        rollupOptions: {
+            input: {
+                app: 'index.html',
+            },
+        },
     },
     test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: 'src/setupTests',
+        setupFiles: 'testing.ts',
         mockReset: true,
     },
 });
