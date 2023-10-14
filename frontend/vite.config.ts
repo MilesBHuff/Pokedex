@@ -5,19 +5,19 @@ import {defineConfig} from 'vitest/config';
 ////////////////////////////////////////////////////////////////////////////////
 /** https://vitejs.dev/config */
 export default defineConfig({
-    root: 'src',
+    root: 'app',
     
     build: {
         outDir: '../dist',
         rollupOptions: {
             input: {
-                app: 'index.html',
+                app: 'src/index.html',
             },
         },
         sourcemap: true,
     },
     test: {
-        setupFiles: 'testing.ts',
+        setupFiles: 'src/testing.ts',
         environment: 'jsdom',
         globals: true,
         mockReset: true,
@@ -28,7 +28,7 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@': fileURLToPath(new URL('./app/src', import.meta.url)),
         },
     },
     

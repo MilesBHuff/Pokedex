@@ -1,6 +1,6 @@
-import {Root} from '@/app/root.tsx';
-import {Home} from '@/app/routes/home.tsx';
-import {Pokemon} from '@/app/routes/pokemon.tsx';
+import {Root} from '@/root.tsx';
+import {Home} from '@/routes/home.tsx';
+import {Pokemon} from '@/routes/pokemon.tsx';
 import {redirect} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

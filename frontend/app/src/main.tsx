@@ -1,10 +1,10 @@
-import {Spinner} from '@/app/widgets/spinner.tsx';
+import {store} from '@/redux/store';
 import {routes} from '@/routes.tsx';
+import {Spinner} from '@/widgets/spinner.tsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
-import {store} from './app/redux/store';
 import './styles/_.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
