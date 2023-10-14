@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-export default function Home() {
-    return (
-        <section>
-            Home
-        </section>
-    );
-}
+export const Home = () => (
+    <section>
+        Home
+    </section>
+);

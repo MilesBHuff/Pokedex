@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-export default function Nav() {
-    return (
-        <nav>
-            Navigation
-        </nav>
-    );
-}
+export const Nav = () => (
+    <nav>
+        Navigation
+    </nav>
+);

@@ -1,6 +1,6 @@
-import Footer from '@/app/divisions/footer';
-import Header from '@/app/divisions/header';
-import Nav from '@/app/divisions/nav';
+import {Footer} from '@/app/divisions/footer';
+import {Header} from '@/app/divisions/header';
+import {Nav} from '@/app/divisions/nav';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const App = () => (
@@ -11,4 +11,3 @@ export const App = () => (
         <Footer/>
     </div>
 );
-export default App;

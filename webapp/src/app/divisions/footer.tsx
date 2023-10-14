@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-export default function Footer() {
-    return (
-        <footer>
-            Footer
-        </footer>
-    );
-}
+export const Footer = () => (
+    <footer>
+        Footer
+    </footer>
+);

@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-export default function Header() {
-    return (
-        <header>
-            Header
-        </header>
-    );
-}
+export const Header = () => (
+    <header>
+        Header
+    </header>
+);

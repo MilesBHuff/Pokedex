@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-export default function Pokemon() {
-    return (
-        <section>
-            Pokémon
-        </section>
-    );
-}
+export const Pokemon = () => (
+    <section>
+        Pokémon
+    </section>
+);
