@@ -1,0 +1,14 @@
+// Get fonts
+@import url('https://fonts.googleapis.com/css2?display=block&local=1'
+    + '&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700'
+    + '&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700'
+);
+
+// Define fonts
+$font-sans: 'Ubuntu', 'sans-serif';
+$font-mono: 'Ubuntu Mono', 'monospace';
+
+// Apply default fonts
+body {
+    font-family: $font-sans;
+}
