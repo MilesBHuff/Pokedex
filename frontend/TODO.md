@@ -1,0 +1,12 @@
+TODO:
+- Styling Header, Navbar, Footer, Page
+- Home page text
+- Add functional search bar (currently-searched Pokémon appears as its national 'dex number as a URL parameter)
+- Create service to handle endpoint
+- Display data from endpoint (including what's necessary for the bonus points)
+- Make data pretty
+- Implement search history using redux
+- Implement evolution viewing
+- Implement automated unit testing for business functionality
+- Implement localization
+- Make the app look like a Pokédex
