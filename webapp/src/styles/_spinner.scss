@@ -1,0 +1,11 @@
+.spinner {
+    height: 2rem;
+    width: 2rem;
+    background: url('/favmask.svg') no-repeat center/contain;
+    
+    animation: spin 1.5s linear infinite;
+    @keyframes spin {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+    }
+}
