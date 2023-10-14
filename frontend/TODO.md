@@ -1,5 +1,4 @@
 TODO:
-- Styling Header, Navbar, Footer, Page
 - Home page text
 - Add functional search bar (currently-searched Pokémon appears as its national 'dex number as a URL parameter)
 - Create service to handle endpoint
