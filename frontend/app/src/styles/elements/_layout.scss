@@ -55,8 +55,22 @@ nav {
     display: flex;
     justify-content: start;
     
-    padding: 0.5rem 1rem;
     @include plain-links;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+
+        padding: 0 0.5rem;
+        li a {
+            display: block;
+            padding: 0.5rem 0.5rem;
+            &:hover {
+                background-color: darken($color-nav-background, 15%);
+                text-decoration: none;
+            }
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
