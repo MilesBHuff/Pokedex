@@ -1,9 +1,8 @@
-body {
-    margin: unset;
+@import "reset-css/reset";
+hr {
+    margin: 0;
+    border: none;
 }
-button {
-    border: unset;
-}
-h1 {
-    margin: unset;
+th {
+    text-align: left;
 }
