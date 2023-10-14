@@ -1,4 +1,35 @@
+////////////////////////////////////////////////////////////////////////////////
+// Main Palette
+
 $color-accent-primary: #df2f2f;
 $color-accent-secondary: #757575;
-$color-background: #fff;
-$color-foreground: #000;
+
+$color-dark: #000;
+$color-light: #fff;
+
+////////////////////////////////////////////////////////////////////////////////
+// Specific elements
+
+$color-backdrop: $color-light;
+
+$color-border: $color-accent-secondary;
+
+$color-button-primary-background: $color-accent-primary;
+$color-button-primary-foreground: $color-light;
+
+$color-button-secondary-background: $color-accent-secondary;
+$color-button-secondary-foreground: $color-light;
+
+$color-footer-background: $color-accent-secondary;
+$color-footer-foreground: $color-light;
+
+$color-header-background: $color-accent-primary;
+$color-header-foreground: $color-light;
+
+$color-link: $color-accent-primary;
+
+$color-nav-background: $color-accent-secondary;
+$color-nav-foreground: $color-light;
+
+$color-page-background: $color-light;
+$color-page-foreground: $color-dark;

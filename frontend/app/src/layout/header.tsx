@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 export const Header = () => (
     <header>
-        Header
+        <h1>Unofficial Pokédex</h1>
     </header>
 );

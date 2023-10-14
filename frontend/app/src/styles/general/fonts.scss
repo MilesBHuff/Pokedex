@@ -5,10 +5,5 @@
 );
 
 // Define fonts
-$font-sans: 'Ubuntu', 'sans-serif';
-$font-mono: 'Ubuntu Mono', 'monospace';
-
-// Apply default fonts
-body {
-    font-family: $font-sans;
-}
+$font-sans: 'Ubuntu', sans-serif;
+$font-mono: 'Ubuntu Mono', monospace;

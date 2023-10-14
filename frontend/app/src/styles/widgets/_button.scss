@@ -1,0 +1,20 @@
+button {
+    cursor: pointer;
+    padding: 0.25rem 0.75rem;
+}
+.button-primary {
+    color: $color-button-primary-foreground;
+    background-color: $color-button-primary-background;
+}
+.button-secondary {
+    color: $color-button-secondary-foreground;
+    background-color: $color-button-secondary-background;
+}
+.button-link {
+    color: $color-link;
+    background-color: transparent;
+}
+.button-text {
+    color: inherit;
+    background-color: transparent;
+}

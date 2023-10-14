@@ -1,0 +1,72 @@
+////////////////////////////////////////////////////////////////////////////////
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: visible;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: $color-backdrop;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+#root {
+    background-color: $color-page-background;
+    box-shadow: 0 0 1rem 0 $color-border;
+    
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    width: $page-width;
+    max-width: $page-width;
+    
+    font-family: $font-sans;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+section {
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: visible;
+    height: 100%;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 1rem;
+    background-color: $color-header-background;
+
+    h1 {
+        color: $color-header-foreground;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+nav {
+    color: $color-nav-foreground;
+    background-color: $color-nav-background;
+
+    display: flex;
+    justify-content: start;
+    
+    padding: 0.5rem 1rem;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+footer {
+    color: $color-footer-foreground;
+    background-color: $color-footer-background;
+
+    display: flex;
+    justify-content: center;
+    
+    padding: 0.5rem 1rem;
+    margin-top: auto;
+}
