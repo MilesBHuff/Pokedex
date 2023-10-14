@@ -4,7 +4,7 @@ import {Nav} from '@/app/divisions/nav';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const App = () => (
-    <div id="app">
+    <div id='app'>
         <Header/>
         <Nav/>
         {/* <Router/> */}
