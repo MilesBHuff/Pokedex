@@ -1,6 +1,6 @@
-import {Footer} from '@/app/divisions/footer';
-import {Header} from '@/app/divisions/header';
-import {Nav} from '@/app/divisions/nav';
+import {Footer} from '@/app/layout/footer';
+import {Header} from '@/app/layout/header';
+import {Nav} from '@/app/layout/nav';
 import {Outlet} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
