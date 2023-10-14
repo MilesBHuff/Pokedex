@@ -1,6 +1,6 @@
 import {Home} from '@/app/routes/home.tsx';
 import {Pokemon} from '@/app/routes/pokemon.tsx';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Router = () => (
@@ -9,7 +9,7 @@ export const Router = () => (
         <Routes>
             <Route index element={<Home />} />
             <Route path="pokemon" element={<Pokemon />} />
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         </BrowserRouter>
     </>
