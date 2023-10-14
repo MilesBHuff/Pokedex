@@ -6,10 +6,17 @@ import {store} from "./app/redux/store";
 import "./styles/_.scss";
 
 ////////////////////////////////////////////////////////////////////////////////
-ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </React.StrictMode>,
-);
+try {
+    const root = document.getElementById("root");
+    if(!root) throw new ReferenceError('No root element!');
+    
+    ReactDOM.createRoot(root).render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </React.StrictMode>,
+    );
+} catch(error) {
+    console.error(error);
+}
