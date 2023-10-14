@@ -44,6 +44,7 @@ header {
     h1 {
         color: $color-header-foreground;
     }
+    @include plain-links;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +56,7 @@ nav {
     justify-content: start;
     
     padding: 0.5rem 1rem;
+    @include plain-links;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

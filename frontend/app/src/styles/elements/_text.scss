@@ -19,3 +19,9 @@ h5 {
 h6 {
     font-weight: bold;
 }
+a {
+    text-decoration: none;
+    a:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,6 +1,8 @@
+import {Link} from 'react-router-dom';
+
 ////////////////////////////////////////////////////////////////////////////////
 export const Header = () => (
     <header>
-        <h1>Unofficial Pokédex</h1>
+        <h1><Link to="/">Unofficial Pokédex</Link></h1>
     </header>
 );
