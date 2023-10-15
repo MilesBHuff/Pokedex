@@ -33,29 +33,26 @@ section {
 
 ////////////////////////////////////////////////////////////////////////////////
 header {
+    background-color: $color-header-background;
+    color: $color-header-foreground;
+    a {color: unset;}
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     
     padding: 1rem;
-    background-color: $color-header-background;
-
-    h1 {
-        color: $color-header-foreground;
-    }
-    @include plain-links;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 nav {
-    color: $color-nav-foreground;
     background-color: $color-nav-background;
+    color: $color-nav-foreground;
+    a {color: unset;}
 
     display: flex;
     justify-content: start;
-    
-    @include plain-links;
 
     ul {
         display: flex;
@@ -75,8 +72,9 @@ nav {
 
 ////////////////////////////////////////////////////////////////////////////////
 footer {
-    color: $color-footer-foreground;
     background-color: $color-footer-background;
+    color: $color-footer-foreground;
+    a {color: unset;}
     
     padding: 0.5rem 1rem;
     margin-top: auto;
@@ -89,5 +87,4 @@ footer {
     font-size: small;
     gap: 1ch;
 
-    @include plain-links;
 }
