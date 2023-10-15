@@ -4,7 +4,10 @@ import {Link} from 'react-router-dom';
 ////////////////////////////////////////////////////////////////////////////////
 export const Header = () => (
     <header>
-        <h1><Link to="/">Unofficial Pokédex</Link></h1>
+        <div className="brandmark">
+            <img src="/favicon.svg"/>
+            <h1><Link to="/">Unofficial Pokédex</Link></h1>
+        </div>
         <SearchBar />
     </header>
 );

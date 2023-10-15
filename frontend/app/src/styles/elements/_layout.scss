@@ -50,6 +50,18 @@ header {
     padding: 1rem;
     h1 {margin: unset;}
 
+    .brandmark {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
     // border-radius: $border-radius $border-radius 0 0;
 }
 
