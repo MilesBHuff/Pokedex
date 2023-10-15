@@ -7,6 +7,7 @@ export const SearchBar = () => {
     const navigate = useNavigate();
     const [value, setValue] = useState('');
     const [valid, setValid] = useState(false);
+    const [searching, setSearching] = useState(false);
 
     const validityRegex = /[A-Z\d]+/i;
 
@@ -19,14 +20,18 @@ export const SearchBar = () => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setSearching(true);
         navigate(`/search?q=${value}`);
+        setValue('');
+        setValid(false);
+        setSearching(false);
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         <form className="search-bar" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search" value={value} onChange={handleChange} />
-            <button type="submit" disabled={!valid}>🔍</button>
+            <input type="text" disabled={searching} placeholder="Search" value={value} onChange={handleChange} />
+            <button type="submit" disabled={searching || !valid}>🔍</button>
         </form>
     );
 };
