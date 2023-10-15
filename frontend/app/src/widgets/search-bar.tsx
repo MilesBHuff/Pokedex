@@ -1,12 +1,12 @@
+import {useAppDispatch} from '@/redux/hooks.ts';
 import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {ChangeEvent, FormEvent, useState} from 'react';
-import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchBar = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [value, setValue] = useState('');
     const [valid, setValid] = useState(false);
