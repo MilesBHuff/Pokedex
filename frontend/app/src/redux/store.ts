@@ -1,8 +1,11 @@
+import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {Action, ThunkAction, configureStore} from '@reduxjs/toolkit';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        search: searchSlice.reducer,
+    },
 });
 
 ////////////////////////////////////////////////////////////////////////////////

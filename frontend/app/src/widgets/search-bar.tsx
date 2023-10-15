@@ -1,9 +1,12 @@
+import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {ChangeEvent, FormEvent, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchBar = () => {
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [value, setValue] = useState('');
     const [valid, setValid] = useState(false);
@@ -22,8 +25,9 @@ export const SearchBar = () => {
         event.preventDefault();
         setSearching(true);
         navigate(`/search?q=${value}`);
-        setValue('');
         setValid(false);
+        dispatch(searchSlice.actions.addToHistory(value));
+        setValue('');
         setSearching(false);
     };
 

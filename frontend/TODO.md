@@ -1,11 +1,11 @@
 # TODO
 
 ## Required:
+- Implement search history using Redux
 - Create way to call PokéAPI
 - Implement caching
 - Populate search results with real data from PokéAPI
 - Populate Pokémon page with real data from PokéAPI
-- Implement search history using Redux
 - Hide debug navbar
 
 ## Bonus:
