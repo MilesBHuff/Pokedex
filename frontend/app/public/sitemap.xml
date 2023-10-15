@@ -7,7 +7,7 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
     "
 >
-  <url>
-    <loc>http://localhost:5173/index.html</loc>
-  </url>
+    <url>
+        <loc>http://localhost:5173/index.html</loc>
+    </url>
 </urlset>
