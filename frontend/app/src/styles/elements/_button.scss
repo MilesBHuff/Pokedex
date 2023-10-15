@@ -1,7 +1,9 @@
 @mixin a() {
     cursor: pointer;
+
     text-decoration: none;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: underline;
     }
 }
@@ -12,26 +14,25 @@
     padding: 0.5rem;
     user-select: none;
 
-    &:checked, &.checked {
+    &.activated {
         font-weight: bold;
+    }
+    &:disabled, 
+    &.activated {
         cursor: initial;
-
-        &:hover, &:focus {
+        &:hover, 
+        &:focus {
             text-decoration: none;
         }
     }
     @if($color-background) {
-        &:hover, &:focus {
-            text-decoration: none;
-        }
-        &:not(:checked), &:not(.checked) {
-            &:hover, &:focus {
+        &:not(:disabled, .activated) {
+            &:hover, 
+            &:focus {
+                text-decoration: none;
                 background-color: darken($color-background, 15%);
             }
         }
-    }
-    &:disabled {
-        cursor: initial;
     }
 }
 
