@@ -19,7 +19,7 @@ export const SearchBar = () => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        navigate('/pokemon'); //TODO: Specify which Pokémon in a URL parameter.
+        navigate(`/search?q=${value}`);
     }
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

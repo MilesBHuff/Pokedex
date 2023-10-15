@@ -11,6 +11,9 @@ export const Nav = () => {
         name: 'Home',
         path: '/',
     }, {
+        name: 'Search',
+        path: '/search',
+    }, {
         name: 'Pokémon',
         path: '/pokemon',
     }, {
