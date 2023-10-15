@@ -69,19 +69,7 @@ nav {
             margin: unset;
             >a {
                 display: block;
-                padding: 0.5rem 0.5rem;
-                user-select: none;
-                &.current {
-                    font-weight: bold;
-                }
-                &:hover {
-                    text-decoration: none;
-                }
-                &:not(.current) {
-                    &:hover, &:focus {
-                        background-color: darken($color-nav-background, 15%);
-                    }
-                }
+                @include button($color-nav-background);
             }
         }
     }

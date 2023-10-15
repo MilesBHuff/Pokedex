@@ -25,7 +25,7 @@ export const Nav = () => {
                     <li>{
                         entry.path !== location.pathname
                             ? <Link to={entry.path}>{entry.name}</Link>
-                            : <a className="current">{entry.name}</a>
+                            : <a className="checked">{entry.name}</a>
                     }</li>
                 )
             }</ul>

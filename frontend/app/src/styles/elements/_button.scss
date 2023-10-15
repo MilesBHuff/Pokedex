@@ -1,20 +1,57 @@
-button {
+@mixin a() {
     cursor: pointer;
-    padding: 0.25rem 0.75rem;
+    text-decoration: none;
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
 }
+
+@mixin button($color-background) {
+    @include a();
+
+    padding: 0.5rem;
+    user-select: none;
+
+    &:checked, &.checked {
+        font-weight: bold;
+        cursor: initial;
+
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+    }
+    @if($color-background) {
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+        &:not(:checked), &:not(.checked) {
+            &:hover, &:focus {
+                background-color: darken($color-background, 15%);
+            }
+        }
+    }
+    &:disabled {
+        cursor: initial;
+    }
+}
+
 .button-primary {
     color: $color-button-primary-foreground;
     background-color: $color-button-primary-background;
+    @include button($color-button-primary-background);
 }
-.button-secondary {
+.button-secondary, button {
     color: $color-button-secondary-foreground;
     background-color: $color-button-secondary-background;
+    @include button($color-button-secondary-background);
 }
 .button-link {
     color: $color-link;
     background-color: transparent;
+    @include button($color-button-secondary-background);
 }
 .button-text {
     color: inherit;
     background-color: transparent;
+    @include button($color-button-secondary-background);
 }

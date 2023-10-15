@@ -1,9 +1,10 @@
 $line-height: 100%;
 
 // Defaults
-body {
+body, * {
     font-family: $font-sans;
     line-height: $line-height;
+    font-size: 1rem;
 }
 
 // Titles
@@ -28,10 +29,7 @@ h6 {
 
 // Special tags
 a {
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
+    @include a();
 }
 i, em {
     font-style: italic;
@@ -43,5 +41,4 @@ b, strong {
 // Spacing
 h1, h2, h3, h4, h5, h6, p, li {
     margin: 1rem 0;
-    line-height: $line-height;
 }
