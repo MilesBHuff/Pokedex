@@ -42,8 +42,9 @@ header {
     justify-content: space-between;
     align-items: center;
     
+    position: relative;
+    
     padding: 1rem;
-
     h1 {margin: unset;}
 }
 
@@ -56,14 +57,16 @@ nav {
     display: flex;
     justify-content: start;
 
-    ul {
+    position: relative;
+
+    >ul {
         display: flex;
         flex-direction: row;
 
         padding: 0 0.5rem;
-        li {
+        >li {
             margin: unset;
-            a {
+            >a {
                 display: block;
                 padding: 0.5rem 0.5rem;
                 user-select: none;
@@ -88,17 +91,18 @@ footer {
     background-color: $color-footer-background;
     color: $color-footer-foreground;
     a {color: unset;}
-    
-    padding: 0.5rem 1rem;
-    margin-top: auto;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
 
-    font-size: small;
-    gap: 1ch;
-
+    position: relative;
+    
+    padding: 0.5rem 1rem;
+    margin-top: auto;
     p {margin: unset;}
+    gap: 1rem;
+
+    font-size: small;
 }
