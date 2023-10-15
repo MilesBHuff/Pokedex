@@ -1,6 +1,6 @@
 # TODO
 
-Mandatory:
+## Required:
 - Create way to call PokéAPI
 - Implement caching
 - Populate search results with real data from PokéAPI
@@ -8,7 +8,8 @@ Mandatory:
 - Implement search history using Redux
 - Hide debug navbar
 
-Optional:
+## Bonus:
+- Change debug navbar into breadcrumb that remembers search term while viewing Pokémon
 - Implement evolution viewing
 - Implement automated unit testing for business functionality
 - Implement localization
