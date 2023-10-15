@@ -25,7 +25,7 @@ body {
 
 ////////////////////////////////////////////////////////////////////////////////
 section {
-    padding: 1rem;
+    padding: 0 1rem;
     overflow-y: auto;
     overflow-x: visible;
     height: 100%;
@@ -43,6 +43,8 @@ header {
     align-items: center;
     
     padding: 1rem;
+
+    h1 {margin: unset;}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,19 +61,22 @@ nav {
         flex-direction: row;
 
         padding: 0 0.5rem;
-        li a {
-            display: block;
-            padding: 0.5rem 0.5rem;
-            user-select: none;
-            &.current {
-                font-weight: bold;
-            }
-            &:hover {
-                text-decoration: none;
-            }
-            &:not(.current) {
-                &:hover, &:focus {
-                    background-color: darken($color-nav-background, 15%);
+        li {
+            margin: unset;
+            a {
+                display: block;
+                padding: 0.5rem 0.5rem;
+                user-select: none;
+                &.current {
+                    font-weight: bold;
+                }
+                &:hover {
+                    text-decoration: none;
+                }
+                &:not(.current) {
+                    &:hover, &:focus {
+                        background-color: darken($color-nav-background, 15%);
+                    }
                 }
             }
         }
@@ -95,4 +100,5 @@ footer {
     font-size: small;
     gap: 1ch;
 
+    p {margin: unset;}
 }
