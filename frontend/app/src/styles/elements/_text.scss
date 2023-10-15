@@ -26,6 +26,9 @@ a {
         text-decoration: underline;
     }
 }
-i {
+i, em {
     font-style: italic;
+}
+b, strong {
+    font-style: bold;
 }
