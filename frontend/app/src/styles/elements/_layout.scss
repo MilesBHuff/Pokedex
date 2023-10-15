@@ -45,11 +45,13 @@ header {
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; //TODO: This works fine until we wrap, at which point it behaves like `unset` when I want it to be `center`.  Could probably fix by switching to CSS Grid;  but at what cost?
     align-items: center;
+    flex-wrap: wrap;
     
     position: relative;
     
+    gap: 1rem;
     padding: 1rem;
     h1 {margin: unset;}
 

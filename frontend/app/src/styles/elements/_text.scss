@@ -10,12 +10,15 @@ body, * {
 // Titles
 h1 {
     font-size: 2rem;
+    line-height: 2rem; // Not sure why we need this when `$line-height` is set to 100%.
 }
 h2 {
     font-size: 1.5rem;
+    line-height: 1.5rem; // Not sure why we need this when `$line-height` is set to 100%.
 }
 h3 {
     font-size: 1.25rem;
+    line-height: 1.25rem; // Not sure why we need this when `$line-height` is set to 100%.
 }
 h4 {
     font-weight: bold;
