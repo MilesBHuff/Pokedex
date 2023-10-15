@@ -28,10 +28,18 @@ export const SearchBar = () => {
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const handleReset = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setValue('');
+        setValid(false);
+    };
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <form className="search-bar" onSubmit={handleSubmit}>
-            <input type="text" disabled={searching} placeholder="Search" value={value} onChange={handleChange} />
-            <button type="submit" disabled={searching || !valid}>🔍</button>
+        <form className="search-bar" onSubmit={handleSubmit} onReset={handleReset}>
+            <button className="reset" type="reset" disabled={searching || value.length <= 0}>🗙</button>
+            <input className="input" type="text" disabled={searching} placeholder="Search" value={value} onChange={handleChange} />
+            <button className="submit" type="submit" disabled={searching || !valid}>🔍</button>
         </form>
     );
 };
