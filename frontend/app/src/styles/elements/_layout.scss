@@ -36,6 +36,7 @@ header {
     background-color: $color-header-background;
     color: $color-header-foreground;
     a {color: unset;}
+    a:hover {text-decoration: unset;}
 
     display: flex;
     flex-direction: row;
