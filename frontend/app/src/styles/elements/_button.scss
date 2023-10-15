@@ -10,9 +10,10 @@
 
 @mixin button($color-background) {
     @include a();
-
-    padding: 0.5rem;
     user-select: none;
+
+    border-radius: $border-radius;
+    padding: 0.5rem;
 
     &.activated {
         font-weight: bold;
@@ -30,7 +31,7 @@
             &:hover, 
             &:focus {
                 text-decoration: none;
-                background-color: darken($color-background, 15%);
+                background-color: darken($color-background, $color-shade-amount);
             }
         }
     }

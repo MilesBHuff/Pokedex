@@ -17,11 +17,13 @@
         padding: 0.5rem;
         border-left: unset;
         @include button($color-search-background);
+        border-radius: 0 $border-radius $border-radius 0;
     }
     input {
         padding: 0.5rem;
         padding-right: 0;
         border-right: unset;
         text-align: right;
+        border-radius: $border-radius 0 0 $border-radius;
     }
 }

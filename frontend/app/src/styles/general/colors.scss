@@ -7,10 +7,12 @@ $color-accent-secondary: #757575;
 $color-dark: #000;
 $color-light: #fff;
 
+$color-shade-amount: 15%;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Specific elements
 
-$color-backdrop: $color-light;
+$color-backdrop: darken($color-light, $color-shade-amount);
 
 $color-border: $color-accent-secondary;
 
