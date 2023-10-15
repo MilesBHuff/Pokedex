@@ -10,6 +10,7 @@ export const Footer = () => (
                 LAGPL3+
             </a>.
         </p>
+
         <p>
             <span>
                 <i>Pokédex</i>® and <i>Pokémon</i>® are registered trademarks of

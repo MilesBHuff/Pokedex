@@ -5,8 +5,8 @@ import {Outlet} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Root = () => <>
-    <Header/>
-    <Nav/>
-    <Outlet/>
-    <Footer/>
+    <Header />
+    <Nav />
+    <Outlet />
+    <Footer />
 </>;

@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchBar = () => {
-    
+
     const navigate = useNavigate();
     const [value, setValue] = useState('');
     const [valid, setValid] = useState(false);
@@ -14,18 +14,18 @@ export const SearchBar = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         setValid((event.target.value.match(validityRegex)?.length ?? NaN) > 0);
-    }
+    };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         navigate(`/search?q=${value}`);
-    }
+    };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         <form className="search-bar" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search" value={value} onChange={handleChange}/>
+            <input type="text" placeholder="Search" value={value} onChange={handleChange} />
             <button type="submit" disabled={!valid}>🔍</button>
         </form>
     );

@@ -4,6 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 export const Nav = () => {
     const location = useLocation();
 
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const entries: Array<{
         name: string,
         path: string,
@@ -19,8 +20,9 @@ export const Nav = () => {
     }, {
         name: '404',
         path: '/error',
-    }]
+    }];
 
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         <nav>
             <ul>{
