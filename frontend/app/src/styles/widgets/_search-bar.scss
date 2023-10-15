@@ -1,0 +1,27 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: right; // Trying to maintain some semblence of consistency for RtL writing systems, since the below styles so-often have to specify "right" instead of something like "end".
+    position: relative;
+
+    input, button {
+        background-color: $color-search-background;
+        color: $color-search-foreground;
+        border: 1px solid $color-border;
+        
+        box-sizing: border-box;
+        height: 2rem; //TODO: Have this be dynamic.
+        margin: 0;
+    }
+    button {
+        padding: 0.5rem;
+        border-left: unset;
+        @include button($color-search-background);
+    }
+    input {
+        padding: 0.5rem;
+        padding-right: 0;
+        border-right: unset;
+        text-align: right;
+    }
+}
