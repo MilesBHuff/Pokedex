@@ -1,0 +1,45 @@
+.dropdown {
+    background-color: $color-input-background;
+    color: $color-input-foreground;
+
+    border-radius: $border-radius;
+    border: $border-width solid $color-border;
+    margin-top: -$border-width;
+
+    box-shadow: 0 0 0.5rem 0 $color-shadow;
+    z-index: 1;
+    +* {z-index: 2;} // Required so that any attached elements clip the dropdown's shadow. //BUG: Not working.
+    
+    overflow-x: clip;
+    overflow-y: auto;
+    max-height: 8rem; // Shows 4 options, the maximum extent of the human subitization range.
+    box-sizing: content-box;
+    &::-webkit-scrollbar {
+        display: none; //TODO: Find some way to have the scrollbar overlay the content.  `overflow: overlay` is deprecated and poorly-supported, but it seemed to be about the only reasonable way to get this to work.
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute; //NOTE: Make sure parent element is at least `position: relative`, or the below `left`/`right` won't work right!
+    left: 0;
+    right: 0;
+
+    >li {
+        display: contents;
+    }
+
+    >button, li >button {
+        @include button($color-input-background);
+
+        border-radius: unset;
+        border: unset;
+
+        background-color: $color-input-background;
+        color: $color-input-foreground;
+
+        width: 100%;
+        padding: 0.5rem $icon-button-size;
+        text-align: right;
+    }
+}

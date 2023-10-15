@@ -1,12 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Main Palette
 
-$color-accent-primary: #df2f2f;
-$color-accent-secondary: #757575;
-
 $color-dark: #000;
 $color-light: #fff;
 
+$color-accent-primary: #df2f2f;
+$color-accent-secondary: #757575;
+
+$color-shadow: #00000075; // Black with transparency that creates `$color-accent-secondary` against a `$color-light` background.
 $color-shade-amount: 15%;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +37,5 @@ $color-nav-foreground: $color-light;
 $color-page-background: $color-light;
 $color-page-foreground: $color-dark;
 
-$color-search-background: $color-light;
-$color-search-foreground: $color-dark;
-
-$color-shadow: $color-accent-secondary;
+$color-input-background: $color-light;
+$color-input-foreground: $color-dark;

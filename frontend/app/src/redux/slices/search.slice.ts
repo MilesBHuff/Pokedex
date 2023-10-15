@@ -2,7 +2,7 @@ import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** The maximum number of search terms to remember. */
-const maxHistory = 6;
+const maxHistory = 4; // 4 is the limit of the human subitization range.
 
 ////////////////////////////////////////////////////////////////////////////////
 export const searchSlice = createSlice({

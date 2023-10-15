@@ -6,17 +6,16 @@
     
     position: relative;
 
-    input, button {
-        background-color: $color-search-background;
-        color: $color-search-foreground;
+    >input, >button {
+        background-color: $color-input-background;
+        color: $color-input-foreground;
         border: $border-width solid $color-border;
         
         box-sizing: border-box;
-        height: 2rem; //TODO: Have this be dynamic.
         margin: 0;
     }
-    button {
-        @include button($color-search-background);
+    >button {
+        @include button($color-input-background);
         
         &.reset {border-radius: $border-radius 0 0 $border-radius;}
         &.submit {border-radius: 0 $border-radius $border-radius 0;}
@@ -33,9 +32,13 @@
         &.reset {left: 0;}
         &.submit {right: 0;}
 
-        min-width: 2rem;
-        width: 2rem;
-        max-width: 2rem;
+        min-width: $icon-button-size;
+        width: $icon-button-size;
+        max-width: $icon-button-size;
+
+        min-height: $icon-button-size;
+        height: $icon-button-size;
+        max-height: $icon-button-size;
 
         padding: 0.5rem;
 
@@ -45,10 +48,22 @@
 
         &.reset:disabled {visibility: hidden;}
     }
-    input {
-        padding: 0.5rem 2rem;
+    >input {
+        padding: 0.5rem $icon-button-size;
+        height: $icon-button-size; // I kind of wish I didn't have to hard-code the height here, but it seems otherwise impossible to get the buttons and inputs to line up properly.
         width: 12rem;
         text-align: right;
         border-radius: $border-radius;
     }
+}
+
+.search {
+    position: relative;
+    .history {
+        @extend .dropdown;
+    }
+    .search-bar:not(:focus-within) +.history {
+        display: none;
+    }
+    .search-bar {z-index: 2;} //HACK: This is set in `.dropdown`, but it isn't working; this line here is just a temporary workaround.
 }
