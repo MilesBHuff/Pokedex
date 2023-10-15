@@ -26,8 +26,8 @@ export const Nav = () => {
     return (
         <nav>
             <ul>{
-                entries.map(entry =>
-                    <li key={entry.path}>{
+                entries.map((entry, index) =>
+                    <li key={index}>{
                         entry.path !== location.pathname
                             ? <Link to={entry.path}>{entry.name}</Link>
                             : <a className="activated">{entry.name}</a>
