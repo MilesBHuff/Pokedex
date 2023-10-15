@@ -1,5 +1,4 @@
 TODO:
-- Add functional search bar (currently-searched Pokémon appears as its national 'dex number as a URL parameter)
 - Create service to handle endpoint
 - Display data from endpoint (including what's necessary for the bonus points)
 - Make data pretty
