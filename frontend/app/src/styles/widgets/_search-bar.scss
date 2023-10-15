@@ -63,7 +63,7 @@
         @extend .dropdown;
     }
     .search-bar:not(:focus-within) +.history {
-        display: none;
+        display: none; //FIXME: This causes the element to disappear before `onClick` can finish.  Same issue with `visibility: hidden;` and `opacity: 0; pointer-events: none;`.
     }
     .search-bar {z-index: 2;} //HACK: This is set in `.dropdown`, but it isn't working; this line here is just a temporary workaround.
 }

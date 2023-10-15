@@ -1,6 +1,6 @@
 import {useAppDispatch, useAppSelector} from '@/redux/hooks.ts';
 import {searchSlice} from '@/redux/slices/search.slice.ts';
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEventHandler, FormEventHandler, MouseEventHandler, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,13 +17,13 @@ export const SearchBar = () => {
     const validityRegex = /[A-Z\d]+/i;
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange: ChangeEventHandler<HTMLInputElement> = event => {
         setValue(event.target.value);
         setValid((event.target.value.match(validityRegex)?.length ?? NaN) > 0);
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit: FormEventHandler<HTMLFormElement> = event => {
         event.preventDefault();
         setSearching(true);
         navigate(`/search?q=${value}`);
@@ -34,10 +34,17 @@ export const SearchBar = () => {
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const handleReset = (event: FormEvent<HTMLFormElement>) => {
+    const handleReset: FormEventHandler<HTMLFormElement> = event => {
         event.preventDefault();
         setValue('');
         setValid(false);
+    };
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const handleSelection: MouseEventHandler<HTMLButtonElement> = event => {
+        event.preventDefault();
+        setValue(event.currentTarget.innerHTML);
+        setValid(true);
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -54,7 +61,7 @@ export const SearchBar = () => {
                 <ul className="history">{
                     history.map((entry, index) => (
                         <li key={index}>
-                            <button type="button">{entry}</button>
+                            <button type="button" onClick={handleSelection}>{entry}</button>
                         </li>
                     ))
                 }</ul>
