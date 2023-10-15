@@ -1,7 +1,9 @@
+$line-height: 100%;
+
 // Defaults
 body {
     font-family: $font-sans;
-    line-height: 115%;
+    line-height: $line-height;
 }
 
 // Titles
@@ -41,4 +43,5 @@ b, strong {
 // Spacing
 h1, h2, h3, h4, h5, h6, p, li {
     margin: 1rem 0;
+    line-height: $line-height;
 }
