@@ -14,7 +14,7 @@ $color-shade-amount: 15%;
 
 $color-backdrop: darken($color-light, $color-shade-amount);
 
-$color-border: $color-accent-secondary;
+$color-border: $color-dark;
 
 $color-button-primary-background: $color-accent-primary;
 $color-button-primary-foreground: $color-light;
@@ -38,3 +38,5 @@ $color-page-foreground: $color-dark;
 
 $color-search-background: $color-light;
 $color-search-foreground: $color-dark;
+
+$color-shadow: $color-accent-secondary;

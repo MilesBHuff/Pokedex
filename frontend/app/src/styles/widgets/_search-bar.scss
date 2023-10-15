@@ -7,7 +7,7 @@
     input, button {
         background-color: $color-search-background;
         color: $color-search-foreground;
-        border: 1px solid $color-border;
+        border: $border-width solid $color-border;
         
         box-sizing: border-box;
         height: 2rem; //TODO: Have this be dynamic.
