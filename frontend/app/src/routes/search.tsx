@@ -71,7 +71,7 @@ export const Search = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section>
+        <section id="search">
             <h2>Search for "{query}"</h2>
             {matches.length > 0
                 ? <table>

@@ -8,7 +8,7 @@ export const Pokemon = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section>
+        <section id="pokemon">
             <p>{id}</p>
         </section>
     );

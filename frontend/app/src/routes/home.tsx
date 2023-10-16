@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 export const Home = () => (
-    <section>
+    <section id="home">
         <h2>
             Welcome to my unofficial Pokédex!
         </h2>
