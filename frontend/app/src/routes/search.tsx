@@ -1,6 +1,6 @@
 import {useAppSelector} from '@/redux/hooks.ts';
 import {useState} from 'react';
-import {useNavigate, useSearchParams} from 'react-router-dom';
+import {useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Search = () => {
@@ -8,12 +8,7 @@ export const Search = () => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     // Get and validate search parameter
     const [searchParams] = useSearchParams();
-    const query = searchParams.get('q');
-    const navigate = useNavigate();
-    if(!query) {
-        navigate('/');
-        return null;
-    }
+    const query = searchParams.get('q') ?? '';
     const queryRegex = new RegExp(query, 'i');
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -40,9 +35,9 @@ export const Search = () => {
                     }
                 }
                 setMatches(newMatches);
-            })
+            });
     }
-    console.debug(pokemons, matches)
+    console.debug(pokemons, matches);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
@@ -50,7 +45,7 @@ export const Search = () => {
             <h2>Search for "{query}"</h2>
             {matches.length > 0
                 ? <ul>{
-                    matches.map((match, index) => 
+                    matches.map((match, index) =>
                         <li key={index}>{match}</li>
                     )
                 }</ul>
