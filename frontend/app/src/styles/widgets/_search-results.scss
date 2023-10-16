@@ -3,7 +3,10 @@ table.search-results {
         cursor: pointer;
         @extend .button-link;
     }
-    .id, .name {
+    .id {
+        text-align: right; // This lines up the places in the numbers
+    }
+    .raw-data {
         font-family: $font-mono;
     }
 }

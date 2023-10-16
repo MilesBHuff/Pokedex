@@ -77,15 +77,15 @@ export const Search = () => {
                 ? <table className="search-results">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th className="id">ID</th>
                             <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>{
                         matches.map(match =>
                             <tr key={match.id} id={match.id.toString(10)} onClick={handleRowClick}>
-                                <td className="id">{match.id}</td>
-                                <td className="name">{match.name}</td>
+                                <td className="raw-data id">{match.id}</td>
+                                <td className="raw-data">{match.name}</td>
                             </tr>
                         )
                     }</tbody>
