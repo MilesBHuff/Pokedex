@@ -12,25 +12,39 @@ export const Search = () => {
     const queryRegex = new RegExp(query, 'i');
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /** A type that distills down the information we get from `PokemonClient().listPokemons`. */
+
+    type basicPokemonInfo = {
+        id: number,
+        name: string,
+    };
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    // Get a list of all Pokémon, and see if there are any matches
+
     const pokeapi = useAppSelector(state => state.pokeapi);
-    const [pokemons, setPokemons] = useState([] as Array<string>);
-    const [matches, setMatches] = useState([] as Array<string>);
+    const [pokemons, setPokemons] = useState([] as Array<basicPokemonInfo>);
+    const [matches, setMatches] = useState([] as Array<basicPokemonInfo>);
 
     if(pokemons.length === 0) {
         pokeapi.pokemonClient.listPokemons(0, 9999)
             .then(response => {
+                console.debug(response);
 
                 // Parse out and save a list of all Pokémon names
-                const newPokemons: Array<string> = [];
+                const newPokemons: Array<basicPokemonInfo> = [];
                 for(const pokemon of response.results) {
-                    newPokemons.push(pokemon.name);
+                    newPokemons.push({
+                        id: parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1')),
+                        name: pokemon.name,
+                    });
                 }
                 setPokemons(newPokemons);
 
                 // See if the search query matches any Pokémon
-                const newMatches: Array<string> = [];
+                const newMatches: Array<basicPokemonInfo> = [];
                 for(const newPokemon of newPokemons) {
-                    if((newPokemon.match(queryRegex)?.length ?? NaN) > 0) {
+                    if((newPokemon.name.match(queryRegex)?.length ?? NaN) > 0) {
                         newMatches.push(newPokemon);
                     }
                 }
@@ -46,8 +60,8 @@ export const Search = () => {
                 ? <ul>{
                     matches.map((match, index) =>
                         <li key={index}>
-                            <Link to={`/pokemon?name=${match}`}>
-                                {match}
+                            <Link to={`/pokemon?id=${match.id}`}>
+                                {match.id} {match.name}
                             </Link>
                         </li>
                     )
