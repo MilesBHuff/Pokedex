@@ -4,7 +4,7 @@ My personal remaining TODO.
 
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
-- Populate search results with real data from PokéAPI
+- *Allow changing the search query without refreshing*
 - Populate Pokémon page with real data from PokéAPI
 
 ## Bonus:
@@ -12,7 +12,9 @@ My personal remaining TODO.
 - Implement evolution viewing
 - *Change debug navbar into breadcrumb that remembers search term while viewing Pokémon*
 - *Allow the user to remove history entries with an "X" button, like exists in the searchbar*
-- *Add icons of Pokémon to history dropdown*
+- *Get display names for the search results page*
+- *Display icons and other Pokémon-specific information on the search results page*
+- *Add icons of Pokémon to history dropdown, if a given name is a perfect match for only one Pokémon*
 - *Implement localization*
 
 ## Not doing:
