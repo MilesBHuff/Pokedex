@@ -14,7 +14,7 @@ export const Header = () => {
         <header>
             <div className="brandmark">
                 <img src="/favicon.svg"/>
-                <h1><Link to="/" onClick={handleClick}>Pokédex (unofficial)</Link></h1>
+                <h1><Link to="/" onClick={handleClick}>Miles's Pokédex</Link></h1>
             </div>
             <SearchBar />
         </header>

@@ -1,4 +1,4 @@
-# Unofficial Pokédex
+# Miles's Pokédex
 
 A web application that displays data on Pokémon from the [PokéAPI](https://PokeAPI.co).  
 (This project exists solely to demonstrate my abilities to a particular hiring authority.)  
