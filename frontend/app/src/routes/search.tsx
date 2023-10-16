@@ -31,13 +31,16 @@ export const Search = () => {
             .then(response => {
                 console.debug(response);
 
-                // Parse out and save a list of all Pokémon names
+                // Parse out and save a list of all Pokémon with a National 'Dex number
                 const newPokemons: Array<basicPokemonInfo> = [];
                 for(const pokemon of response.results) {
-                    newPokemons.push({
-                        id: parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1')),
-                        name: pokemon.name,
-                    });
+                    const id = parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1'));
+                    if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
+                        newPokemons.push({
+                            id: id,
+                            name: pokemon.name,
+                        });
+                    }
                 }
                 setPokemons(newPokemons);
 
