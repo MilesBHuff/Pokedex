@@ -17,6 +17,11 @@ export const SearchBar = () => {
     const validityRegex = /[A-Z\d]+/i;
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const getInputElement = () => (
+        document.getElementsByClassName('input')?.[0] ?? null
+    ) as HTMLInputElement | null;
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleChange: ChangeEventHandler<HTMLInputElement> = event => {
         setValue(event.target.value);
         setValid((event.target.value.match(validityRegex)?.length ?? NaN) > 0);
@@ -38,6 +43,9 @@ export const SearchBar = () => {
         event.preventDefault();
         setValue('');
         setValid(false);
+
+        const input = getInputElement();
+        if(input) input.focus(); // Ensure the input is re-focused so that the user may type something new after clearing.
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -46,7 +54,7 @@ export const SearchBar = () => {
         setValue(event.currentTarget.innerHTML);
         setValid(true);
 
-        const input = document.getElementsByClassName('input')?.[0] as HTMLInputElement | undefined;
+        const input = getInputElement();
         if(input) {
             input.focus(); // Ensure the input is re-focused so that the user may easily submit the form with "Enter", or proceed to edit their selection.
             // input.select(); // Select the text, to make it easy for the user to copy, delete, or skip to the beginning/end. //WARN: Is not preserved when the `value` is changed by other functions. //TODO: Find a way to get this to work for changèd values.
