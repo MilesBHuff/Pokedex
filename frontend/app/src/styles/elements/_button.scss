@@ -50,7 +50,7 @@
 .button-link {
     color: $color-link;
     background-color: transparent;
-    @include button($color-button-secondary-background);
+    @extend a;
 }
 .button-text {
     color: inherit;

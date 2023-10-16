@@ -1,0 +1,8 @@
+table {
+    th {
+        font-weight: bold;
+    }
+    td, th {
+        padding: 0.25rem; // Sums to `0.5rem`, widely used elsewhere in the app.
+    }
+}

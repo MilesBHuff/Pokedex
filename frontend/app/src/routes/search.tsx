@@ -74,7 +74,7 @@ export const Search = () => {
         <section id="search">
             <h2>Search for "{query}"</h2>
             {matches.length > 0
-                ? <table>
+                ? <table className="search-results">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -84,8 +84,8 @@ export const Search = () => {
                     <tbody>{
                         matches.map(match =>
                             <tr key={match.id} id={match.id.toString(10)} onClick={handleRowClick}>
-                                <td>{match.id}</td>
-                                <td>{match.name}</td>
+                                <td className="id">{match.id}</td>
+                                <td className="name">{match.name}</td>
                             </tr>
                         )
                     }</tbody>

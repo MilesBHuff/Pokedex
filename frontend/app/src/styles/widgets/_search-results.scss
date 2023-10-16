@@ -1,0 +1,9 @@
+table.search-results {
+    tr[id] {
+        cursor: pointer;
+        @extend .button-link;
+    }
+    .id, .name {
+        font-family: $font-mono;
+    }
+}
