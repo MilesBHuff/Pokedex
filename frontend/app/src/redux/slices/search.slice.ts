@@ -17,6 +17,17 @@ export const searchSlice = createSlice({
     reducers: {
         /** Add a term to search history. */
         addToHistory: (state, action: PayloadAction<string>): void => {
+            
+            // If the new entry is already in the history, move it to the top.
+            for(let i = 0; i < state.history.length; i++) {
+                if(state.history[i] === action.payload) {
+                    state.history.splice(i, 1);
+                    state.history.unshift(action.payload);
+                    return;
+                }
+            }
+
+            // Else, add the new entry, removing the oldest one as needed.
             state.history.unshift(action.payload);
             if(state.history.length > maxHistory) state.history.pop();
         },
