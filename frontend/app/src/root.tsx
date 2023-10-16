@@ -6,7 +6,7 @@ import {Outlet} from 'react-router-dom';
 ////////////////////////////////////////////////////////////////////////////////
 export const Root = () => <>
     <Header />
-    <Nav />
+    {/* <Nav /> */}
     <Outlet />
     <Footer />
 </>;

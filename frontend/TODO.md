@@ -6,7 +6,6 @@ My personal remaining TODO.
 - Implement caching
 - Populate search results with real data from PokéAPI
 - Populate Pokémon page with real data from PokéAPI
-- Hide debug navbar
 
 ## Bonus:
 - Change debug navbar into breadcrumb that remembers search term while viewing Pokémon
