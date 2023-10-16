@@ -3,9 +3,9 @@ My personal remaining TODO.
 (*Italics* are not in the prompt.)
 
 ## Required:
+- In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 - Populate search results with real data from PokéAPI
 - Populate Pokémon page with real data from PokéAPI
-- In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 
 ## Bonus:
 - *Add information about how to run the application to the ReadMe*

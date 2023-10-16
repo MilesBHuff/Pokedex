@@ -74,6 +74,10 @@ Both colors are used in the Pokéball favicon, which I created from scratch for 
 
 I made sure to make favicons that work on Chromium, Firefox, and Safari.  
 
+### Changes needed for use in a concurrent environment
+
+I'm not quite sure what this means, but the prompt requires me to address it.  
+
 ### Other
 
 Before beginning work on the core parts of this project (and, indeed, before even receiving the prompt), I took the time to start on prework that would get the project into a good state for me to work from.  This involved setting up the `.editorconfig`, filling out the `index.html`, and a number of other things.  A lot of this I adapted from other personal projects of mine, to avoid spending too too much time on this non-essential stuff.  I encourage taking a look at the configs -- they're probably (hopefully) nicer than what you typically encounter out there.
