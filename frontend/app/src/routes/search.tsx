@@ -1,6 +1,6 @@
 import {useAppSelector} from '@/redux/hooks.ts';
 import {useState} from 'react';
-import {useSearchParams} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Search = () => {
@@ -37,7 +37,6 @@ export const Search = () => {
                 setMatches(newMatches);
             });
     }
-    console.debug(pokemons, matches);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
@@ -46,7 +45,11 @@ export const Search = () => {
             {matches.length > 0
                 ? <ul>{
                     matches.map((match, index) =>
-                        <li key={index}>{match}</li>
+                        <li key={index}>
+                            <Link to={`/pokemon?name=${match}`}>
+                                {match}
+                            </Link>
+                        </li>
                     )
                 }</ul>
                 : <p>No matches!</p>
