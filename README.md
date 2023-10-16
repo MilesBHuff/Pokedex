@@ -7,7 +7,7 @@ A web application that displays data on Pokémon from the [PokéAPI](https://Pok
 
 ### Technologies
 
-I used [`git`](https://git-scm.com), because I like `git` and use it all the time, for work and pleasure alike.
+I used [`git`](https://git-scm.com), because I like `git` and use it all the time, for work and pleasure alike;  and also because the prompt says `git` is "preferabl"e.
 
 I used the latest stable versions of [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com), two tools that are presently ubiquitous in frontend development.
 
@@ -16,9 +16,9 @@ I wrote the code in [VSCode](https://code.visualstudio.com), to take advantage o
 I used [Vite](https://vitejs.dev) because (1) it seems to be pretty easy to use, (2) I've used it on a number of small [Vue.js](https://vuejs.org) projects before, and (3) the Engineering Director said it would be a good idea to use it.  
 I *have* worked on a [CRA](https://create-react-app.dev) app before (at [GM](https://www.gm.com)), but I've found Vite to be a better experience.  
 
-I used [TypeScript](https://www.typescriptlang.org), because I've grown to be a big fan of it.  Its typing system is incredibly flexible and detailled, and I don't think I'd want to go back to raw JavaScript anymore.
+I used [TypeScript](https://www.typescriptlang.org), both because it's required by the prompt *and* because I've grown to be a big fan of it.  Its typing system is incredibly flexible and detailled, and I don't think I'd want to go back to raw JavaScript anymore.
 
-I used [Sass](https://sass-lang.com) because it's pretty great, because I'm more-used to it than I am [Less](https://lesscss.org) anymore, and because writing raw CSS is not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)-enough for my liking.  I used SCSS specifically, in order to avoid the confusion that can come when those unaccustomed to normal Sass try to work with it.  I feel normal Sass is more-suited to use alongside [CoffeeScript](https://coffeescript.org), while SCSS is a better match for TypeScript.
+I used [Sass](https://sass-lang.com) because it's pretty great, because I'm more-used to it than I am [Less](https://lesscss.org) anymore, and because writing raw CSS is not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)-enough for my liking.  I used SCSS specifically, in order to avoid the confusion that can come when those unaccustomed to normal Sass try to work with it;  and also because the prompt mentioned SCSS by name.  I feel normal Sass is more-suited for use alongside [CoffeeScript](https://coffeescript.org), while SCSS is a better match for TypeScript.
 
 I used [React](https://react.dev), of course -- just as stipulated in the prompt.
 
@@ -46,9 +46,9 @@ I am rare among developers for actually liking CSS, and I generally prefer just 
 
 I made the TSC about as strict as possible (minus a couple ridiculous things and a couple checks that I feel do not belong in a compiler).
 
-I used ESLint with recommended settings for this project, and tweaked it as necessary to get good behavior.  I would like to eventually make my own ESLintRC from scratch again.  The last one I made, I made on my work laptop during work hours for my last job;  so I unfortunately no longer have access to it.
+I used [ESLint](https://eslint.org) with recommended settings for this project, and the intention of tweaking it as necessary to get good behavior.  I would like to eventually make my own ESLintRC from scratch again.  The last one I made, I made on my work laptop during work hours for my last job;  so I unfortunately no longer have access to it.
 
-I used VSCode's built-in formatter because I don't like how Prettier (which comes with vite-template-redux) does things.  It would be nice for all my projects to eventually have a commandline equivalent to what VSCode does.  It's been on my ToDo list for "eventually", and I'll eventually get around to it.
+I used VSCode's built-in formatter because I don't like how Prettier (which comes with vite-template-redux) does things.  It would be nice for all my projects to eventually have a commandline equivalent to what VSCode does.  It's been on my ToDo list for "eventually", and I'll *eventually* get around to it... someday.
 
 ### Documentation
 
@@ -62,19 +62,23 @@ I went for a relatively simple design of header, nav (currently hidden), section
 
 I ensured everything worked at the sorts of screen sizes used by mobile devices.
 
+The way I designed this site, the entire thing should meet [WCAG AA accessibility requirements](https://www.w3.org/WAI/WCAG2AA-Conformance).
+
 #### Theme and artwork
 
-The primary accent color, `#DF2F2F`, is inspired by the red used in Pokéballs, and is designed to meet [WCAG AA](https://www.w3.org/WAI/WCAG2AA-Conformance) when placed against either white or black, as well as to have about the same contrast ratio for both.  
+The primary accent color, `#DF2F2F`, is inspired by the red used in Pokéballs, and is designed to meet WCAG AA when placed against either white or black, as well as to have about the same contrast ratio for both.  
 
 The secondary accent color, `#757575`, is inspired by the grey band in Pokéballs, and is designed to meet the same contrast criteria as the primary accent color.  
 
 Both colors are used in the Pokéball favicon, which I created from scratch for this project.  
 
+I made sure to make favicons that work on Chromium, Firefox, and Safari.  
+
 ### Other
 
-Before beginning work on the core parts of this project (and, indeed, before even receiving the prompt), I took the time to do prework that would get the app into a good state.  This involved setting up the `.editorconfig`, filling out the `index.html`, and a number of other things.  A lot of this I adapted from other personal projects of mine, to avoid spending too too much time on this non-essential stuff.  
-I also jump-started the CSS with code I wrote a week prior for [a different take-home assignment](https://www.codeply.com/p/5zy2pxYxi1) (something which may also be of interest to you, if you wish to see something written in plain HTML/JS/CSS).  
-Wherever anything in this project came from elsewhere, I made sure to, in the relevant commit messages, state as such *and* link to the source material.  I did not include any code that did not come from me.  
+Before beginning work on the core parts of this project (and, indeed, before even receiving the prompt), I took the time to start on prework that would get the project into a good state for me to work from.  This involved setting up the `.editorconfig`, filling out the `index.html`, and a number of other things.  A lot of this I adapted from other personal projects of mine, to avoid spending too too much time on this non-essential stuff.  I encourage taking a look at the configs -- they're probably (hopefully) nicer than what you typically encounter out there.
+I also jump-started the CSS with code I wrote a week prior for [a different take-home assignment](https://www.codeply.com/p/5zy2pxYxi1) (something which may also be of interest to you, if you wish to see something written in plain HTML/JS/CSS).  You might consider this to be comparable in ethics to using a component library to jump-start the application styling, only this involved integrating around 100 lines of CSS that I myself wrote very recently.  
+Wherever anything in this project came from elsewhere, I made sure to, in the relevant commit messages, state as such *and* link to the source material.  I *only* included my own code in this project (outside of third-party libraries and template code from Vite, of course).  
 
 This code represents what you can *currently* expect from me on a day-to-day basis.  I learn fast, and will surely be leagues better than this in a year's time.  At present, I am relatively new to React, having spent most of the past 6 years working with Angular and AngularJS.  I want to underscore that I take the same care you see in this project in my usual work.  I wanted this project to give an accurate portrayal of what my normal code is like, and I hope you are satisfied with it.  
 
