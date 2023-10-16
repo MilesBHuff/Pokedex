@@ -61,7 +61,7 @@ export const SearchBar = () => {
                 <ul className="history">{
                     history.map((entry, index) => (
                         <li key={index}>
-                            <button type="button" onMouseDown={handleSelection}>{entry}</button>
+                            <button type="button" onClick={handleSelection}>{entry}</button>
                         </li>
                     ))
                 }</ul>

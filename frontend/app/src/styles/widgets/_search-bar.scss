@@ -61,9 +61,11 @@
     position: relative;
     .history {
         @extend .dropdown;
+        display: none;
     }
-    .search-bar:not(:focus-within) +.history {
-        display: none; //FIXME: Clicking fires the `input`'s `onBlur` before the dropdown's `onClick` finishes.  Same issue with `visibility: hidden;` and `opacity: 0; pointer-events: none;`. Can work around by using `onMouseDown` instead of `onClick`, but results in suboptimal user experience. Simple JavaScript solutions have the same problems as this CSS solution. I would prefer to leave things as they are for now, vs going with a complicated JavaScript solution.
+    .search-bar:focus-within +.history,
+    .history:active {
+        display: block;
     }
     .search-bar {z-index: 2;} //HACK: This is set in `.dropdown`, but it isn't working; this line here is just a temporary workaround.
 }
