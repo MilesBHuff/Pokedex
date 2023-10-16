@@ -45,6 +45,12 @@ export const SearchBar = () => {
         event.preventDefault();
         setValue(event.currentTarget.innerHTML);
         setValid(true);
+
+        const input = document.getElementsByClassName('input')?.[0] as HTMLInputElement | undefined;
+        if(input) {
+            input.focus(); // Ensure the input is re-focused so that the user may easily submit the form with "Enter", or proceed to edit their selection.
+            // input.select(); // Select the text, to make it easy for the user to copy, delete, or skip to the beginning/end. //WARN: Is not preserved when the `value` is changed by other functions. //TODO: Find a way to get this to work for changèd values.
+        }
     };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

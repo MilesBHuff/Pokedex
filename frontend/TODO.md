@@ -2,7 +2,6 @@
 My personal remaining TODO.
 
 ## Required:
-- Implement search history using Redux
 - Create way to call PokéAPI
 - Implement caching
 - Populate search results with real data from PokéAPI
@@ -17,3 +16,4 @@ My personal remaining TODO.
 - Implement automated unit testing for business functionality
 - Implement localization
 - Make the app look like a Pokédex
+- Make the "history" dropdown display a list of possible Pokémon names (given the current input) instead of the history once the user has started typing something
