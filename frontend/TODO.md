@@ -9,6 +9,7 @@ My personal remaining TODO.
 ## Bonus:
 - *Add information about how to run the application to the ReadMe*
 - Implement evolution viewing
+- *When visiting a search page, add it to the search history.  (useful for when people visit from a bookmark)*
 - *Change debug navbar into breadcrumb that remembers search term while viewing Pokémon*
 - *Allow the user to remove history entries with an "X" button, like exists in the searchbar*
 - *Get display names for the search results page*
