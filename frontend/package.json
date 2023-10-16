@@ -60,8 +60,6 @@
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "@vitejs/plugin-react": "^4",
-    "axios": "^1",
-    "axios-cache-interceptor": "^1",
     "eslint": "^8",
     "eslint-plugin-react": "^7",
     "eslint-plugin-react-hooks": "^4",

@@ -1,59 +1,47 @@
-import {useAppSelector} from '@/redux/hooks.ts';
+import {usePokemonQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import {Spinner} from '@/widgets/spinner.tsx';
 import {MouseEventHandler, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Search = () => {
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    // Hooks
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const {data: pokemonData, error: pokemonError, isLoading: pokemonLoading} = usePokemonQuery();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     // Get and validate search parameter
-    const [searchParams] = useSearchParams();
     const query = searchParams.get('q') ?? '';
     const queryRegex = new RegExp(query, 'i');
+    //TODO: Validate.
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    /** A type that distills down the information we get from `PokemonClient().listPokemons`. */
+    // Go through the list of all Pokémon, and see if there are any matches
+    const matches: Array<BasicPokemonInfo> = [];
+    const pokemons: Array<BasicPokemonInfo> = [];
+    if(pokemonData) {
 
-    type basicPokemonInfo = {
-        id: number,
-        name: string,
-    };
+        // Parse out and save a list of all Pokémon with a National 'Dex number
+        for(const pokemon of pokemonData.results) {
+            const id = parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1'));
+            if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
+                pokemons.push({
+                    id: id,
+                    name: pokemon.name,
+                });
+            }
+        }
 
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    // Get a list of all Pokémon, and see if there are any matches
-
-    const pokeapi = useAppSelector(state => state.pokeapi);
-    const [pokemons, setPokemons] = useState([] as Array<basicPokemonInfo>);
-    const [matches, setMatches] = useState([] as Array<basicPokemonInfo>);
-
-    if(pokemons.length === 0) {
-        pokeapi.pokemonClient.listPokemons(0, 9999)
-            .then(response => {
-                console.debug(response);
-
-                // Parse out and save a list of all Pokémon with a National 'Dex number
-                const newPokemons: Array<basicPokemonInfo> = [];
-                for(const pokemon of response.results) {
-                    const id = parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1'));
-                    if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
-                        newPokemons.push({
-                            id: id,
-                            name: pokemon.name,
-                        });
-                    }
-                }
-                setPokemons(newPokemons);
-
-                // See if the search query matches any Pokémon
-                const newMatches: Array<basicPokemonInfo> = [];
-                for(const newPokemon of newPokemons) {
-                    if((newPokemon.name.match(queryRegex)?.length ?? NaN) > 0) {
-                        newMatches.push(newPokemon);
-                    }
-                }
-                setMatches(newMatches);
-            });
+        // See if the search query matches any Pokémon
+        for(const pokemon of pokemons) {
+            if((pokemon.name.match(queryRegex)?.length ?? NaN) > 0) {
+                matches.push(pokemon);
+            }
+        }
     }
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -73,25 +61,31 @@ export const Search = () => {
     return (
         <section id="search">
             <h2>Search for "{query}"</h2>
-            {matches.length > 0
-                ? <table className="search-results">
+
+            {pokemonLoading ? (
+                <Spinner />
+            ) : pokemonError || !pokemonData ? (
+                <p className="error">Failed to load data!</p>
+            ) : matches.length <= 0 ? (
+                <p>No matches!</p>
+            ) : (
+                <table className="search-results">
                     <thead>
                         <tr>
                             <th className="id">ID</th>
                             <th>Name</th>
                         </tr>
                     </thead>
-                    <tbody>{
-                        matches.map(match =>
+                    <tbody>
+                        {matches.map(match =>
                             <tr key={match.id} id={match.id.toString(10)} onClick={handleRowClick}>
                                 <td className="raw-data id">{match.id}</td>
                                 <td className="raw-data">{match.name}</td>
                             </tr>
-                        )
-                    }</tbody>
+                        )}
+                    </tbody>
                 </table>
-                : <p>No matches!</p>
-            }
+            )}
         </section>
     );
 };

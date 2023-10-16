@@ -4,7 +4,6 @@ My personal remaining TODO.
 
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
-- *Allow changing the search query without refreshing*
 - Populate Pokémon page with real data from PokéAPI
 
 ## Bonus:
