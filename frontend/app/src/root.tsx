@@ -6,7 +6,7 @@ import {Outlet} from 'react-router-dom';
 ////////////////////////////////////////////////////////////////////////////////
 export const Root = () => <>
     <Header />
-    {/* <Nav /> */}
+    {/* <Nav /> */}{/* TODO: Make `Nav` into a breadcrumb, rather than just a tool for debugging. */}
     <Outlet />
     <Footer />
 </>;
