@@ -8,11 +8,13 @@ My personal remaining TODO.
 - Populate Pokémon page with real data from PokéAPI
 
 ## Bonus:
-- Change debug navbar into breadcrumb that remembers search term while viewing Pokémon
-- Add icons of Pokémon to history dropdown
-- Allow the user to remove history entries with an "X" button, like exists in the searchbar
 - Implement evolution viewing
-- Implement automated unit testing for business functionality
+- Change debug navbar into breadcrumb that remembers search term while viewing Pokémon
+- Allow the user to remove history entries with an "X" button, like exists in the searchbar
+- Add icons of Pokémon to history dropdown
 - Implement localization
-- Make the app look like a Pokédex
+
+## Not doing:
 - Make the "history" dropdown display a list of possible Pokémon names (given the current input) instead of the history once the user has started typing something
+- Implement automated unit testing for business functionality
+- Make the app look like a Pokédex
