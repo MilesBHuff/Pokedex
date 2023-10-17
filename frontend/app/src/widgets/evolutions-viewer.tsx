@@ -13,6 +13,7 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId
     const {data: evolutions} = useEvolutionsByIdQuery(props.evolutionId);
     // useEffect(() => console.debug(evolutions), [evolutions]);
     const [chain, setChain] = useState([] as Array<BasicPokemonInfo>);
+    const [eeveeWarning, setEeveeWarning] = useState(false);
 
     /** Convert the raw chain information into something we can actually display. */
     const compileChain = (): void => {
@@ -25,9 +26,14 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId
                 name: link.species.name,
             });
 
-            //TODO:  This approach won't work for the Eeveelutions.  Choosing a random index to at least get some variety.
-            const index = Math.floor(Math.random() * (link.evolves_to.length));
-            if(link.evolves_to[index]) addToChain(link.evolves_to[index]!); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `index` is a known valid key for `link.evolves_to`.
+            if(link.evolves_to.length === 1) {
+                if(link.evolves_to[0]) addToChain(link.evolves_to[0]);
+            } else {
+                //NOTE:  The current approach won't work for the Eeveelutions.  Choosing a random index to at least get some variety.
+                const index = Math.floor(Math.random() * (link.evolves_to.length));
+                if(link.evolves_to[index]) addToChain(link.evolves_to[index]!); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `index` is a known valid key for `link.evolves_to`.
+                setEeveeWarning(true);
+            }
         };
         addToChain(evolutions.chain);
         setChain(newChain);
@@ -50,6 +56,7 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId
                     {index === chain.length - 1 && chain.length > 1 ? '.' : ''}
                 </Fragment>
             ))}
+            {eeveeWarning ? <p className="error"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not yet supported by this application.</p> : null}
         </span>
     </>;
 };
