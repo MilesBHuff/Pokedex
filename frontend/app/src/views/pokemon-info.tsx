@@ -63,6 +63,12 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                         {displayifyName(pokemon.species.name)}
                     </li>
                 }
+                {!species ? null :
+                    <li><strong>Evolution Tree: </strong>
+                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} pokemonId={species.id}/>
+                        {/* TODO: Hide if no evolutions. */}
+                    </li>
+                }
                 <li>{pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}</li>
                 <li><strong>Types: </strong>
                     <PokemonTypes types={pokemon.types} />
@@ -81,11 +87,6 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                         {index === pokemon.moves.length - 1 && pokemon.moves.length > 1 ? '.' : ''}
                     </Fragment>)}
                 </li>
-                {!species ? null :
-                    <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} pokemonId={species.id}/>
-                    </li>
-                }
             </ul>
         </>}
     </>;
