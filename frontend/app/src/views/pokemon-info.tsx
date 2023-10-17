@@ -83,7 +83,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                 </li>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer id={getIdFromUrl(species.evolution_chain.url)}/>
+                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} pokemonId={species.id}/>
                     </li>
                 }
             </ul>

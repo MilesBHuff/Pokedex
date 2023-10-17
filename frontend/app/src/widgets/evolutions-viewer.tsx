@@ -7,10 +7,10 @@ import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const EvolutionsViewer: FunctionComponent<{id: number;}> = props => {
+export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId?: number}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: evolutions} = useEvolutionsByIdQuery(props.id);
+    const {data: evolutions} = useEvolutionsByIdQuery(props.evolutionId);
     // useEffect(() => console.debug(evolutions), [evolutions]);
     const [chain, setChain] = useState([] as Array<BasicPokemonInfo>);
 
@@ -39,9 +39,13 @@ export const EvolutionsViewer: FunctionComponent<{id: number;}> = props => {
         <span className="evolutions-viewer">
             {chain.map((link, index) => (
                 <Fragment key={index}>
-                    <Link to={`/pokemon?id=${link.id}`}>
+                    {link.id === props.pokemonId ? <>
                         {displayifyName(link.name)}
-                    </Link>
+                    </> : <>
+                        <Link to={`/pokemon?id=${link.id}`}>
+                            {displayifyName(link.name)}
+                        </Link>
+                    </>}
                     {index < chain.length - 1 ? ', ' : ''}
                     {index === chain.length - 1 && chain.length > 1 ? '.' : ''}
                 </Fragment>
