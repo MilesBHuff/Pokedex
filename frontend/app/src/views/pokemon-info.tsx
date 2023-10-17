@@ -74,7 +74,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                     {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <Fragment key={index}>
                         {displayifyName(move.move.name)}
                         {index < pokemon.moves.length - 1 ? ', ' : ''}
-                        {index === pokemon.moves.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
+                        {index === pokemon.moves.length - 1 && pokemon.moves.length > 1 ? '.' : ''}
                     </Fragment>)}
                 </li>
             </ul>
