@@ -17,7 +17,7 @@ export const SearchResults = () => {
     const parseQuery = (): void => {
         const newQuery = searchParams.get('q') ?? '';
         setQuery(newQuery);
-        //TODO: Validate.
+        if(!newQuery) navigate('/');
     };
     useEffect(parseQuery, [searchParams]);
 
