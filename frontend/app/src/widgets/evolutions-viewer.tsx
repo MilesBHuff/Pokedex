@@ -26,8 +26,9 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId
                 name: link.species.name,
             });
 
-            if(link.evolves_to.length === 1) {
+            if(link.evolves_to.length <= 1) {
                 if(link.evolves_to[0]) addToChain(link.evolves_to[0]);
+                setEeveeWarning(false);
             } else {
                 //NOTE:  The current approach won't work for the Eeveelutions.  Choosing a random index to at least get some variety.
                 const index = Math.floor(Math.random() * (link.evolves_to.length));
