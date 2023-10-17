@@ -1,11 +1,12 @@
 import {useAppSelector} from '@/redux/hooks.ts';
+import {selectHistory} from '@/redux/slices/search.slice.ts';
 import {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchBar: FunctionComponent = () => {
 
-    const history = useAppSelector(state => state.search.history);
+    const history = useAppSelector(selectHistory);
     const navigate = useNavigate();
 
     const [value, setValue] = useState('');

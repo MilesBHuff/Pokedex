@@ -1,22 +1,25 @@
-import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {PayloadAction, Selector, createSlice} from '@reduxjs/toolkit';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** The maximum number of search terms to remember. */
 const maxHistory = 4; // 4 is the limit of the human subitization range.
 
 ////////////////////////////////////////////////////////////////////////////////
+const initialState = {
+    /** A FIFO queue containing a history of search terms.
+     *  Limited in length to the value of `maxHistory`.
+     *  The queue is sorted in order from most-recent to least-recent.
+    **/
+    history: [] as Array<string>,
+};
+
+////////////////////////////////////////////////////////////////////////////////
 export const searchSlice = createSlice({
     name: 'search',
-    initialState: {
-        /** A FIFO queue containing a history of search terms.
-         *  Limited in length to the value of `maxHistory`.
-         *  The queue is sorted in order from most-recent to least-recent.
-        **/
-        history: [] as Array<string>,
-    },
+    initialState,
     reducers: {
         /** Add a term to search history. */
-        addToHistory: (state, action: PayloadAction<string>): void => {
+        addHistory: (state, action: PayloadAction<string>): void => {
 
             // If the new entry is already in the history, move it to the top.
             for(let i = 0; i < state.history.length; i++) {
@@ -33,3 +36,11 @@ export const searchSlice = createSlice({
         },
     },
 });
+
+////////////////////////////////////////////////////////////////////////////////
+export const selectHistory: Selector<
+    {[searchSlice.name]: typeof initialState},
+    Array<string>
+> = state => (
+    state[searchSlice.name].history
+);

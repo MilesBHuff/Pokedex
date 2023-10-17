@@ -1,11 +1,12 @@
 import {useAppSelector} from '@/redux/hooks.ts';
+import {selectHistory} from '@/redux/slices/search.slice.ts';
 import {Fragment, FunctionComponent} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Nav: FunctionComponent = () => {
     const location = useLocation();
-    const history = useAppSelector(state => state.search.history);
+    const history = useAppSelector(selectHistory);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const entries: Array<{
