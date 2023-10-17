@@ -1,11 +1,18 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+
+////////////////////////////////////////////////////////////////////////////////
+const totalPokemonInDex = 1017; // As of gen9.
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Home: FunctionComponent = () => {
 
-    const totalPokemonInDex = 1017; // As of gen9.
-    const randomPokemonId = Math.floor(Math.random() * totalPokemonInDex);
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const [randomPokemonId, setRandomPokemonId] = useState(NaN);
+    const calculateRandomPokemonId = (): void => {
+        setRandomPokemonId(Math.floor(Math.random() * totalPokemonInDex));
+    };
+    useEffect(calculateRandomPokemonId, []);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
