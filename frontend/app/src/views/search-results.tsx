@@ -1,4 +1,6 @@
+import {useAppDispatch} from '@/redux/hooks.ts';
 import {useSpeciesListQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
@@ -8,6 +10,7 @@ import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchResults: FunctionComponent = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -19,6 +22,7 @@ export const SearchResults: FunctionComponent = () => {
         const newQuery = searchParams.get('q') ?? '';
         setQuery(newQuery);
         if(!newQuery) navigate('/');
+        else dispatch(searchSlice.actions.addToHistory(newQuery));
     };
     useEffect(parseQuery, [searchParams]);
 

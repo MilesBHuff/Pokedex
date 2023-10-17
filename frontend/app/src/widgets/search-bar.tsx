@@ -1,12 +1,10 @@
-import {useAppDispatch, useAppSelector} from '@/redux/hooks.ts';
-import {searchSlice} from '@/redux/slices/search.slice.ts';
+import {useAppSelector} from '@/redux/hooks.ts';
 import {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SearchBar: FunctionComponent = () => {
 
-    const dispatch = useAppDispatch();
     const history = useAppSelector(state => state.search.history);
     const navigate = useNavigate();
 
@@ -33,7 +31,6 @@ export const SearchBar: FunctionComponent = () => {
         setSearching(true);
         navigate(`/search?q=${value}`);
         setValid(false);
-        dispatch(searchSlice.actions.addToHistory(value));
         setValue('');
         setSearching(false);
     };
