@@ -1,7 +1,7 @@
 import {urlifyParams} from '@/utility/urlify-params.function';
 import {urlifyPath} from '@/utility/urlify-path.function';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {NamedAPIResourceList} from 'pokenode-ts';
+import {NamedAPIResourceList, Pokemon, PokemonClient} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
 interface QueryOptions {
@@ -24,11 +24,17 @@ export const pokeapiSlice = createApi({
         baseUrl: 'https://pokeapi.co/api/v2',
     }),
     endpoints: builder => ({
-        pokemon: builder.query<NamedAPIResourceList, number | string | void>({
-            query: (idOrName?, options = defaultOptions) => '/pokemon' + urlifyPath((idOrName ?? '').toString(10)) + urlifyParams(options ?? {}),
+        pokemonList: builder.query<NamedAPIResourceList, void | QueryOptions>({
+            query: (options?: QueryOptions) => '/pokemon' + urlifyParams(options ?? {}),
+        }),
+        pokemonById: builder.query<Pokemon, number>({
+            query: (id, options?: QueryOptions) => '/pokemon' + urlifyPath(id.toString(10)) + urlifyParams(options ?? {}),
         }),
     }),
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-export const {usePokemonQuery} = pokeapiSlice;
+export const {
+    usePokemonListQuery, 
+    usePokemonByIdQuery,
+} = pokeapiSlice;

@@ -1,7 +1,7 @@
-import {usePokemonQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {usePokemonListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {Spinner} from '@/widgets/spinner.tsx';
-import {MouseEventHandler, useEffect, useRef, useState} from 'react';
+import {MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ export const Search = () => {
     useEffect(parseQuery, [searchParams]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = usePokemonQuery();
+    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = usePokemonListQuery({offset: 0, limit: 9999}); //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
     const [pokemons, setPokemons] = useState([] as Array<BasicPokemonInfo>);
 
     /** Get, parse, and save a list of all Pokémon that have a National 'Dex number. */
@@ -74,7 +74,7 @@ export const Search = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section id="search">
+        <section id="search-results">
             <h2>Search for "{query}"</h2>
 
             {pokemonsLoading ? (
