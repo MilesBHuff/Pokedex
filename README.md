@@ -76,7 +76,7 @@ I made sure to make favicons that work on Chromium, Firefox, and Safari.
 
 ### Changes needed for use in a concurrent environment
 
-I'm not quite sure what this means, but the prompt requires me to address it.  
+I'm not quite sure what this means, but the prompt requires me to address it.  I reached out asking for clarification, but didn't hear anything back in-time.
 
 ### Other
 
@@ -89,6 +89,11 @@ This code represents what you can *currently* expect from me on a day-to-day bas
 I also went to lengths to try to ensure I did not infringe upon Nintendo's intellectual property rights.  Nintendo, if I've gone about this incorrectly, please let me know and I will do what I need to do to make this app compliant.  
 
 ### Unfinished objectives
+
+#### Show Pokémon evolutions
+
+This is something I originally set out to do, but I don't want to delay submitting this any longer.
+It's a relatively simple ask, with the [`evolution-chain`](https://pokeapi.co/docs/v2#evolution-section) endpoint.
 
 #### Automated unit testing
 
