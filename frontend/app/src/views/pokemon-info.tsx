@@ -58,7 +58,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
         </> : <>
             <h2>{displayifyName(pokemon.name)} (#{pokemon.id})</h2>
             <ul>
-                {pokemon.name === pokemon.name ? null :
+                {pokemon.name === species?.name ? null :
                     <li><strong>Species: </strong>
                         {displayifyName(pokemon.species.name)}
                     </li>
