@@ -40,7 +40,7 @@ export const searchSlice = createSlice({
 ////////////////////////////////////////////////////////////////////////////////
 export const selectHistory: Selector<
     {[searchSlice.name]: typeof initialState},
-    Array<string>
+    ReadonlyArray<string>
 > = state => (
     state[searchSlice.name].history
 );
