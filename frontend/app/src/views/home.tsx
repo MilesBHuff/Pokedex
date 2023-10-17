@@ -9,5 +9,8 @@ export const Home: FunctionComponent = () => (
         <p>
             Feel free to search for Pokémon by name using the searchbar in the top-right corner.
         </p>
+        <p className="notelet">
+            The source code for this application can be found <a href="https://github.com/MilesBHuff/Pokedex">here</a>.
+        </p>
     </section>
 );
