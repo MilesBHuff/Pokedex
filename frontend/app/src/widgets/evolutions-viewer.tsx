@@ -53,8 +53,7 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, pokemonId
                             {displayifyName(link.name)}
                         </Link>
                     </>}
-                    {index < chain.length - 1 ? ', ' : ''}
-                    {index === chain.length - 1 && chain.length > 1 ? '.' : ''}
+                    {index < chain.length - 1 ? ' 🠞 ' : ''}
                 </Fragment>
             ))}
             {eeveeWarning ? <><br/><span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not yet supported by this application.</span></> : null}
