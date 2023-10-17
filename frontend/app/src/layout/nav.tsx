@@ -1,6 +1,7 @@
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
+//TODO: Make `Nav` into a breadcrumb, rather than just a tool for debugging.
 export const Nav = () => {
     const location = useLocation();
 
@@ -24,7 +25,7 @@ export const Nav = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <nav>
+        <nav style={{display: 'none'}}>
             <ul>{
                 entries.map((entry, index) =>
                     <li key={index}>{
