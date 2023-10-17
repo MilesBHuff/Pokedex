@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+/** Hacky workaround for there not yet being a `text-stroke` style.
+ *  Only supports widths of `1px` at present.
+**/
+@mixin text-stroke($color, $spread: 0, ) {
+    text-shadow:
+       -1px -1px $spread $color,
+       -1px  0   $spread $color,
+       -1px  1px $spread $color,
+        0   -1px $spread $color,
+//      0    0   $spread $color,
+        0    1px $spread $color,
+        1px -1px $spread $color,
+        1px  0   $spread $color,
+        1px  1px $spread $color;
+}

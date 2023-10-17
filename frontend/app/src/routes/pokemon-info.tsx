@@ -1,4 +1,5 @@
 import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
@@ -50,9 +51,14 @@ export const PokemonInfoCore = (props: {id: number;}) => {
             <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2 className="raw-data">#{pokemon.id} {pokemon.name}</h2>
+            <h2 className="raw-data">
+                <strong>#{pokemon.id}</strong> {pokemon.name}
+            </h2>
             {pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}
-            <p>Species: {pokemon.species.name}</p>
+            <ul>
+                <li><strong>Species:</strong> <span className="raw-data">{pokemon.species.name}</span></li>
+                <li><strong>Types:</strong> <PokemonTypes types={pokemon.types} /></li>
+            </ul>
         </>}
     </>;
 };

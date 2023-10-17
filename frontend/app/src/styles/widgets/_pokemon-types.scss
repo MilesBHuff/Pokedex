@@ -1,0 +1,43 @@
+.pokemon-types {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 0.5ch; // About one space
+
+    >* {
+        display: inline;
+
+        padding: 0.25em 0.5em;
+        margin: 0;
+
+        color: $color-light;
+        background-color: $color-accent-secondary;
+        @include text-stroke($color-shadow);
+
+        border: $border-width solid $color-border;
+        border-radius: $border-radius;
+        box-sizing: border-box;
+
+        text-transform: uppercase;
+        font-size: small;
+    }
+
+    // Below colors sampled from https://pokemondb.net/type, which I assume sampled the colors directly from the games.
+    .bug {background-color: #ab2;}
+    .dark {background-color: #754;}
+    .dragon {background-color: #76e;}
+    .electric {background-color: #fc3;}
+    .fairy {background-color: #e9e;}
+    .fighting {background-color: #b54;}
+    .fire {background-color: #f42;}
+    .flying {background-color: #89f;}
+    .ghost {background-color: #66b;}
+    .grass {background-color: #7c5;}
+    .ground {background-color: #db5;}
+    .ice {background-color: #6cf;}
+    .normal {background-color: #aa9;}
+    .poison {background-color: #a59;}
+    .psychic {background-color: #f59;}
+    .rock {background-color: #ba6;}
+    .steel {background-color: #aab;}
+    .water {background-color: #39f;}
+}
