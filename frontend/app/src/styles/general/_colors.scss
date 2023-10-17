@@ -1,21 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Main Palette
 
-$color-dark: #000;
-$color-light: #fff;
+$color-dark: #000000; //NOTE: Must be 6 digits so that `$color-shadow` will work properly.
+$color-light: #ffffff; //NOTE: Must be 6 digits so that `$color-shadow` will work properly.
 
 $color-accent-primary: #df2f2f;
 $color-accent-secondary: #757575;
 
-$color-shadow: #00000075; // Black with transparency that creates `$color-accent-secondary` against a `$color-light` background.
-$color-shade-amount: 15%;
+////////////////////////////////////////////////////////////////////////////////
+// Light theme vs dark theme
+
+// Swap the two values below to change themes.
+$color-foreground-default: $color-dark;
+$color-background-default: $color-light;
+
+$color-shade-amount: 15%; //TODO: Make it possible to invert this so that `lighten`s and `darken`s swap with each other.
+$color-shadow: #{$color-foreground-default}75; // Creates `$color-accent-secondary` when on-top of `$color-background-default`.
 
 ////////////////////////////////////////////////////////////////////////////////
 // Specific elements
 
-$color-backdrop: darken($color-light, $color-shade-amount);
+$color-backdrop: darken($color-background-default, $color-shade-amount);
 
-$color-border: $color-dark;
+$color-border: $color-foreground-default;
 
 $color-button-primary-background: $color-accent-primary;
 $color-button-primary-foreground: $color-light;
@@ -36,8 +43,8 @@ $color-link: $color-accent-primary;
 $color-nav-background: $color-accent-secondary;
 $color-nav-foreground: $color-light;
 
-$color-page-background: $color-light;
-$color-page-foreground: $color-dark;
+$color-page-background: $color-background-default;
+$color-page-foreground: $color-foreground-default;
 
-$color-input-background: $color-light;
-$color-input-foreground: $color-dark;
+$color-input-background: $color-background-default;
+$color-input-foreground: $color-foreground-default;
