@@ -1,5 +1,6 @@
 import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
+import {EvolutionsViewer} from '@/widgets/evolutions-viewer.tsx';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
@@ -37,7 +38,7 @@ export const PokemonInfo: FunctionComponent = () => {
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     const {data: pokemon, error, isLoading: loading} = usePokemonByIdQuery(props.id);
-    console.debug(pokemon);
+    useEffect(() => console.debug(pokemon), [pokemon]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
@@ -78,6 +79,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                     </Fragment>)}
                 </li>
             </ul>
+            <EvolutionsViewer id={props.id}/>
         </>}
     </>;
 };

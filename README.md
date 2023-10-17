@@ -90,11 +90,6 @@ I also went to lengths to try to ensure I did not infringe upon Nintendo's intel
 
 ### Unfinished objectives
 
-#### Show Pokémon evolutions
-
-This is something I originally set out to do, but I don't want to delay submitting this any longer.
-It's a relatively simple ask, with the [`evolution-chain`](https://pokeapi.co/docs/v2#evolution-section) endpoint.
-
 #### Automated unit testing
 
 I did not do the bonus objective that called for unit-testing the application.  Time constraints being what they were, I decided to triage this, since I know the company does not generally use automated unit testing in its UI (instead relying on a mixture of manual QA and end-to-end testing).  I did, however, ensure that [Jest](https://jestjs.io) was at least present and ready to go (by integrating `vite-template-redux` into the project).  
