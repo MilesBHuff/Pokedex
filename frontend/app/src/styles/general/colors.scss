@@ -23,6 +23,8 @@ $color-button-primary-foreground: $color-light;
 $color-button-secondary-background: $color-accent-secondary;
 $color-button-secondary-foreground: $color-light;
 
+$color-error: darken($color-accent-primary, $color-shade-amount);
+
 $color-footer-background: $color-accent-secondary;
 $color-footer-foreground: $color-light;
 

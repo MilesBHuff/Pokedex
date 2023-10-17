@@ -1,5 +1,5 @@
 .error {
-    color: darken($color-accent-primary, $color-shade-amount);
+    color: $color-error;
 }
 .raw-data {
     font-family: $font-mono;
