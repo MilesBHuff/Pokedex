@@ -1,7 +1,7 @@
 import {Root} from '@/root.tsx';
 import {Home} from '@/routes/home.tsx';
-import {Pokemon} from '@/routes/pokemon.tsx';
-import {Search} from '@/routes/search.tsx';
+import {PokemonInfo} from '@/routes/pokemon-info';
+import {SearchResults} from '@/routes/search-results';
 import {redirect} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,10 +13,10 @@ export const routes = [{
         element: <Home />,
     }, {
         path: 'search',
-        element: <Search />,
+        element: <SearchResults />,
     }, {
         path: 'pokemon',
-        element: <Pokemon />,
+        element: <PokemonInfo />,
     }, {
         path: '*',
         loader: async () => redirect('/'),

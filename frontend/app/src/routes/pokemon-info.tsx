@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Pokemon = () => {
+export const PokemonInfo = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
@@ -26,14 +26,14 @@ export const Pokemon = () => {
                 <h2>Loading...</h2>
                 <Spinner />
             </> : <>
-                <PokemonCore id={id} />
+                <PokemonInfoCore id={id} />
             </>}
         </section>
     );
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonCore = (props: {id: number;}) => {
+export const PokemonInfoCore = (props: {id: number;}) => {
     const {data: pokemonData, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

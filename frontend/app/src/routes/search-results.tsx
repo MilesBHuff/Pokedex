@@ -5,7 +5,7 @@ import {MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Search = () => {
+export const SearchResults = () => {
     const navigate = useNavigate();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
