@@ -1,6 +1,6 @@
 .spinner {
-    height: 2rem;
-    width: 2rem;
+    height: $icon-size;
+    width: $icon-size;
     background: url('/favmask.svg') no-repeat center/contain; //TODO: Find some way to display something while waiting for the main image to load.  This is apparently tricky.  The best solution I've found so far, is to add `, url('some/other/image')` to the current line.
     
     animation: spin 1.5s linear infinite;

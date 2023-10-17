@@ -1,6 +1,12 @@
-$page-width: 50rem;
+$font-size: 1rem;
+$icon-size: $font-size * 2;
 
-$border-radius: 0.5rem;
-$border-width: 0.125rem;
+$spacing-large: 1rem;
+$spacing-normal: math.div($spacing-large, 2);
+$spacing-small: math.div($spacing-large, 4);
+$spacing-tiny: math.div($spacing-large, 8);
 
-$icon-button-size: 2rem;
+$border-radius: $spacing-normal;
+$border-width: $spacing-tiny;
+
+$page-width: $spacing-large * 50;

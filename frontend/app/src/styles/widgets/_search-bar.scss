@@ -32,15 +32,15 @@
         &.reset {left: 0;}
         &.submit {right: 0;}
 
-        min-width: $icon-button-size;
-        width: $icon-button-size;
-        max-width: $icon-button-size;
+        min-width: $icon-size;
+        width: $icon-size;
+        max-width: $icon-size;
 
-        min-height: $icon-button-size;
-        height: $icon-button-size;
-        max-height: $icon-button-size;
+        min-height: $icon-size;
+        height: $icon-size;
+        max-height: $icon-size;
 
-        padding: 0.5rem;
+        padding: $spacing-normal;
 
         display: flex;
         align-items: center;
@@ -49,9 +49,9 @@
         &.reset:disabled {visibility: hidden;}
     }
     >input {
-        padding: 0.5rem $icon-button-size;
-        height: $icon-button-size; // I kind of wish I didn't have to hard-code the height here, but it seems otherwise impossible to get the buttons and inputs to line up properly.
-        width: 12rem;
+        padding: $spacing-normal $icon-size;
+        height: $icon-size; // I kind of wish I didn't have to hard-code the height here, but it seems otherwise impossible to get the buttons and inputs to line up properly.
+        width: $font-size * 12;
         text-align: right;
         border-radius: $border-radius;
     }

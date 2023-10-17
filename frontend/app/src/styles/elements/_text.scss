@@ -4,29 +4,27 @@ $line-height: 150%;
 body, * {
     font-family: $font-sans;
     line-height: $line-height;
-    font-size: 1rem;
+    font-size: $font-size;
+}
+
+// Spacing
+h1, h2, h3, h4, h5, h6, p, li, pre {
+    margin: $spacing-normal 0;
+    line-height: $line-height;
 }
 
 // Titles
 h1 {
-    font-size: 2rem;
-    line-height: 2rem; // Not sure why we need this when `$line-height` is set to 100%.
+    font-size: $font-size * 2;
+    line-height: $font-size * 2;
 }
 h2 {
-    font-size: 1.5rem;
-    line-height: 1.5rem; // Not sure why we need this when `$line-height` is set to 100%.
+    font-size: $font-size * 1.5;
 }
 h3 {
-    font-size: 1.25rem;
-    line-height: 1.25rem; // Not sure why we need this when `$line-height` is set to 100%.
+    font-size: $font-size * 1.25;
 }
-h4 {
-    font-weight: bold;
-}
-h5 {
-    font-weight: bold;
-}
-h6 {
+h4, h5, h6 {
     font-weight: bold;
 }
 
@@ -36,12 +34,4 @@ i, em {
 }
 b, strong {
     font-weight: bold;
-}
-
-// Spacing
-h1, h2, h3, h4, h5, h6, p, li, pre {
-    margin: 0.5rem 0;
-}
-h2, h3, h4, h5, h6, p, li, pre {
-    line-height: $line-height;
 }

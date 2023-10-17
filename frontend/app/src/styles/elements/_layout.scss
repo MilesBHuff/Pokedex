@@ -12,7 +12,7 @@ body {
 
 ////////////////////////////////////////////////////////////////////////////////
 #root {
-    box-shadow: 0 0 1rem 0 $color-shadow;
+    box-shadow: 0 0 $spacing-large 0 $color-shadow;
     border: $border-width solid $color-border;
     margin: -$border-width; // `outline` didn't look right, so I went for a workaround with `border`.
 
@@ -31,9 +31,9 @@ section {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-.top {z-index: 1; box-shadow: 0 0.125rem 0.5rem -0.125rem $color-shadow;}
+.top {z-index: 1; box-shadow: 0 ($spacing-tiny) $spacing-normal (-$spacing-tiny) $color-shadow;}
 .center {z-index: 0;}
-.bottom {z-index: 1; box-shadow: 0 -0.125rem 0.5rem -0.125rem $color-shadow;}
+.bottom {z-index: 1; box-shadow: 0 (-$spacing-tiny) $spacing-normal (-$spacing-tiny) $color-shadow;}
 
 ////////////////////////////////////////////////////////////////////////////////
 .center {
@@ -46,7 +46,7 @@ section {
     overflow-x: visible;
 }
 .view {
-    padding: 0 1rem;
+    padding: 0 $spacing-large;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -65,19 +65,19 @@ header {
     
     position: relative;
     
-    gap: 1rem;
-    padding: 1rem;
+    gap: $spacing-large;
+    padding: $spacing-large;
     h1 {margin: unset;}
 
     .brandmark {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 1rem;
+        gap: $spacing-large;
 
         img {
-            height: 2rem;
-            width: 2rem;
+            height: $icon-size;
+            width: $icon-size;
         }
     }
 
@@ -100,7 +100,7 @@ nav {
         display: flex;
         flex-direction: row;
 
-        padding: 0 0.5rem;
+        padding: 0 $spacing-normal;
         >li {
             margin: unset;
             >a {
@@ -127,10 +127,10 @@ footer {
 
     position: relative;
     
-    padding: 0.5rem 1rem;
+    padding: $spacing-normal $spacing-large;
     margin-top: auto;
     p {margin: unset;}
-    gap: 0.25rem;
+    gap: $spacing-small;
 
     font-size: small;
 

@@ -13,7 +13,7 @@
     user-select: none;
 
     border-radius: $border-radius;
-    padding: 0.5rem;
+    padding: $spacing-normal;
 
     &.activated {
         font-weight: bold;

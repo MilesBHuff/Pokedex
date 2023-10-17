@@ -1,5 +1,5 @@
 input, textarea {
     &:focus {
-        box-shadow: 0 0 0.5rem 0 $color-shadow inset;
+        box-shadow: 0 0 $spacing-normal 0 $color-shadow inset;
     }
 }
