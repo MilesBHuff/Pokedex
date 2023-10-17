@@ -4,10 +4,8 @@ My personal remaining TODO.
 
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
-- *Remove console logs*
 
 ## Bonus:
-- Implement evolution viewing
 - *Make it so that pressing the down arrow while the search history dropdown is open will move the focus into the dropdown*
 - *Make it possible to change the orientation and shininess of the sprite*
 - *When visiting a search page, add it to the search history.  (useful for when people visit from a bookmark)*
@@ -21,6 +19,7 @@ My personal remaining TODO.
 - *Implement localization*
 
 ## Not doing:
+- Implement evolution **trees** (chains are already implemented)
 - *Add animations to make the site flow*
 - *Make the "history" dropdown display a list of possible Pokémon names (given the current input) instead of the history once the user has started typing something*
 - Implement automated unit testing for business functionality

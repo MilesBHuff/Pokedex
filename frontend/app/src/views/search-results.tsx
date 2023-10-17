@@ -1,6 +1,7 @@
-import {usePokemonListQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {useSpeciesListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
+import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
@@ -22,7 +23,8 @@ export const SearchResults: FunctionComponent = () => {
     useEffect(parseQuery, [searchParams]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = usePokemonListQuery({offset: 0, limit: 9999}); //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
+    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = useSpeciesListQuery({offset: 0, limit: 9999}); //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
+    // useEffect(() => console.debug(pokemonsData), [pokemonsData]);
     const [pokemons, setPokemons] = useState([] as Array<BasicPokemonInfo>);
 
     /** Get, parse, and save a list of all Pokémon that have a National 'Dex number. */
@@ -32,7 +34,7 @@ export const SearchResults: FunctionComponent = () => {
 
         for(const pokemon of pokemonsData.results) {
 
-            const id = parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1'));
+            const id = getIdFromUrl(pokemon.url);
             if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
 
                 newPokemons.push({

@@ -90,6 +90,12 @@ I also went to lengths to try to ensure I did not infringe upon Nintendo's intel
 
 ### Unfinished objectives
 
+#### Complex Pokémon evolutions
+
+I implemented simple (linear) evolutions, but not complex (branching) evolutions (like Eevee's).  
+Time constraints being what they are, I've decided to go with the current 90% solution.  
+If I *were* to go about implementing trees, I'd get to have the most "fun" I've had with data structures since college.  I might do this later just for the sake of the challenge.  
+
 #### Automated unit testing
 
 I did not do the bonus objective that called for unit-testing the application.  Time constraints being what they were, I decided to triage this, since I know the company does not generally use automated unit testing in its UI (instead relying on a mixture of manual QA and end-to-end testing).  I did, however, ensure that [Jest](https://jestjs.io) was at least present and ready to go (by integrating `vite-template-redux` into the project).  

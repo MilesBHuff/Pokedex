@@ -1,5 +1,6 @@
-import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
+import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
 import {EvolutionsViewer} from '@/widgets/evolutions-viewer.tsx';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
@@ -37,15 +38,17 @@ export const PokemonInfo: FunctionComponent = () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
-    const {data: pokemon, error, isLoading: loading} = usePokemonByIdQuery(props.id);
-    useEffect(() => console.debug(pokemon), [pokemon]);
+    const {data: pokemon, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
+    // useEffect(() => console.debug(pokemon), [pokemon]);
+    const {data: species, isLoading: speciesLoading} = useSpeciesByIdQuery(props.id);
+    // useEffect(() => console.debug(species), [species]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
-        {loading ? <>
+        {pokemonLoading || speciesLoading ? <>
             <h2>Loading...</h2>
             <Spinner />
-        </> : error ? <>
+        </> : pokemonError ? <>
             <h2>Pokémon #{props.id}</h2>
             <p className="error">Failed to load data!</p>
             <p>Did you enter a valid Pokédex index?</p>
@@ -55,7 +58,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
         </> : <>
             <h2>{displayifyName(pokemon.name)} (#{pokemon.id})</h2>
             <ul>
-                {pokemon.name === pokemon.species.name ? null :
+                {pokemon.name === pokemon.name ? null :
                     <li><strong>Species: </strong>
                         {displayifyName(pokemon.species.name)}
                     </li>
@@ -78,8 +81,12 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                         {index === pokemon.moves.length - 1 && pokemon.moves.length > 1 ? '.' : ''}
                     </Fragment>)}
                 </li>
+                {!species ? null :
+                    <li><strong>Evolution Tree: </strong>
+                        <EvolutionsViewer id={getIdFromUrl(species.evolution_chain.url)}/>
+                    </li>
+                }
             </ul>
-            <EvolutionsViewer id={props.id}/>
         </>}
     </>;
 };
