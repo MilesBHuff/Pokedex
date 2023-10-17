@@ -81,7 +81,7 @@ export const SearchResults: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section id="search-results">
+        <div id="search-results" className="view">
             <h2>Search for "{query}"</h2>
 
             {pokemonsLoading ? (
@@ -110,6 +110,6 @@ export const SearchResults: FunctionComponent = () => {
                     </tbody>
                 </table>
             )}
-        </section>
+        </div>
     );
 };

@@ -8,12 +8,19 @@ import {Outlet} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Root: FunctionComponent = () => <>
-    <Header />
-    <Nav />
 
-    <ErrorBoundary fallbackRender={ReactError}>
-        <Outlet />
-    </ErrorBoundary>
+    <section className="top">
+        <Header />
+        <Nav />
+    </section>
 
-    <Footer />
+    <section className="center">
+        <ErrorBoundary fallbackRender={ReactError}>
+            <Outlet />
+        </ErrorBoundary>
+    </section>
+
+    <section className="bottom">
+        <Footer />
+    </section>
 </>;

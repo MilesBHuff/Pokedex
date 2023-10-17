@@ -25,14 +25,14 @@ export const PokemonInfo: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section id="pokemon-info">
+        <div id="pokemon-info" className="view">
             {id === undefined ? <>
                 <h2>Loading...</h2>
                 <Spinner />
             </> : <>
                 <PokemonInfoCore id={id} />
             </>}
-        </section>
+        </div>
     );
 };
 

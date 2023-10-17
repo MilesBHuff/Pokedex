@@ -16,7 +16,7 @@ export const Home: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <section id="home">
+        <div id="home" className="view">
             <h2>
                 Welcome to my custom Pokédex!
             </h2><p>
@@ -26,6 +26,6 @@ export const Home: FunctionComponent = () => {
             </p><p className="notelet">
                 The source code for this application can be found <a href="https://github.com/MilesBHuff/Pokedex">here</a>.
             </p>
-        </section>
+        </div>
     );
 };
