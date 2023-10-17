@@ -12,7 +12,7 @@ export const Header: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <header>
+        <header id="header">
             <div className="brandmark">
                 <img src="/favicon.svg" />
                 <h1><Link to="/" onClick={handleClick}>Miles's Pokédex</Link></h1>

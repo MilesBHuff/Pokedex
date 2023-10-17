@@ -2,7 +2,7 @@ import {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Footer: FunctionComponent = () => (
-    <footer>
+    <footer id="footer">
         <p>
             <span>
                 Copyright © 2023

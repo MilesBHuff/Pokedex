@@ -30,7 +30,7 @@ export const Nav: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        <nav>
+        <nav id="nav">
             <ul>{
                 entries.map((entry, index) => <Fragment key={index}>
                     {entry.show === false ? (
