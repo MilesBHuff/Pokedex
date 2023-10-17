@@ -1,6 +1,6 @@
 # TODO
-My personal remaining TODO.
-(*Italics* are not in the prompt.)
+My personal remaining TODO.  
+(*Italics* are not in the prompt.)  
 
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
