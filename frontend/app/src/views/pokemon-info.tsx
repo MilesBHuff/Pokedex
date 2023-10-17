@@ -2,11 +2,11 @@ import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonInfo = () => {
+export const PokemonInfo: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
@@ -35,7 +35,7 @@ export const PokemonInfo = () => {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonInfoCore = (props: {id: number}) => {
+export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     const {data: pokemon, error, isLoading: loading} = usePokemonByIdQuery(props.id);
     console.debug(pokemon);
 

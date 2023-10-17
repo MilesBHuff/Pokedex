@@ -5,7 +5,7 @@ import {SearchResults} from '@/views/search-results';
 import {redirect} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const routes = [{
+export const routes = [{ //TODO: Find type for `routes`.
     path: '/',
     element: <Root />,
     children: [{

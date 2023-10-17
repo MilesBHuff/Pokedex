@@ -1,8 +1,9 @@
+import {FunctionComponent} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 //TODO: Make `Nav` into a breadcrumb, rather than just a tool for debugging.
-export const Nav = () => {
+export const Nav: FunctionComponent = () => {
     const location = useLocation();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

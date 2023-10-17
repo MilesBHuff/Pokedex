@@ -1,5 +1,7 @@
+import {FunctionComponent} from 'react';
+
 ////////////////////////////////////////////////////////////////////////////////
-export const Footer = () => (
+export const Footer: FunctionComponent = () => (
     <footer>
         <p>
             <span>

@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-export const urlifyParams = <ParamsType extends {[key: string | number]: string}>(params: ParamsType): string => {
+export const urlifyParams = <ParamsType extends {}>(params: ParamsType): string => {
 
     // Validate input
     const keys = Object.keys(params) as Array<keyof ParamsType>;

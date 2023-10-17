@@ -1,11 +1,12 @@
 import {SearchBar} from '@/widgets/search-bar';
+import {FunctionComponent, MouseEventHandler} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Header = () => {
+export const Header: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const handleClick = () => {
+    const handleClick: MouseEventHandler<HTMLAnchorElement> = () => {
         (document.activeElement as ((HTMLElement & Partial<HTMLInputElement>) | undefined))?.blur?.();
     };
 

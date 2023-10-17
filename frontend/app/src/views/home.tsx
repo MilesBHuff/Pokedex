@@ -1,5 +1,7 @@
+import {FunctionComponent} from 'react';
+
 ////////////////////////////////////////////////////////////////////////////////
-export const Home = () => (
+export const Home: FunctionComponent = () => (
     <section id="home">
         <h2>
             Welcome to my custom Pokédex!

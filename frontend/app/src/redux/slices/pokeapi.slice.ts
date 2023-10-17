@@ -4,14 +4,10 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {NamedAPIResourceList, Pokemon} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
-interface QueryOptions {
+export interface PokeapiQueryOptions {
     offset?: number | undefined,
     limit?: number | undefined,
 }
-const defaultOptions: QueryOptions = {
-    offset: 0,
-    limit: 9999, //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
-};
 
 ////////////////////////////////////////////////////////////////////////////////
 /** A slice that accesses PokéAPI v2.
@@ -24,11 +20,11 @@ export const pokeapiSlice = createApi({
         baseUrl: 'https://pokeapi.co/api/v2',
     }),
     endpoints: builder => ({
-        pokemonList: builder.query<NamedAPIResourceList, void | QueryOptions>({
-            query: (options?: QueryOptions) => '/pokemon' + urlifyParams(options ?? {}),
+        pokemonList: builder.query<NamedAPIResourceList, void | PokeapiQueryOptions>({
+            query: (options?: PokeapiQueryOptions) => '/pokemon' + urlifyParams(options ?? {}),
         }),
         pokemonById: builder.query<Pokemon, number>({
-            query: (id, options?: QueryOptions) => '/pokemon' + urlifyPath(id.toString(10)) + urlifyParams(options ?? {}),
+            query: (id, options?: PokeapiQueryOptions) => '/pokemon' + urlifyPath(id.toString(10)) + urlifyParams(options ?? {}),
         }),
     }),
 });

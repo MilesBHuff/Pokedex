@@ -1,10 +1,10 @@
 import {useAppDispatch, useAppSelector} from '@/redux/hooks.ts';
 import {searchSlice} from '@/redux/slices/search.slice.ts';
-import {ChangeEventHandler, FormEventHandler, MouseEventHandler, useState} from 'react';
+import {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const SearchBar = () => {
+export const SearchBar: FunctionComponent = () => {
 
     const dispatch = useAppDispatch();
     const history = useAppSelector(state => state.search.history);

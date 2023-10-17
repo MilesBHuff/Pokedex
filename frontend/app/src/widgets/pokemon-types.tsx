@@ -1,8 +1,9 @@
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {PokemonType} from 'pokenode-ts';
+import {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonTypes = (props: {types: Array<PokemonType>}) => (
+export const PokemonTypes: FunctionComponent<{types: Array<PokemonType>}> = props => (
     <ul className="pokemon-types">
         {props.types.map((type, index) => (
             <li key={index} className={type.type.name}>
