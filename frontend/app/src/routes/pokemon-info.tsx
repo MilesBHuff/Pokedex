@@ -56,8 +56,20 @@ export const PokemonInfoCore = (props: {id: number;}) => {
             </h2>
             {pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}
             <ul>
-                <li><strong>Species:</strong> <span className="raw-data">{pokemon.species.name}</span></li>
-                <li><strong>Types:</strong> <PokemonTypes types={pokemon.types} /></li>
+                <li><strong>Species: </strong><span className="raw-data">{pokemon.species.name}</span></li>
+                <li><strong>Types: </strong><PokemonTypes types={pokemon.types} /></li>
+                <li><strong>Abilities: </strong>
+                    {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <>
+                        <span key={index} className="raw-data">{ability.ability.name}</span>
+                        {index < pokemon.abilities.length - 1 ? ', ' : ''}
+                    </>)}
+                </li>
+                <li><strong>Moves: </strong>
+                    {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <>
+                        <span key={index} className="raw-data">{move.move.name}</span>
+                        {index < pokemon.moves.length - 1 ? ', ' : ''}
+                    </>)}
+                </li>
             </ul>
         </>}
     </>;
