@@ -12,7 +12,6 @@ body {
 
 ////////////////////////////////////////////////////////////////////////////////
 #root {
-    box-shadow: 0 0 $spacing-large 0 $color-shadow;
     border: $border-width solid $color-border;
     margin: -$border-width; // `outline` didn't look right, so I went for a workaround with `border`.
 
@@ -32,7 +31,7 @@ section {
 
 ////////////////////////////////////////////////////////////////////////////////
 .top {z-index: 1; box-shadow: 0 0 $spacing-normal -0 $color-shadow;}
-.center {z-index: 0;}
+.center {z-index: 0; box-shadow: 0 0 $spacing-normal 0 $color-shadow;}
 .bottom {z-index: 1; box-shadow: 0 -0 $spacing-normal -0 $color-shadow;}
 
 ////////////////////////////////////////////////////////////////////////////////
