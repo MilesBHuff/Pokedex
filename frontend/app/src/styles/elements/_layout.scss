@@ -31,9 +31,9 @@ section {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-.top {z-index: 1; box-shadow: 0 ($spacing-tiny) $spacing-normal (-$spacing-tiny) $color-shadow;}
+.top {z-index: 1; box-shadow: 0 0 $spacing-normal -0 $color-shadow;}
 .center {z-index: 0;}
-.bottom {z-index: 1; box-shadow: 0 (-$spacing-tiny) $spacing-normal (-$spacing-tiny) $color-shadow;}
+.bottom {z-index: 1; box-shadow: 0 -0 $spacing-normal -0 $color-shadow;}
 
 ////////////////////////////////////////////////////////////////////////////////
 .center {
