@@ -8,4 +8,6 @@
     border: $border-width solid $color-border;
     background-color: $color-backdrop;
     box-sizing: content-box;
+
+    @include shadow(inset); // By analogy with the background behind the page
 }
