@@ -1,0 +1,11 @@
+.pokemon-sprite {
+    // Have to use 96px because that's what the source material is.
+    height: 96px;
+    width: 96px;
+    // Setting height/width for sanity;  usually, the above are unnecessary.
+
+    border-radius: $border-radius;
+    border: $border-width solid $color-border;
+    background-color: $color-backdrop;
+    box-sizing: content-box;
+}

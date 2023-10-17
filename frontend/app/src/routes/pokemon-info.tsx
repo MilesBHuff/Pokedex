@@ -51,7 +51,7 @@ export const PokemonInfoCore = (props: {id: number;}) => {
             <p>No data!</p>
         </> : <>
             <h2 className="raw-data">#{pokemon.id} {pokemon.name}</h2>
-            {pokemon.sprites.front_default ? <img height="96px" width="96px" src={pokemon.sprites.front_default} /> : null}{/* NOTE: `height` and `width` are hardcoded to `96px` because that is the size of the sprits we get back from PokéAPI. */}
+            {pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}
             <p>Species: {pokemon.species.name}</p>
         </>}
     </>;
