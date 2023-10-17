@@ -1,4 +1,4 @@
-import {displayifyName} from '@/utility/displayify-name.function.ts';
+import {displayifyName} from '@/utilities/displayify-name.function';
 import {PokemonType} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////

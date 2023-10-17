@@ -7,13 +7,13 @@ export const Header = () => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleClick = () => {
         (document.activeElement as ((HTMLElement & Partial<HTMLInputElement>) | undefined))?.blur?.();
-    }
+    };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         <header>
             <div className="brandmark">
-                <img src="/favicon.svg"/>
+                <img src="/favicon.svg" />
                 <h1><Link to="/" onClick={handleClick}>Miles's Pokédex</Link></h1>
             </div>
             <SearchBar />

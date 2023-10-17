@@ -1,6 +1,6 @@
 import {usePokemonListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
-import {displayifyName} from '@/utility/displayify-name.function.ts';
+import {displayifyName} from '@/utilities/displayify-name.function';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';

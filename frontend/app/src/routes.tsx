@@ -1,7 +1,7 @@
 import {Root} from '@/root.tsx';
-import {Home} from '@/routes/home.tsx';
-import {PokemonInfo} from '@/routes/pokemon-info';
-import {SearchResults} from '@/routes/search-results';
+import {Home} from '@/views/home';
+import {PokemonInfo} from '@/views/pokemon-info';
+import {SearchResults} from '@/views/search-results';
 import {redirect} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

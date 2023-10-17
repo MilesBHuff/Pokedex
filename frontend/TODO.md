@@ -5,8 +5,6 @@ My personal remaining TODO.
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 - *Add return types to all function signatures*
-- *Rename `utility` folder to `utilities`*
-- *Rename `routes` folder to `views`, and update the ReadMe*
 - *Inspect console for errors on all pages*
 
 ## Bonus:
