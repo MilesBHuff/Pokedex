@@ -1,48 +1,63 @@
 import {usePokemonQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {Spinner} from '@/widgets/spinner.tsx';
-import {MouseEventHandler, useState} from 'react';
+import {MouseEventHandler, useEffect, useRef, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Search = () => {
-
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    // Hooks
     const navigate = useNavigate();
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
-    const {data: pokemonData, error: pokemonError, isLoading: pokemonLoading} = usePokemonQuery();
+    const [query, setQuery] = useState('');
+    
+    /** Get and validate search parameter */
+    const parseQuery = (): void => {
+        const newQuery = searchParams.get('q') ?? '';
+        setQuery(newQuery);
+        //TODO: Validate.
+    }   
+    useEffect(parseQuery, [searchParams]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    // Get and validate search parameter
-    const query = searchParams.get('q') ?? '';
-    const queryRegex = new RegExp(query, 'i');
-    //TODO: Validate.
+    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = usePokemonQuery();
+    const [pokemons, setPokemons] = useState([] as Array<BasicPokemonInfo>);
 
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    // Go through the list of all Pokémon, and see if there are any matches
-    const matches: Array<BasicPokemonInfo> = [];
-    const pokemons: Array<BasicPokemonInfo> = [];
-    if(pokemonData) {
+    /** Get, parse, and save a list of all Pokémon that have a National 'Dex number. */
+    const parseRawPokemons = (): void => {
+        if(!pokemonsData) return;
+        const newPokemons: Array<BasicPokemonInfo> = [];
 
-        // Parse out and save a list of all Pokémon with a National 'Dex number
-        for(const pokemon of pokemonData.results) {
+        for(const pokemon of pokemonsData.results) {
+
             const id = parseInt(pokemon.url.replace(/^.*\/(\d+)\//, '$1'));
             if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
-                pokemons.push({
+
+                newPokemons.push({
                     id: id,
                     name: pokemon.name,
                 });
             }
         }
+        setPokemons(newPokemons)
+    }
+    useEffect(parseRawPokemons, [pokemonsData]);
 
-        // See if the search query matches any Pokémon
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const [matches, setMatches] = useState([] as Array<BasicPokemonInfo>);
+
+    /** See if the search query matches any Pokémon */
+    const findMatches = (): void => {
+        const newMatches: Array<BasicPokemonInfo> = [];
         for(const pokemon of pokemons) {
-            if((pokemon.name.match(queryRegex)?.length ?? NaN) > 0) {
-                matches.push(pokemon);
+            if((pokemon.name.match(new RegExp(query, 'i'))?.length ?? NaN) > 0) {
+                newMatches.push(pokemon);
             }
         }
-    }
+        setMatches(newMatches);
+    };
+    useEffect(findMatches, [query, pokemons]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /** If the row has an ID, then clicking it should take us to the info page about that ID. */
@@ -62,10 +77,12 @@ export const Search = () => {
         <section id="search">
             <h2>Search for "{query}"</h2>
 
-            {pokemonLoading ? (
+            {pokemonsLoading ? (
                 <Spinner />
-            ) : pokemonError || !pokemonData ? (
+            ) : pokemonsError ? (
                 <p className="error">Failed to load data!</p>
+            ) : !pokemonsData ? (
+                <p>No data!</p>
             ) : matches.length <= 0 ? (
                 <p>No matches!</p>
             ) : (
