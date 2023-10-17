@@ -31,9 +31,6 @@ h6 {
 }
 
 // Special tags
-a {
-    @include a();
-}
 i, em {
     font-style: italic;
 }

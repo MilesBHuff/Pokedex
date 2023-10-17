@@ -47,13 +47,17 @@
     background-color: $color-button-secondary-background;
     @include button($color-button-secondary-background);
 }
+.button-text {
+    color: inherit;
+    background-color: transparent;
+    @include button($color-button-secondary-background);
+}
 .button-link {
     color: $color-link;
     background-color: transparent;
     @extend a;
 }
-.button-text {
-    color: inherit;
-    background-color: transparent;
-    @include button($color-button-secondary-background);
+a {
+    @include a();
+    color: $color-link;
 }
