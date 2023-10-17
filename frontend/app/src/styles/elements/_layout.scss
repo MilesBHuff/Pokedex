@@ -31,6 +31,11 @@ section {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+.top {z-index: 1; box-shadow: 0 0.125rem 0.5rem -0.125rem $color-shadow;}
+.center {z-index: 0;}
+.bottom {z-index: 1; box-shadow: 0 -0.125rem 0.5rem -0.125rem $color-shadow;}
+
+////////////////////////////////////////////////////////////////////////////////
 .center {
     background-color: $color-page-background;
     color: $color-page-foreground;
