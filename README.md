@@ -54,7 +54,7 @@ I used VSCode's built-in formatter because I don't like how Prettier (which come
 
 In general, I add [JSDoc](https://jsdoc.app) and miscellaneous explanatory comments where I think it to be helpful, and I leave these out where I do not think it helpful.  Documentation *is* really important, but it's still possible to go overboard with it.  As with all things, there's a balance to be had.  I hope I've struck it.  If I haven't, please let me know, and I'll add more documentation, no problem!  
 
-Actionable comments are prefixed with one of the following tags:  `NOTE`, `TODO`, `FIXME`, `BUG`, `WARN`, `HACK`, `DEPRECATED`.  This makes it easy to distinguish them from un-actionable comments in the code, and it also makes it easy to find them with an app-wide search when there's time to work on tech debt.  
+Actionable comments are prefixed with one of the following tags:  `NOTE`, `TODO`, `FIXME`, `BUG`, `WARN`, `ERROR`, `HACK`, `DEPRECATED`.  This makes it easy to distinguish them from un-actionable comments in the code, and it also makes it easy to find them with an app-wide search when there's time to work on tech debt.  
 
 ### Design
 

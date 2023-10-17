@@ -1,3 +1,6 @@
+.error {
+    color: darken($color-accent-primary, $color-shade-amount);
+}
 .raw-data {
     font-family: $font-mono;
 }

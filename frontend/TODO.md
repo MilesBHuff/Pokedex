@@ -5,7 +5,6 @@ My personal remaining TODO.
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 - Populate Pokémon page with real data from PokéAPI
-- *Add `.error` class to CSS;  just have it be bright red text or something?*
 - *Add return types to all function signatures*
 
 ## Bonus:
