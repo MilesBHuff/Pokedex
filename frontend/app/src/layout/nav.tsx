@@ -25,21 +25,22 @@ export const Nav: FunctionComponent = () => {
         name: 'Pokémon',
         path: '/pokemon',
         // args: `?id=`,
+        show: '/pokemon' === location.pathname,
     }];
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         <nav>
             <ul>{
-                entries.map((entry, index) => <Fragment key={index}>{
-                    entry.show === false ? (
+                entries.map((entry, index) => <Fragment key={index}>
+                    {entry.show === false ? (
                         null
                     ) : entry.path !== location.pathname ? (
                         <li><Link to={entry.path + (entry.args ?? '')}>{entry.name}</Link></li>
                     ) : (
-                        <li className="hide-following"><a className="activated">{entry.name}</a></li>
-                    )
-                }</Fragment>)
+                        <li><a className="activated">{entry.name}</a></li>
+                    )}
+                </Fragment>)
             }</ul>
         </nav>
     );
