@@ -1,9 +1,9 @@
 table {
-    margin: $spacing-normal 0; // Same as the block text elements
+    margin: $spacing-medium 0; // Same as the block text elements
     th {
         font-weight: bold;
     }
     td, th {
-        padding: $spacing-small; // Sums to `$spacing-normal`, widely used elsewhere in the app.
+        padding: $spacing-small; // Sums to `$spacing-medium`, widely used elsewhere in the app.
     }
 }

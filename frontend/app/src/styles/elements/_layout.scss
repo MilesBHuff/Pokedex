@@ -99,7 +99,7 @@ nav {
         display: flex;
         flex-direction: row;
 
-        padding: 0 $spacing-normal;
+        padding: 0 $spacing-medium;
         >li {
             margin: unset;
             >a {
@@ -126,7 +126,7 @@ footer {
 
     position: relative;
     
-    padding: $spacing-normal $spacing-large;
+    padding: $spacing-medium $spacing-large;
     margin-top: auto;
     p {margin: unset;}
     gap: $spacing-small;
