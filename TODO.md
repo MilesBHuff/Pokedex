@@ -6,7 +6,6 @@ My personal remaining TODO.
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 
 ## Bonus:
-- *Change debug navbar into breadcrumb that remembers search term while viewing Pokémon (and update the readme to reflect this (#Design))*
 - *When visiting a search page, add it to the search history.  (useful for when people visit from a bookmark)*
 - *Make it so that pressing the down arrow while the search history dropdown is open will move the focus into the dropdown*
 - *Allow the user to remove history entries with an "X" button, like exists in the searchbar*

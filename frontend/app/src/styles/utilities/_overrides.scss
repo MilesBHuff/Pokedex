@@ -4,6 +4,9 @@
 .error {
     color: $color-error;
 }
+.hide-following ~* {
+    display: none;
+}
 .raw-data {
     font-family: $font-mono;
 }
