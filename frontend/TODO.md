@@ -6,10 +6,12 @@ My personal remaining TODO.
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
 - Populate Pokémon page with real data from PokéAPI
 - *Add return types to all function signatures*
+- *Autoformat every file*
+- *Add information about how to run the application to the ReadMe*
 
 ## Bonus:
-- *Add information about how to run the application to the ReadMe*
 - Implement evolution viewing
+- *Make it possible to change the orientation and shininess of the sprite*
 - *When visiting a search page, add it to the search history.  (useful for when people visit from a bookmark)*
 - *Change debug navbar into breadcrumb that remembers search term while viewing Pokémon*
 - *Allow the user to remove history entries with an "X" button, like exists in the searchbar*
