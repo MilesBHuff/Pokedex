@@ -34,22 +34,25 @@ export const PokemonInfo = () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfoCore = (props: {id: number;}) => {
-    const {data: pokemonData, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
+    const {data: pokemon, error, isLoading: loading} = usePokemonByIdQuery(props.id);
+    console.debug(pokemon);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
-        {pokemonLoading ? <>
+        {loading ? <>
             <h2>Loading...</h2>
             <Spinner />
-        </> : pokemonError ? <>
-            <h2>Pokémon Info</h2>
+        </> : error ? <>
+            <h2>Pokémon #{props.id}</h2>
             <p className="error">Failed to load data!</p>
-        </> : !pokemonData ? <>
-            <h2>Pokémon Info</h2>
+            <p>Did you enter a valid Pokédex index?</p>
+        </> : !pokemon ? <>
+            <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2>{pokemonData.name}</h2>
-            <p>TODO</p>
+            <h2 className="raw-data">#{pokemon.id} {pokemon.name}</h2>
+            {pokemon.sprites.front_default ? <img height="96px" width="96px" src={pokemon.sprites.front_default} /> : null}{/* NOTE: `height` and `width` are hardcoded to `96px` because that is the size of the sprits we get back from PokéAPI. */}
+            <p>Species: {pokemon.species.name}</p>
         </>}
     </>;
 };
