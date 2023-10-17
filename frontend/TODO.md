@@ -7,9 +7,14 @@ My personal remaining TODO.
 - *Add return types to all function signatures*
 - *Autoformat every file*
 - *Add information about how to run the application to the ReadMe*
+- *Review code tags*
+- *Rename `utility` folder to `utilities`*
+- *Rename `routes` folder to `views`, and update the ReadMe*
+- *Inspect console for errors on all pages*
 
 ## Bonus:
 - Implement evolution viewing
+- *Make it so that pressing the down arrow while the search history dropdown is open will move the focus into the dropdown*
 - *Make it possible to change the orientation and shininess of the sprite*
 - *When visiting a search page, add it to the search history.  (useful for when people visit from a bookmark)*
 - *Change debug navbar into breadcrumb that remembers search term while viewing Pokémon*
