@@ -1,7 +1,7 @@
 import {urlifyParams} from '@/utility/urlify-params.function';
 import {urlifyPath} from '@/utility/urlify-path.function';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {NamedAPIResourceList, Pokemon, PokemonClient} from 'pokenode-ts';
+import {NamedAPIResourceList, Pokemon} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
 interface QueryOptions {
@@ -35,6 +35,6 @@ export const pokeapiSlice = createApi({
 
 ////////////////////////////////////////////////////////////////////////////////
 export const {
-    usePokemonListQuery, 
+    usePokemonListQuery,
     usePokemonByIdQuery,
 } = pokeapiSlice;

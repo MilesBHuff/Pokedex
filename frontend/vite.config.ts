@@ -6,7 +6,7 @@ import {defineConfig} from 'vitest/config';
 /** https://vitejs.dev/config */
 export default defineConfig({
     root: 'app',
-    
+
     build: {
         outDir: '../dist',
         rollupOptions: {
@@ -31,7 +31,7 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./app/src', import.meta.url)),
         },
     },
-    
+
     plugins: [
         react(),
     ],

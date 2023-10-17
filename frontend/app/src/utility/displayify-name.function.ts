@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 export const displayifyName = (rawName: string): string => {
     rawName = rawName.replace(/-/g, ' ');
-    const words = rawName.split(' ')
+    const words = rawName.split(' ');
     let newName = '';
     for(let i = 0; i < words.length; i++) {
         const word = words[i]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a valid index for `keys`.

@@ -1,7 +1,7 @@
 import {Footer} from '@/layout/footer';
 import {Header} from '@/layout/header';
-import {ReactError} from '@/routes/react-error';
 import {Nav} from '@/layout/nav';
+import {ReactError} from '@/routes/react-error';
 import {ErrorBoundary} from 'react-error-boundary';
 import {Outlet} from 'react-router-dom';
 

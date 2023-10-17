@@ -12,13 +12,13 @@ export const SearchResults = () => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
     const [query, setQuery] = useState('');
-    
+
     /** Get and validate search parameter */
     const parseQuery = (): void => {
         const newQuery = searchParams.get('q') ?? '';
         setQuery(newQuery);
         //TODO: Validate.
-    }   
+    };
     useEffect(parseQuery, [searchParams]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -41,8 +41,8 @@ export const SearchResults = () => {
                 });
             }
         }
-        setPokemons(newPokemons)
-    }
+        setPokemons(newPokemons);
+    };
     useEffect(parseRawPokemons, [pokemonsData]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

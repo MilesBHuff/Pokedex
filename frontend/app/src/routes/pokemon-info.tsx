@@ -35,7 +35,7 @@ export const PokemonInfo = () => {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonInfoCore = (props: {id: number;}) => {
+export const PokemonInfoCore = (props: {id: number}) => {
     const {data: pokemon, error, isLoading: loading} = usePokemonByIdQuery(props.id);
     console.debug(pokemon);
 
@@ -68,7 +68,7 @@ export const PokemonInfoCore = (props: {id: number;}) => {
                     {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <>
                         <span key={index}>{displayifyName(move.move.name)}</span>
                         {index < pokemon.moves.length - 1 ? ', ' : ''}
-                        {index === pokemon.moves.length - 1 && pokemon.abilities.length > 1  ? '.' : ''}
+                        {index === pokemon.moves.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
                     </>)}
                 </li>
             </ul>
