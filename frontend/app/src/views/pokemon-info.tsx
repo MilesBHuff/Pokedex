@@ -2,7 +2,7 @@ import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
-import {useEffect, useState} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -52,24 +52,30 @@ export const PokemonInfoCore = (props: {id: number}) => {
             <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2>{displayifyName(pokemon.name)} <span>(#{pokemon.id})</span></h2>
+            <h2>{displayifyName(pokemon.name)} (#{pokemon.id})</h2>
             <ul>
-                {pokemon.name === pokemon.species.name ? null : <li><strong>Species: </strong><span>{displayifyName(pokemon.species.name)}</span></li>}
+                {pokemon.name === pokemon.species.name ? null :
+                    <li><strong>Species: </strong>
+                        {displayifyName(pokemon.species.name)}
+                    </li>
+                }
                 <li>{pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}</li>
-                <li><strong>Types: </strong><PokemonTypes types={pokemon.types} /></li>
+                <li><strong>Types: </strong>
+                    <PokemonTypes types={pokemon.types} />
+                </li>
                 <li><strong>Abilities: </strong>
-                    {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <>
-                        <span key={index}>{displayifyName(ability.ability.name)}</span>
+                    {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <Fragment key={index}>
+                        {displayifyName(ability.ability.name)}
                         {index < pokemon.abilities.length - 1 ? ', ' : ''}
                         {index === pokemon.abilities.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
-                    </>)}
+                    </Fragment>)}
                 </li>
                 <li><strong>Moves: </strong>
-                    {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <>
-                        <span key={index}>{displayifyName(move.move.name)}</span>
+                    {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <Fragment key={index}>
+                        {displayifyName(move.move.name)}
                         {index < pokemon.moves.length - 1 ? ', ' : ''}
                         {index === pokemon.moves.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
-                    </>)}
+                    </Fragment>)}
                 </li>
             </ul>
         </>}
