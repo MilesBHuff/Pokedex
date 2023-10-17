@@ -3,7 +3,6 @@ import {Fragment, FunctionComponent} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-//TODO: Make `Nav` into a breadcrumb, rather than just a tool for debugging.
 export const Nav: FunctionComponent = () => {
     const location = useLocation();
     const history = useAppSelector(state => state.search.history);
@@ -13,6 +12,7 @@ export const Nav: FunctionComponent = () => {
         name: string,
         path: string,
         args?: string,
+        show?: boolean,
     }> = [{
         name: 'Home',
         path: '/',
@@ -20,9 +20,11 @@ export const Nav: FunctionComponent = () => {
         name: 'Search',
         path: '/search',
         args: `?q=${history[0]}`,
+        show: !!history[0],
     }, {
         name: 'Pokémon',
         path: '/pokemon',
+        // args: `?id=`,
     }];
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -30,9 +32,13 @@ export const Nav: FunctionComponent = () => {
         <nav>
             <ul>{
                 entries.map((entry, index) => <Fragment key={index}>{
-                    entry.path !== location.pathname
-                        ? <li><Link to={entry.path + (entry.args ?? '')}>{entry.name}</Link></li>
-                        : <li className="hide-following"><a className="activated">{entry.name}</a></li>
+                    entry.show === false ? (
+                        null
+                    ) : entry.path !== location.pathname ? (
+                        <li><Link to={entry.path + (entry.args ?? '')}>{entry.name}</Link></li>
+                    ) : (
+                        <li className="hide-following"><a className="activated">{entry.name}</a></li>
+                    )
                 }</Fragment>)
             }</ul>
         </nav>
