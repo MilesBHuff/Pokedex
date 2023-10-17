@@ -1,5 +1,6 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
@@ -36,7 +37,7 @@ export const EvolutionsViewer: FunctionComponent<{id: number;}> = props => {
             {chain.map((link, index) => (
                 <Fragment key={index}>
                     <Link to={`/pokemon?id=${link.id}`}>
-                        {link.name}
+                        {displayifyName(link.name)}
                     </Link>
                     {index < chain.length - 1 ? ', ' : ''}
                     {index === chain.length - 1 && chain.length > 1 ? '.' : ''}
