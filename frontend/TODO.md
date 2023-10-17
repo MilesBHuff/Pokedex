@@ -4,7 +4,6 @@ My personal remaining TODO.
 
 ## Required:
 - In the ReadMe, explain what changes might be needed if this app were intended to be run in a "concurrent" environment.
-- Populate Pokémon page with real data from PokéAPI
 - *Add return types to all function signatures*
 - *Autoformat every file*
 - *Add information about how to run the application to the ReadMe*
@@ -18,6 +17,8 @@ My personal remaining TODO.
 - *Get display names for the search results page*
 - *Display icons and other Pokémon-specific information on the search results page*
 - *Add icons of Pokémon to history dropdown, if a given name is a perfect match for only one Pokémon*
+- *Create tables for abilities and moves, and display more in-depth data*
+- *Show base stats in a manner similar to how Smogon does so*
 - *Implement localization*
 
 ## Not doing:
