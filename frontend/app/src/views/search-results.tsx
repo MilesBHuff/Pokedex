@@ -21,7 +21,7 @@ export const SearchResults: FunctionComponent = () => {
     const parseQuery = (): void => {
         const newQuery = searchParams.get('q') ?? '';
         setQuery(newQuery);
-        if(!newQuery) navigate('/');
+        if(!newQuery || newQuery === 'undefined') navigate('/'); //NOTE:  Only checking for `undefined` here;  `null` is a legitimate query with legitimate results.  `undefined` is a useless query that happens by default when there is no history to go back to.
         else dispatch(searchSlice.actions.addToHistory(newQuery));
     };
     useEffect(parseQuery, [searchParams]);
