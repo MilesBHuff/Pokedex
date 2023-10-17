@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 export const displayifyName = (rawName: string): string => {
-    rawName = rawName.replace('-', ' ');
+    rawName = rawName.replace(/-/g, ' ');
     const words = rawName.split(' ')
     let newName = '';
     for(let i = 0; i < words.length; i++) {

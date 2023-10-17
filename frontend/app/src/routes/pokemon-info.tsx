@@ -52,23 +52,23 @@ export const PokemonInfoCore = (props: {id: number;}) => {
             <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2>
-                <strong>#{pokemon.id}</strong> <span>{displayifyName(pokemon.name)}</span>
-            </h2>
-            {pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}
+            <h2>{displayifyName(pokemon.name)} <span>(#{pokemon.id})</span></h2>
             <ul>
-                <li><strong>Species: </strong><span>{displayifyName(pokemon.species.name)}</span></li>
+                {pokemon.name === pokemon.species.name ? null : <li><strong>Species: </strong><span>{displayifyName(pokemon.species.name)}</span></li>}
+                <li>{pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}</li>
                 <li><strong>Types: </strong><PokemonTypes types={pokemon.types} /></li>
                 <li><strong>Abilities: </strong>
                     {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <>
                         <span key={index}>{displayifyName(ability.ability.name)}</span>
                         {index < pokemon.abilities.length - 1 ? ', ' : ''}
+                        {index === pokemon.abilities.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
                     </>)}
                 </li>
                 <li><strong>Moves: </strong>
                     {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <>
                         <span key={index}>{displayifyName(move.move.name)}</span>
                         {index < pokemon.moves.length - 1 ? ', ' : ''}
+                        {index === pokemon.moves.length - 1 && pokemon.abilities.length > 1  ? '.' : ''}
                     </>)}
                 </li>
             </ul>
