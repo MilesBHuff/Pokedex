@@ -24,7 +24,10 @@ export const EvolutionsViewer: FunctionComponent<{id: number;}> = props => {
                 id: getIdFromUrl(link.species.url),
                 name: link.species.name,
             });
-            if(link.evolves_to?.[0]) addToChain(link.evolves_to[0]); //FIXME: This won't work for the Eeveelutions.
+
+            //TODO:  This approach won't work for the Eeveelutions.  Choosing a random index to at least get some variety.
+            const index = Math.floor(Math.random() * (link.evolves_to.length));
+            if(link.evolves_to[index]) addToChain(link.evolves_to[index]!); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `index` is a known valid key for `link.evolves_to`.
         };
         addToChain(evolutions.chain);
         setChain(newChain);

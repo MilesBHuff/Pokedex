@@ -1,6 +1,6 @@
 {
   "name": "pokedex",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "license": "LAGPL-3.0-or-later",
   "description": "A web application that displays data on Pokémon®. Not affiliated with Nintendo®.",
   "keywords": [
