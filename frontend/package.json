@@ -70,7 +70,7 @@
     "react-router-dom": "^6",
     "reset-css": "^5",
     "sass": "^1",
-    "typescript": "~5.0",
+    "typescript": "~5.2",
     "vite": "^4",
     "vitest": "~0.30"
   }
