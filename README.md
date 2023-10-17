@@ -18,7 +18,7 @@ I *have* worked on a [CRA](https://create-react-app.dev) app before (at [GM](htt
 
 I used [TypeScript](https://www.typescriptlang.org), both because it's required by the prompt *and* because I've grown to be a big fan of it.  Its typing system is incredibly flexible and detailled, and I don't think I'd want to go back to raw JavaScript anymore.
 
-I used [Sass](https://sass-lang.com) because it's pretty great, because I'm more-used to it than I am [Less](https://lesscss.org) anymore, and because writing raw CSS is not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)-enough for my liking.  I used SCSS specifically, in order to avoid the confusion that can come when those unaccustomed to normal Sass try to work with it;  and also because the prompt mentioned SCSS by name.  I feel normal Sass is more-suited for use alongside [CoffeeScript](https://coffeescript.org), while SCSS is a better match for TypeScript.
+I used [Sass](https://sass-lang.com) because it's pretty great, because I'm more-used to it than I am [Less](https://lesscss.org) anymore, and because writing raw CSS is not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)-enough for my liking.  I used SCSS specifically, both because the prompt mentioned SCSS by name, because I find it helps to avoid the confusion that can come when those unaccustomed to normal Sass try to work with it.  I feel like normal Sass is more-suited for use alongside [CoffeeScript](https://coffeescript.org), while SCSS is a better match for TypeScript.
 
 I used [React](https://react.dev), of course -- just as stipulated in the prompt.
 
