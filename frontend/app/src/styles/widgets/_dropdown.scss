@@ -6,7 +6,7 @@
     border: $border-width solid $color-border;
     margin-top: -$border-width;
 
-    box-shadow: 0 0 $spacing-normal 0 $color-shadow;
+    @include shadow();
     z-index: 1;
     +* {z-index: 2;} // Required so that any attached elements clip the dropdown's shadow. //BUG: Not working.
     

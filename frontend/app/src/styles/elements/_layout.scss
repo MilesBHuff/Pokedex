@@ -30,9 +30,9 @@ section {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-.top {z-index: 1; box-shadow: 0 0 $spacing-normal -0 $color-shadow;}
-.center {z-index: 0; box-shadow: 0 0 $spacing-normal 0 $color-shadow;}
-.bottom {z-index: 1; box-shadow: 0 -0 $spacing-normal -0 $color-shadow;}
+.top {z-index: 1; @include shadow();}
+.center {z-index: 0; @include shadow();}
+.bottom {z-index: 1; @include shadow();}
 
 ////////////////////////////////////////////////////////////////////////////////
 .center {

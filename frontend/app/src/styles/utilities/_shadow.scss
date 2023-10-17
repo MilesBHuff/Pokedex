@@ -1,0 +1,3 @@
+@mixin shadow($type: null) {
+    box-shadow: 0 0 $spacing-normal 0 $color-shadow $type;
+}
