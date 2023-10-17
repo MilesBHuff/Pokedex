@@ -1,12 +1,12 @@
 {
   "name": "pokedex",
-  "version": "1.0.0",
+  "version": "1.2.3",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "pokedex",
-      "version": "1.0.0",
+      "version": "1.2.3",
       "license": "LAGPL-3.0-or-later",
       "dependencies": {
         "@reduxjs/toolkit": "^1",
