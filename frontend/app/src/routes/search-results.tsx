@@ -1,5 +1,6 @@
 import {usePokemonListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import {displayifyName} from '@/utility/displayify-name.function.ts';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
@@ -97,7 +98,7 @@ export const SearchResults = () => {
                         {matches.map(match =>
                             <tr key={match.id} id={match.id.toString(10)} onClick={handleRowClick}>
                                 <td className="raw-data id">{match.id}</td>
-                                <td className="raw-data">{match.name}</td>
+                                <td>{displayifyName(match.name)}</td>
                             </tr>
                         )}
                     </tbody>

@@ -1,4 +1,5 @@
 import {usePokemonByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {displayifyName} from '@/utility/displayify-name.function.ts';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {useEffect, useState} from 'react';
@@ -51,22 +52,22 @@ export const PokemonInfoCore = (props: {id: number;}) => {
             <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2 className="raw-data">
-                <strong>#{pokemon.id}</strong> {pokemon.name}
+            <h2>
+                <strong>#{pokemon.id}</strong> <span>{displayifyName(pokemon.name)}</span>
             </h2>
             {pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}
             <ul>
-                <li><strong>Species: </strong><span className="raw-data">{pokemon.species.name}</span></li>
+                <li><strong>Species: </strong><span>{displayifyName(pokemon.species.name)}</span></li>
                 <li><strong>Types: </strong><PokemonTypes types={pokemon.types} /></li>
                 <li><strong>Abilities: </strong>
                     {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <>
-                        <span key={index} className="raw-data">{ability.ability.name}</span>
+                        <span key={index}>{displayifyName(ability.ability.name)}</span>
                         {index < pokemon.abilities.length - 1 ? ', ' : ''}
                     </>)}
                 </li>
                 <li><strong>Moves: </strong>
                     {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <>
-                        <span key={index} className="raw-data">{move.move.name}</span>
+                        <span key={index}>{displayifyName(move.move.name)}</span>
                         {index < pokemon.moves.length - 1 ? ', ' : ''}
                     </>)}
                 </li>
