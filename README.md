@@ -90,11 +90,11 @@ I also went to lengths to try to ensure I did not infringe upon Nintendo's intel
 
 ### Unfinished objectives
 
-#### Complex Pokémon evolutions
+#### Branches of treevolutions
 
-I implemented simple (linear) evolutions, but not complex (branching) evolutions (like Eevee's).  
-Time constraints being what they are, I've decided to go with the current 90% solution.  
-If I *were* to go about implementing trees, I'd get to have the most "fun" I've had with data structures since college.  I might do this later just for the sake of the challenge.  
+Evolutions display correctly for both fully linear evolutions *and* branches of treevolutions.  
+Treevolutions display a random path that can be randomly changed with a button.  
+I might eventually implement a proper tree view.  If I were to do this, I would probably do it in a modal, and replace the normal line view with a button to open that modal.  
 
 #### Automated unit testing
 

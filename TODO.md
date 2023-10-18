@@ -15,7 +15,7 @@ My personal remaining TODO.
 - *Implement localization*
 
 ## Not doing:
-- Implement evolution **trees** (chains are already implemented)
+- Implement evolution from tree trunks (tree branches and fully linear evolutions are already implemented)
 - Implement automated unit testing for business functionality
 - Make the app look like a Pokédex
 - *Add animations to make the site flow*
