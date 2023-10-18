@@ -76,7 +76,7 @@ I made sure to make favicons that work on Chromium, Firefox, and Safari.
 
 ### Changes needed for use in a concurrent environment
 
-I'm not quite sure what this means, but the prompt requires me to address it.  I reached out asking for clarification, but didn't hear anything back in-time.
+I'm not quite sure what this means, but the prompt requires me to address it.  I reached out asking for clarification, but I haven't heard anything back.
 
 ### Other
 
