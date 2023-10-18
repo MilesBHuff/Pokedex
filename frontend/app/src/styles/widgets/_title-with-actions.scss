@@ -3,4 +3,9 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
+
+    margin: $spacing-medium 0;
+    >* {
+        margin: unset;
+    }
 }
