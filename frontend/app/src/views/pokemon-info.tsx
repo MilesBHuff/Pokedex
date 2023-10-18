@@ -61,7 +61,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <p>No data!</p>
         </> : <>
             <div className="title-with-actions">
-                <div>
+                <div className="actions">
                     <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id - 1}`)} disabled={props.id - 1 < 1}>prev</button>
                     <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id + 1}`)} disabled={props.id + 1 > totalPokemonInDex}>next</button>
                 </div>
