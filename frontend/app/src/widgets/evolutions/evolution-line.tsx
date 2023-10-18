@@ -14,12 +14,25 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
     /** Convert the chain into a line. */
     const chainToLine = (chain: ChainLink): Array<BasicPokemonInfo> => {
         const line: Array<BasicPokemonInfo> = [];
+
         const addToLine = (link: ChainLink): void => {
             line.push({
                 id: getIdFromUrl(link.species.url),
                 name: link.species.name,
             });
-            if(link.evolves_to[0]) addToLine(link.evolves_to[0]);
+
+            // Add the next node to the line.
+            if(!link.evolves_to[0]) return; // End of the line.
+            let nextInLine: ChainLink = link.evolves_to[0];
+            if(isValidNumber(props.id)) {
+                for(let i = 1; i < link.evolves_to.length; i++) {
+                    if(getIdFromUrl(link.evolves_to[i]!.species.url) === props.id) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                        nextInLine = link.evolves_to[i]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                        break;
+                    }
+                }
+            }
+            addToLine(nextInLine);
         };
         addToLine(chain);
         return line;
