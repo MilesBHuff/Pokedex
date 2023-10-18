@@ -54,7 +54,7 @@ const chainToLine = (
 
         // Set the next link.
         if(link.evolves_to.length < 1) return; // End of the line.
-        let nextInLine: ChainLink = link.evolves_to[0]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+        let nextInLine: ChainLink = link.evolves_to[0]!;
 
         // If we haven't matched the ID yet, check the current ID.
         if(!idFound) {
@@ -65,16 +65,16 @@ const chainToLine = (
         if(idFound) {
             if(link.evolves_to.length > 1) { //WARN:  The below is only a rough approximation of tree evolutions;  please use `EvolutionTree` instead of `EvolutionLine` to properly display evolution trees.
                 const index = Math.floor(Math.random() * link.evolves_to.length); // Choosing a random index to at least get some variety.
-                nextInLine = link.evolves_to[index]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `index` is a known valid key for `link.evolves_to`.
+                nextInLine = link.evolves_to[index]!;
             }
         } else {
 
             // If even the current ID wasn't a match, try looking deeper
             if(!idFound) {
                 for(let i = 1; i < link.evolves_to.length; i++) {
-                    if(urlToId(link.evolves_to[i]!.species.url) === id) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                    if(urlToId(link.evolves_to[i]!.species.url) === id) {
                         idFound = true;
-                        nextInLine = link.evolves_to[i]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                        nextInLine = link.evolves_to[i]!;
                         break;
                     }
                 }

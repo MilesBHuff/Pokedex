@@ -54,8 +54,8 @@ const calcLinearity = (
 
             // Skip through the chain until we find the current ID;  trees can become linear on their branches.
             for(let i = 0; i < link.evolves_to.length; i++) {
-                if(id === urlToId(link.evolves_to[i]!.species.url)) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
-                    return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                if(id === urlToId(link.evolves_to[i]!.species.url)) {
+                    return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true);
                 }
             }
         }
@@ -66,7 +66,7 @@ const calcLinearity = (
         case 0: // End of the line; no impact on linearity.
             return isLinear;
         case 1: // This link is linear, but the next one might not be.
-            return calcLinearity(link.evolves_to[0]!, id, isLinear, idFound); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `0` is a known valid index for `link.evolves_to`.
+            return calcLinearity(link.evolves_to[0]!, id, isLinear, idFound);
         default: // This link is non-linear.
             return false;
     }
