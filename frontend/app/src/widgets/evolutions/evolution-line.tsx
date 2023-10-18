@@ -78,6 +78,7 @@ const chainToLine = (
                         break;
                     }
                 }
+                //BUG:  If the match is one level deeper, this won't find it, and we'll end-up going with the `0` index...
             }
         }
 

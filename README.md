@@ -92,8 +92,8 @@ I also went to lengths to try to ensure I did not infringe upon Nintendo's intel
 
 #### Trunks of treevolutions
 
-Evolutions display correctly for both fully linear evolutions *and* branches of treevolutions.  
-Treevolutions display a random path that can be randomly changed with a button.  
+Evolutions display correctly for both fully linear evolutions *and* 2-long branches of treevolutions.  
+Treevolutions display a random path that can be randomly changed with a button.  3-long branches are static, meaning that they are always wrong for Pokémon like, for example, Dustox.  
 I might eventually implement a proper tree view.  If I were to do this, I would probably do it in a modal, and replace the normal line view with a button to open that modal.  
 
 #### Automated unit testing
