@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////////////////////////////
 @mixin a() {
     cursor: pointer;
 
@@ -8,12 +9,33 @@
     }
 }
 
-@mixin button($color-background) {
+////////////////////////////////////////////////////////////////////////////////
+@mixin cell($color-background: $color-accent-secondary) {
+    display: inline;
+
+    padding: 0.25em 0.5em;
+    margin: unset;
+
+    color: $color-light;
+    background-color: $color-background;
+    @include text-stroke($color-shadow);
+
+    border: $border-width solid $color-border;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+
+    text-transform: uppercase;
+    font-size: small;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+@mixin button($color-background: $color-button-secondary-background) {
     @include a();
     user-select: none;
 
-    border-radius: $border-radius;
-    padding: $spacing-medium;
+    @include cell($color-background);
+    text-shadow: unset;
+    margin: 0 $spacing-small;
 
     &.activated {
         font-weight: bold;
@@ -37,6 +59,7 @@
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
 .button-primary {
     color: $color-button-primary-foreground;
     background-color: $color-button-primary-background;

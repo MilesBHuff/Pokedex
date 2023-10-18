@@ -103,10 +103,12 @@ nav {
         >li {
             margin: unset;
             >a {
-                display: block;
                 @include button($color-nav-background);
+                display: block;
                 border-radius: unset;
-                
+                border: unset;
+                margin: unset;
+                padding: $spacing-small $spacing-medium;
             }
         }
     }

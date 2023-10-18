@@ -3,23 +3,7 @@
     flex-direction: row;
     gap: 0.5ch; // About one space
 
-    >* {
-        display: inline;
-
-        padding: 0.25em 0.5em;
-        margin: 0;
-
-        color: $color-light;
-        background-color: $color-accent-secondary;
-        @include text-stroke($color-shadow);
-
-        border: $border-width solid $color-border;
-        border-radius: $border-radius;
-        box-sizing: border-box;
-
-        text-transform: uppercase;
-        font-size: small;
-    }
+    >* {@include cell();}
 
     // Below colors sampled from https://pokemondb.net/type, which I assume sampled the colors directly from the games.
     .bug {background-color: #ab2;}
