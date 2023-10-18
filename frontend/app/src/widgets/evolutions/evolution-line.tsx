@@ -1,6 +1,6 @@
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
-import {urlToId} from '@/utilities/get-id-from-url.function';
+import {urlToId} from '@/utilities/url-to-id';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent} from 'react';
