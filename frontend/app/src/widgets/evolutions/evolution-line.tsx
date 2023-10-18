@@ -54,31 +54,33 @@ const chainToLine = (
 
         // Set the next link.
         if(link.evolves_to.length < 1) return; // End of the line.
-        let nextInLine: ChainLink = link.evolves_to[0]!;
+        let nextInLine: ChainLink | void;
 
         // If we haven't matched the ID yet, check the current ID.
         if(!idFound) {
             idFound = isValidNumber(id) && id === urlToId(link.species.url);
         }
 
-        // If we've matched the ID before or now, then we can choose the next node at random, if there are more than one of them.
-        if(idFound) {
-            if(link.evolves_to.length > 1) { //WARN:  The below is only a rough approximation of tree evolutions;  please use `EvolutionTree` instead of `EvolutionLine` to properly display evolution trees.
+        // If even the current ID wasn't a match, try looking deeper
+        if(!idFound) {
+            for(let i = 0; i < link.evolves_to.length; i++) {
+                if(urlToId(link.evolves_to[i]!.species.url) === id) {
+                    idFound = true;
+                    nextInLine = link.evolves_to[i]!;
+                    break;
+                }
+            }
+            //BUG:  If the match is one level deeper, this won't find it, and we'll end-up going with a random index...
+            //TODO:  Make this recursive somehow, to fix the above bug.
+        }
+
+        // If we have no next-in-line at this point, then we can choose the next node at random.
+        if(!nextInLine) {
+            if(link.evolves_to.length > 1) { //WARN:  This is only a rough approximation of tree evolutions;  please use `EvolutionTree` instead of `EvolutionLine` to properly display evolution trees.
                 const index = Math.floor(Math.random() * link.evolves_to.length); // Choosing a random index to at least get some variety.
                 nextInLine = link.evolves_to[index]!;
-            }
-        } else {
-
-            // If even the current ID wasn't a match, try looking deeper
-            if(!idFound) {
-                for(let i = 1; i < link.evolves_to.length; i++) {
-                    if(urlToId(link.evolves_to[i]!.species.url) === id) {
-                        idFound = true;
-                        nextInLine = link.evolves_to[i]!;
-                        break;
-                    }
-                }
-                //BUG:  If the match is one level deeper, this won't find it, and we'll end-up going with the `0` index...
+            } else {
+                nextInLine = link.evolves_to[0]!;
             }
         }
 
