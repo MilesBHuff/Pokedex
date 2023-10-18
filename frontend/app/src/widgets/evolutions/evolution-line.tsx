@@ -1,6 +1,6 @@
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
-import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
+import {urlToId} from '@/utilities/get-id-from-url.function';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent} from 'react';
@@ -26,7 +26,7 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
 
             // Add the current link.
             line.push({
-                id: getIdFromUrl(link.species.url),
+                id: urlToId(link.species.url),
                 name: link.species.name,
             });
 
@@ -36,7 +36,7 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
 
             // If we haven't matched the ID yet, check the current ID.
             if(!idFound) {
-                idFound = isValidNumber(id) && id === getIdFromUrl(link.species.url);
+                idFound = isValidNumber(id) && id === urlToId(link.species.url);
             }
             
             // If we've matched the ID before or now, then we can choose the next node at random, if there are more than one of them.
@@ -50,7 +50,7 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
                 // If even the current ID wasn't a match, try looking deeper
                 if(!idFound) {
                     for(let i = 1; i < link.evolves_to.length; i++) {
-                        if(getIdFromUrl(link.evolves_to[i]!.species.url) === id) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                        if(urlToId(link.evolves_to[i]!.species.url) === id) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
                             idFound = true;
                             nextInLine = link.evolves_to[i]!; //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
                             break;

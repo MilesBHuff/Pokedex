@@ -3,7 +3,7 @@ import {useSpeciesListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
-import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
+import {urlToId} from '@/utilities/get-id-from-url.function';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
@@ -38,7 +38,7 @@ export const SearchResults: FunctionComponent = () => {
 
         for(const pokemon of pokemonsData.results) {
 
-            const id = getIdFromUrl(pokemon.url);
+            const id = urlToId(pokemon.url);
             if(id < 10000) { // IDs greater than `10000` are not real Pokémon IDs.
 
                 newPokemons.push({

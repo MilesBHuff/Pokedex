@@ -1,6 +1,6 @@
 import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
-import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
+import {urlToId} from '@/utilities/get-id-from-url.function';
 import {EvolutionsViewer} from '@/widgets/evolutions-viewer.tsx';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
@@ -60,7 +60,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} speciesId={species.id}/>
+                        <EvolutionsViewer evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id}/>
                         {/* TODO: Hide if no evolutions. */}
                     </li>
                 }

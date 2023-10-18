@@ -1,5 +1,5 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
-import {getIdFromUrl} from '@/utilities/get-id-from-url.function.ts';
+import {urlToId} from '@/utilities/get-id-from-url.function';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {EvolutionLine} from '@/widgets/evolutions/evolution-line.tsx';
 import {EvolutionTree} from '@/widgets/evolutions/evolution-tree.tsx';
@@ -24,13 +24,13 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
 
         // Check to see if the current ID matchs the link ID;  if so, continue.
         if(!idFound && isValidNumber(id)) {
-            if(id === getIdFromUrl(link.species.url)) {
+            if(id === urlToId(link.species.url)) {
                 idFound = true;
             } else {
 
                 // Skip through the chain until we find the current ID;  trees can become linear on their branches.
                 for(let i = 0; i < link.evolves_to.length; i++) {
-                    if(id === getIdFromUrl(link.evolves_to[i]!.species.url)) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                    if(id === urlToId(link.evolves_to[i]!.species.url)) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
                         return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true) //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
                     }
                 }

@@ -1,2 +1,2 @@
 ////////////////////////////////////////////////////////////////////////////////
-export const getIdFromUrl = (url: string): number => parseInt(url.replace(/^.*\/(\d+)\//, '$1'));
+export const urlToId = (url: string): number => parseInt(url.replace(/^.*\/(\d+)\//, '$1'));
