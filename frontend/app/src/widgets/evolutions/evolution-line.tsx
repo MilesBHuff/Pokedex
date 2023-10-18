@@ -3,13 +3,19 @@ import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {urlToId} from '@/utilities/url-to-id';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {ChainLink} from 'pokenode-ts';
-import {Fragment, FunctionComponent} from 'react';
+import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** Displays an evolution chain in the form of a line. */
 export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | undefined}> = props => {
-    const line = chainToLine(props.chain, props.id);
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
+    const updateLine = () => setLine(chainToLine(props.chain, props.id));
+    useEffect(updateLine, [props]);
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
         {line.map((link, index) => (
             <Fragment key={index}>
