@@ -60,7 +60,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} pokemonId={species.id}/>
+                        <EvolutionsViewer evolutionId={getIdFromUrl(species.evolution_chain.url)} speciesId={species.id}/>
                         {/* TODO: Hide if no evolutions. */}
                     </li>
                 }
