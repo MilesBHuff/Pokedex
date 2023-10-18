@@ -19,14 +19,7 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
                 id: getIdFromUrl(link.species.url),
                 name: link.species.name,
             });
-
-            if(link.evolves_to.length <= 1) {
-                if(link.evolves_to[0]) addToLine(link.evolves_to[0]);
-            } else { //TODO:  Remove the below;  it's only there to assuage the lack of support for trees.  
-                // Choosing a random index to at least get some variety.
-                const index = Math.floor(Math.random() * (link.evolves_to.length));
-                if(link.evolves_to[index]) addToLine(link.evolves_to[index]!); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `index` is a known valid key for `link.evolves_to`.
-            }
+            if(link.evolves_to[0]) addToLine(link.evolves_to[0]);
         };
         addToLine(chain);
         return line;
