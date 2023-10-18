@@ -90,7 +90,7 @@ I also went to lengths to try to ensure I did not infringe upon Nintendo's intel
 
 ### Unfinished objectives
 
-#### Branches of treevolutions
+#### Trunks of treevolutions
 
 Evolutions display correctly for both fully linear evolutions *and* branches of treevolutions.  
 Treevolutions display a random path that can be randomly changed with a button.  
