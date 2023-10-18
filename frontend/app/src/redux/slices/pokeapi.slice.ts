@@ -48,7 +48,7 @@ export const pokeapiSlice = createApi({
 ////////////////////////////////////////////////////////////////////////////////
 export const {
     useEvolutionsByIdQuery,
-    
+
     useSpeciesByIdQuery,
     useSpeciesListQuery,
 

@@ -1,6 +1,6 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
-import {urlToId} from '@/utilities/url-to-id';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
+import {urlToId} from '@/utilities/url-to-id';
 import {EvolutionLine} from '@/widgets/evolutions/evolution-line.tsx';
 import {EvolutionTree} from '@/widgets/evolutions/evolution-tree.tsx';
 import {ChainLink} from 'pokenode-ts';

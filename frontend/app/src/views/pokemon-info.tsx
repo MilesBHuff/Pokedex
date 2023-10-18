@@ -40,7 +40,7 @@ export const PokemonInfo: FunctionComponent = () => {
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     const navigate = useNavigate();
-    
+
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const {data: pokemon, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
     // useEffect(() => console.debug(pokemon), [pokemon]);
@@ -70,7 +70,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id}/>
+                        <EvolutionsViewer evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id} />
                         {/* TODO: Hide if no evolutions. */}
                     </li>
                 }

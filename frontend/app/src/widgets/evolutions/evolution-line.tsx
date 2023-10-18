@@ -1,7 +1,7 @@
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
-import {urlToId} from '@/utilities/url-to-id';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
+import {urlToId} from '@/utilities/url-to-id';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
