@@ -40,6 +40,9 @@
     &.activated {
         font-weight: bold;
     }
+    &:disabled {
+        color: $color-dark;
+    }
     &:disabled, 
     &.activated {
         cursor: initial;

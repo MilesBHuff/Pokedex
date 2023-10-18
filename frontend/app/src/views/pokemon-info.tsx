@@ -1,3 +1,4 @@
+import {totalPokemonInDex} from '@/consts.ts';
 import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
@@ -5,7 +6,7 @@ import {EvolutionsViewer} from '@/widgets/evolutions-viewer.tsx';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
-import {useSearchParams} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfo: FunctionComponent = () => {
@@ -38,6 +39,9 @@ export const PokemonInfo: FunctionComponent = () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
+    const navigate = useNavigate();
+    
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const {data: pokemon, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
     // useEffect(() => console.debug(pokemon), [pokemon]);
     const {data: species, isLoading: speciesLoading} = useSpeciesByIdQuery(props.id);
@@ -56,7 +60,13 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <h2>Pokémon #{props.id}</h2>
             <p>No data!</p>
         </> : <>
-            <h2>{displayifyName(species?.name ?? pokemon.name)} (#{props.id})</h2>
+            <div className="title-with-actions">
+                <div>
+                    <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id - 1}`)} disabled={props.id - 1 < 1}>prev</button>
+                    <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id + 1}`)} disabled={props.id + 1 > totalPokemonInDex}>next</button>
+                </div>
+                <h2>{displayifyName(species?.name ?? pokemon.name)} (#{props.id})</h2>
+            </div>
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>

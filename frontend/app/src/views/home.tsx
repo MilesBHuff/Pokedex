@@ -1,8 +1,6 @@
+import {totalPokemonInDex} from '@/consts.ts';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-
-////////////////////////////////////////////////////////////////////////////////
-const totalPokemonInDex = 1017; // As of gen9.
 
 ////////////////////////////////////////////////////////////////////////////////
 export const Home: FunctionComponent = () => {
