@@ -133,7 +133,7 @@ footer {
     p {margin: unset;}
     gap: $spacing-small;
 
-    font-size: small;
+    font-size: $font-size * 0.8;
 
     // border-radius: 0 0 $border-radius $border-radius;
 }
