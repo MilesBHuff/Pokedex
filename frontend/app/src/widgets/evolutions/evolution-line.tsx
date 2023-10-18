@@ -13,14 +13,14 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /** Convert the chain into a line. */
     const chainToLine = (
-        chain: ChainLink, 
+        chain: ChainLink,
         id?: number | undefined,
     ): Array<BasicPokemonInfo> => {
         const line: Array<BasicPokemonInfo> = [];
 
         /** Add a chain link to the line. */
         const addToLine = (
-            link: ChainLink, 
+            link: ChainLink,
             idFound: boolean = false,
         ): void => {
 
@@ -38,7 +38,7 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
             if(!idFound) {
                 idFound = isValidNumber(id) && id === urlToId(link.species.url);
             }
-            
+
             // If we've matched the ID before or now, then we can choose the next node at random, if there are more than one of them.
             if(idFound) {
                 if(link.evolves_to.length > 1) { //WARN:  The below is only a rough approximation of tree evolutions;  please use `EvolutionTree` instead of `EvolutionLine` to properly display evolution trees.

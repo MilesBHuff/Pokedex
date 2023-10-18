@@ -15,8 +15,8 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /** Figures out whether the evolution chain is a line or a tree from the current ID. */
     const calcLinearity = (
-        link: ChainLink, 
-        id?: number | undefined, 
+        link: ChainLink,
+        id?: number | undefined,
         isLinear: boolean = true,
         idFound: boolean = false,
     ): boolean => {
@@ -31,7 +31,7 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
                 // Skip through the chain until we find the current ID;  trees can become linear on their branches.
                 for(let i = 0; i < link.evolves_to.length; i++) {
                     if(id === urlToId(link.evolves_to[i]!.species.url)) { //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
-                        return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true) //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
+                        return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true); //NOTE: Non-null assertion used to work around issue where TypeScript is unable to know that `i` is a known valid index for `link.evolves_to`.
                     }
                 }
             }
@@ -54,7 +54,7 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
     const updateLinearity = (): void => {
         if(evolutions && isValidNumber(props.speciesId)) {
             setIsLinear(calcLinearity(evolutions.chain, props.speciesId));
-        } 
+        }
     };
     useEffect(updateLinearity, [evolutions, props]);
 
