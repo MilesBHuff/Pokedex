@@ -1,10 +1,11 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
+import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {urlToId} from '@/utilities/url-to-id';
-import {EvolutionLine} from '@/widgets/evolutions/evolution-line.tsx';
-import {EvolutionTree} from '@/widgets/evolutions/evolution-tree.tsx';
 import {ChainLink} from 'pokenode-ts';
-import {FunctionComponent, useEffect, useState} from 'react';
+import {Fragment, FunctionComponent, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId?: number | undefined}> = props => {
@@ -13,61 +14,96 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
     // useEffect(() => console.debug(evolutions), [evolutions]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    /** Whether the evolution chain is a line or a tree. */
-    const [isLinear, setIsLinear] = useState(true);
-    const updateLinearity = (): void => {
-        if(evolutions && isValidNumber(props.speciesId)) {
-            setIsLinear(calcLinearity(evolutions.chain, props.speciesId));
-        }
-    };
-    useEffect(updateLinearity, [evolutions, props]);
-
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
         {evolutions ? (
             <span className="evolutions-viewer">
-                {isLinear ? (
-                    <EvolutionLine chain={evolutions.chain} id={props.speciesId} />
-                ) : (
-                    <EvolutionTree chain={evolutions.chain} id={props.speciesId} />
-                )}
+                <EvolutionLine chain={evolutions.chain} id={props.speciesId} />
             </span>
         ) : null}
     </>;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-/** Figures out whether the evolution chain is a line or a tree from the current ID. */
-const calcLinearity = (
-    link: ChainLink,
+/** Displays an evolution chain in the form of a line. */
+export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | undefined}> = props => {
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
+    const updateLine = () => setLine(chainToLine(props.chain, props.id));
+    useEffect(updateLine, [props]);
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    return <>
+        {line.map((link, index) => (
+            <Fragment key={index}>
+                {isValidNumber(props.id) && link.id === props.id ? <>
+                    {displayifyName(link.name)}
+                </> : <>
+                    <Link to={`/pokemon?id=${link.id}`}>
+                        {displayifyName(link.name)}
+                    </Link>
+                </>}
+                {index < line.length - 1 ? ' 🠞 ' : ''}
+            </Fragment>
+        ))}
+    </>;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+/** Convert the chain into a line. */
+const chainToLine = (
+    chain: ChainLink,
     id?: number | undefined,
-    isLinear: boolean = true,
-    idFound: boolean = false,
-): boolean => {
-    if(!isLinear) return isLinear; // If we've already found non-linearity, then return early to save on resources.
+): Array<BasicPokemonInfo> => {
+    const line: Array<BasicPokemonInfo> = [];
 
-    // Check to see if the current ID matchs the link ID;  if so, continue.
-    if(!idFound && isValidNumber(id)) {
-        if(id === urlToId(link.species.url)) {
-            idFound = true;
-        } else {
+    /** Add a chain link to the line. */
+    const addToLine = (
+        link: ChainLink,
+        idFound: boolean = false,
+    ): void => {
 
-            // Skip through the chain until we find the current ID;  trees can become linear on their branches.
+        // Add the current link.
+        line.push({
+            id: urlToId(link.species.url),
+            name: link.species.name,
+        });
+
+        // Set the next link.
+        if(link.evolves_to.length < 1) return; // End of the line.
+        let nextInLine: ChainLink | undefined = undefined;
+
+        // If we haven't matched the ID yet, check the current ID.
+        if(!idFound) {
+            idFound = isValidNumber(id) && id === urlToId(link.species.url);
+        }
+
+        // If even the current ID wasn't a match, try looking deeper
+        if(!idFound) {
             for(let i = 0; i < link.evolves_to.length; i++) {
-                if(id === urlToId(link.evolves_to[i]!.species.url)) {
-                    return calcLinearity(link.evolves_to[i]!, id, isLinear, idFound = true);
+                if(urlToId(link.evolves_to[i]!.species.url) === id) {
+                    idFound = true;
+                    nextInLine = link.evolves_to[i]!;
+                    break;
                 }
             }
+            //BUG:  If the match is one level deeper, this won't find it, and we'll end-up going with a random index...
+            //TODO:  Make this recursive somehow, to fix the above bug.
         }
-    }
 
-    // Check the length to ascertain linearity.
-    switch(link.evolves_to.length) {
-        case 0: // End of the line; no impact on linearity.
-            return isLinear;
-        case 1: // This link is linear, but the next one might not be.
-            return calcLinearity(link.evolves_to[0]!, id, isLinear, idFound);
-        default: // This link is non-linear.
-            return false;
-    }
+        // If we have no next-in-line at this point, then we can choose the next node at random.
+        if(!nextInLine) {
+            if(link.evolves_to.length > 1) { //WARN:  This is only a rough approximation of tree evolutions;  please use `EvolutionTree` instead of `EvolutionLine` to properly display evolution trees.
+                const index = Math.floor(Math.random() * link.evolves_to.length); // Choosing a random index to at least get some variety.
+                nextInLine = link.evolves_to[index]!;
+            } else {
+                nextInLine = link.evolves_to[0]!;
+            }
+        }
+
+        // Add the next link.
+        addToLine(nextInLine, idFound);
+    };
+    addToLine(chain);
+    return line;
 };
