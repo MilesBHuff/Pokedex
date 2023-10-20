@@ -29,14 +29,18 @@ export const EvolutionLine: FunctionComponent<{chain: ChainLink, id?: number | u
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
-    const updateLine = () => setLine(chainToLine(props.chain, props.id));
-    useEffect(updateLine, [props]);
+    const [idValid, setIdValid] = useState(false);
+    const onPropsChange = () => {
+        setLine(chainToLine(props.chain, props.id));
+        setIdValid(isValidNumber(props.id));
+    }
+    useEffect(onPropsChange, [props]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
         {line.map((link, index) => (
             <Fragment key={index}>
-                {isValidNumber(props.id) && link.id === props.id ? <>
+                {idValid && link.id === props.id ? <>
                     {displayifyName(link.name)}
                 </> : <>
                     <Link to={`/pokemon?id=${link.id}`}>
