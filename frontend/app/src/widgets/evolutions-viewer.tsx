@@ -31,8 +31,11 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
     const [idValid, setIdValid] = useState(false);
+    const [isBranching, setIsBranching] = useState(false);
     const onPropsChange = () => {
-        setLine(chainToLine(props.chainLink, props.speciesId));
+        const {evolutionLine, branchingDepth} = chainToLine(props.chainLink, props.speciesId);
+        setLine(evolutionLine);
+        setIsBranching(!!branchingDepth);
         setIdValid(isValidNumber(props.speciesId));
     }
     useEffect(onPropsChange, [props]);
@@ -51,19 +54,29 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
                 {index < line.length - 1 ? ' 🠞 ' : ''}
             </Fragment>
         ))}
+        {isBranching ? <>
+            <br/>
+            <span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.</span>
+        </> : null}
     </>;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+interface ChainToLineReturnType {
+    /** An ordered `Array` containing a linear evolution chain for a given `speciesId` (or random, if omitted). */
+    evolutionLine: Array<BasicPokemonInfo>,
+    /** The depth at which branching was found, or `0` if it wasn't. */
+    branchingDepth: number,
+}
 /** Given a `ChainLink` and optionally a `speciesId`, build and return a valid linear evolution chain in the form of an ordered `Array`.
  * @param chainLink The `ChainLink` you'd like to work from.
  * @param [speciesId] The `speciesId` you'd like to build an `evolutionLine` for.
- * @returns an ordered `Array` containing a linear evolution chain for a given `speciesId` (or random, if omitted).
+ * @returns an `object` containing the constructed evolution line as an ordered `Array` in addition to the depth at which branching was found.
  */
 const chainToLine = (
     chainLink: ChainLink,
     speciesId?: number | undefined,
-): Array<BasicPokemonInfo> => {
+): ChainToLineReturnType => {
     const evolutionLine: Array<BasicPokemonInfo> = [];
 
     // If an ID was passed, try to build up a line to it.
@@ -75,8 +88,11 @@ const chainToLine = (
     }
 
     // Complete the evolution line.
-    completeEvolutionLine(chainLink, evolutionLine); //TODO: Do something with the return value from this.
-    return evolutionLine;
+    const branchingDepth = completeEvolutionLine(chainLink, evolutionLine);
+    return {
+        evolutionLine,
+        branchingDepth,
+    };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
