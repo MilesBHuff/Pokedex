@@ -71,7 +71,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
                         <EvolutionsViewer evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id} />
-                        {/* TODO: Hide if no evolutions. */}
+                        {/* TODO: Hide if no evolutions. Not as easy as it first seems, because it requires passing a value up from the child `EvolutionsViewer` component. */}
                     </li>
                 }
                 <li>{pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}</li>
