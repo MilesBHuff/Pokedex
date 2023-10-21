@@ -29,6 +29,10 @@ export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId
 const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number | undefined}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    const [evolutionCounter, setEvolutionCounter] = useState(0);
+    const rerenderComponent = () => setEvolutionCounter(evolutionCounter + 1);
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
     const [idValid, setIdValid] = useState(false);
     const [isBranching, setIsBranching] = useState(false); //BUG:  Wurmple is not considered to be branching.
@@ -38,7 +42,7 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
         setIsBranching(!!branchingDepth);
         setIdValid(isValidNumber(props.speciesId));
     }
-    useEffect(onPropsChange, [props]);
+    useEffect(onPropsChange, [props, evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
@@ -55,6 +59,7 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
             </Fragment>
         ))}
         {isBranching ? <>
+            <button type="button" onClick={rerenderComponent}>Rebranch</button>
             <br/>
             <span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.</span>
         </> : null}
@@ -103,7 +108,7 @@ const chainToLine = (
  * @param [evolutionLineProvided] Whether an `evolutionLine` was provided.  Used to avoid unnecessary `null`checks.  Please do not provide this parameter yourself.
  * @returns the `ChainLink` that contained the species ID, or `null` if there were no matches.
 **/
-//FIXME:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
+//BUG:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
 const findIdInChain = (
     chainLink: ChainLink,
     speciesId: number,
