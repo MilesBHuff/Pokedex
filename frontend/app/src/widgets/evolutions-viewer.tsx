@@ -35,7 +35,7 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
     const [idValid, setIdValid] = useState(false);
-    const [isBranching, setIsBranching] = useState(false); //BUG:  Wurmple is not considered to be branching.
+    const [isBranching, setIsBranching] = useState(false);
     const onPropsChange = () => {
         const {evolutionLine, branchingDepth} = chainToLine(props.chainLink, props.speciesId);
         setLine(evolutionLine);
@@ -108,7 +108,6 @@ const chainToLine = (
  * @param [evolutionLineProvided] Whether an `evolutionLine` was provided.  Used to avoid unnecessary `null`checks.  Please do not provide this parameter yourself.
  * @returns the `ChainLink` that contained the species ID, or `null` if there were no matches.
 **/
-//BUG:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
 const findIdInChain = (
     chainLink: ChainLink,
     speciesId: number,
@@ -135,7 +134,7 @@ const findIdInChain = (
     }
 
     // Else, investigate further nodes.
-    for(const nextLink of chainLink.evolves_to) {
+    for(const nextLink of chainLink.evolves_to) { //BUG:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
         const result = findIdInChain(nextLink, speciesId, evolutionLine, evolutionLineProvided);
         if(result) return result
     }
@@ -161,7 +160,7 @@ const completeEvolutionLine = (
     
     // If there are no deeper `chainLink`s, then we're done!
     if(chainLink.evolves_to.length <= 0) {
-        return branchingFound ? depth : 0;
+        return branchingFound ? depth : 0; //BUG:  Wurmple is not considered to be branching.
     }
 
     // Check evolutions for branching.
