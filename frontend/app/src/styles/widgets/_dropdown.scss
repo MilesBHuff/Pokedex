@@ -8,7 +8,7 @@
 
     @include shadow();
     z-index: 1;
-    +* {z-index: 2;} // Required so that any attached elements clip the dropdown's shadow. //BUG: Not working.
+    +* {z-index: 2;} // Required so that any attached elements clip the dropdown's shadow. //BUG: Not working.  Workaround in `_search-bar.scss`.
     
     overflow-x: clip;
     overflow-y: auto;
