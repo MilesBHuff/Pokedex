@@ -2,7 +2,7 @@ import {totalPokemonInDex} from '@/consts.ts';
 import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
-import {EvolutionsViewer} from '@/widgets/evolutions-viewer.tsx';
+import {EvolutionsViewer} from '@/widgets/evolutions-viewer/evolutions-viewer';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
