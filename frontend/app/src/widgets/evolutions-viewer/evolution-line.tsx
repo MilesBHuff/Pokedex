@@ -1,45 +1,65 @@
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
-import {chainToLine} from '@/widgets/evolutions-viewer/chain-to-line.ts';
+import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.ts';
+import {findIdInChain} from '@/widgets/evolutions-viewer/find-id-in-chain.function.ts';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** Displays an evolution chain in the form of a line. */
-export const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number | undefined}> = props => {
+export const EvolutionLine: FunctionComponent<{initialChainLink: ChainLink, speciesId?: number | undefined}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [evolutionCounter, setEvolutionCounter] = useState(0);
     const rerenderComponent = () => setEvolutionCounter(evolutionCounter + 1);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const [line, setLine] = useState([] as Array<BasicPokemonInfo>);
+    /* Whenever the props change, we need to rebuild the evolution line from scratch. */
     const [idValid, setIdValid] = useState(false);
-    const [isBranching, setIsBranching] = useState(false);
-    const onPropsChange = () => {
-        const {evolutionLine, branchingDepth} = chainToLine(props.chainLink, props.speciesId);
-        setLine(evolutionLine);
-        setIsBranching(!!branchingDepth);
-        setIdValid(isValidNumber(props.speciesId));
+    const [initialEvolutionLine, setInitialEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
+    const [targetChainLink, setTargetChainLink] = useState(null as ChainLink | null);
+
+    const onPropsChange = (): void => {
+        const newIdValid = isValidNumber(props.speciesId);
+        setIdValid(newIdValid);
+        if(newIdValid) {
+
+            const newEvolutionLine: Array<BasicPokemonInfo> = [];
+            setTargetChainLink(findIdInChain(props.initialChainLink, props.speciesId!, newEvolutionLine));
+            setInitialEvolutionLine(newEvolutionLine);
+        }
     };
-    useEffect(onPropsChange, [props, evolutionCounter]);
+    useEffect(onPropsChange, [props.initialChainLink, props.speciesId]);
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /* When we reload, we need to regenerate the evolutions that come after the `targetChainLink`. */
+    const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
+    const [isBranching, setIsBranching] = useState(false);
+
+    const onReload = (): void => {
+        const newEvolutionsForLine: Array<BasicPokemonInfo> = [];
+        setIsBranching(!!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine));
+        setFullEvolutionLine(initialEvolutionLine.concat(newEvolutionsForLine));
+    };
+    useEffect(onReload, [targetChainLink, evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
-        {line.map((link, index) => (
+        {fullEvolutionLine.map((chainLink, index) => (
             <Fragment key={index}>
-                {idValid && link.id === props.speciesId ? (
-                    displayifyName(link.name)
+                {idValid && chainLink.id === props.speciesId ? (
+                    displayifyName(chainLink.name)
                 ) : (
-                    <Link to={`/pokemon?id=${link.id}`}>
-                        {displayifyName(link.name)}
+                    <Link to={`/pokemon?id=${chainLink.id}`}>
+                        {displayifyName(chainLink.name)}
                     </Link>
                 )}
-                {index < line.length - 1 ? ' 🠞 ' : ''}
+                {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : ''}
             </Fragment>
         ))}
+
         {isBranching ? <>
             <button type="button" onClick={rerenderComponent}>Rebranch</button>
             <br />

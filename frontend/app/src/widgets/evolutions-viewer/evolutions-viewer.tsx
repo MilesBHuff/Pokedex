@@ -23,7 +23,7 @@ export const EvolutionsViewer: FunctionComponent<{
             'No data!'
         ) : (
             <span className="evolutions-viewer">
-                <EvolutionLine chainLink={evolutions.chain} speciesId={props.speciesId} />
+                <EvolutionLine initialChainLink={evolutions.chain} speciesId={props.speciesId} />
             </span>
         )
     );

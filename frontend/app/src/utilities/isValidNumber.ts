@@ -1,2 +1,2 @@
 ////////////////////////////////////////////////////////////////////////////////
-export const isValidNumber = (testee: number | null | undefined): boolean => testee != null && !Number.isNaN(testee);
+export const isValidNumber = (testee: number | null | undefined): testee is number => testee != null && !Number.isNaN(testee);

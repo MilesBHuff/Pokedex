@@ -1,9 +1,8 @@
 # Evolutions Viewer
 
 ## Logic
-`findIdInChain` builds a line up to and including the target Pokémon;  
-`completeEvolutionLine` adds evolutions to an existing line from a specific link;  and  
-`chainToLine` is the glue that binds these two functions together into a cohesive whole.
+`findIdInChain` builds a line up to and including the target Pokémon;  and
+`completeEvolutionLine` adds evolutions to an existing line from a specific link.
 
 ## Display
 `EvolutionsViewer` fetches the data;  
