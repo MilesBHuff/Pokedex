@@ -3,6 +3,7 @@ import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.ts';
 import {findIdInChain} from '@/widgets/evolutions-viewer/find-id-in-chain.function.ts';
+import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import type {ChainLink} from 'pokenode-ts';
 import type {FunctionComponent} from 'react';
 import {Fragment, useEffect, useState} from 'react';
@@ -14,7 +15,11 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [evolutionCounter, setEvolutionCounter] = useState(0);
-    const rerenderComponent = () => setEvolutionCounter(evolutionCounter + 1);
+    const [isReloading, setIsReloading] = useState(false);
+    const rerenderComponent = () => {
+        setEvolutionCounter(evolutionCounter + 1);
+        setIsReloading(true);
+    }
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /* Whenever the props change, we need to rebuild the evolution line from scratch. */
@@ -43,11 +48,14 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
         const newEvolutionsForLine: Array<BasicPokemonInfo> = [];
         setIsBranching(!!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine));
         setFullEvolutionLine(initialEvolutionLine.concat(newEvolutionsForLine));
+        setIsReloading(false);
     };
     useEffect(onReload, [targetChainLink, evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    return <>
+    return isReloading ? (
+        <SpinnerComponent inline={true} />
+    ) : <>
         {fullEvolutionLine.map((chainLink, index) => (
             <Fragment key={index}>
                 {idValid && chainLink.id === props.speciesId ? (
