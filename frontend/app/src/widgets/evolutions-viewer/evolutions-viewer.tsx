@@ -16,7 +16,7 @@ export const EvolutionsViewer: FunctionComponent<{
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         evolutionsLoading ? (
-            <Spinner />
+            <Spinner inline={true} />
         ) : evolutionsError ? (
             <span className="error">Failed to load data!</span>
         ) : !evolutions ? (
