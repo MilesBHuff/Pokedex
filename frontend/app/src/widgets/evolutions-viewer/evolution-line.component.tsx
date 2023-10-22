@@ -45,12 +45,12 @@ export const EvolutionLineComponent: FunctionComponent<{
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /* When we reload, we need to regenerate the evolutions that come after the `targetChainLink`. */
     const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [isBranching, setIsBranching] = useState(false);
+    const [isBranching, setIsBranching] = useState(undefined as boolean | undefined);
     const onReload = (): void => {
 
         // Initialize variables
         let newEvolutionsForLine = [] as Array<BasicPokemonInfo>;
-        let isBranching = false;
+        let newIsBranching = false;
         let newEvolutionLine = [] as Array<BasicPokemonInfo>;
         
         // Retry until we get a new line
@@ -58,13 +58,13 @@ export const EvolutionLineComponent: FunctionComponent<{
         const stringifiedOldEvolutionLine = JSON.stringify(fullEvolutionLine);
         while(newEvolutionLine.length === 0 || JSON.stringify(newEvolutionLine) === stringifiedOldEvolutionLine) {
             newEvolutionLine = newEvolutionsForLine = [];
-            isBranching = !!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine);
+            newIsBranching = !!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine);
             newEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
         }
 
         // Assign to state
         setFullEvolutionLine(newEvolutionLine);
-        setIsBranching(isBranching); //TODO: Set this in `onPropsChange`;  it will always be the same value for a given ID.  The tricky thing, though, is that we don't know what this is supposed to be until `completeEvolutionLine` has run...
+        if(isBranching === undefined) setIsBranching(newIsBranching); //NOTE:  This would be better to set once, during `onPropsChange`, since it's always the same value for a given Pokémon.  Unfortunately, we don't know what this is supposed to be for sure until `completeEvolutionLine` has run.  So, as a compromise, I am only setting it conditionally on whether it has been set before.  An extra `if` statement relative to putting this in `onPropsChange`, but still less demanding than repeatedly reloading the DOM.
         setIsReloading(false);
     };
     useEffect(onReload, [targetChainLink, evolutionCounter]);
