@@ -8,6 +8,7 @@ import type {ChainLink} from 'pokenode-ts';
  * @param speciesId The species ID for the Pokémon you're searching for.
  * @param [evolutionLine] Where this function should store the path taken to get to the target `speciesId`.  Please ensure your line is an empty `Array`, for maximum sanity. 
  * @param [evolutionLineProvided] Whether an `evolutionLine` was provided.  Used to avoid unnecessary `null`checks.  Please do not provide this parameter yourself.
+ * @param [trialDepth] How deep into a speculative line we've gone.  Please do not provide this parameter yourself.
  * @returns the `ChainLink` that contained the species ID, or `null` if there were no matches.
 **/
 export const findIdInChain = (
@@ -15,6 +16,7 @@ export const findIdInChain = (
     speciesId: number,
     evolutionLine?: Array<BasicPokemonInfo> | undefined,
     evolutionLineProvided: boolean = !!evolutionLine,
+    trialDepth: number = 0,
 ): ChainLink | null => {
     const chainLinkSpeciesId = urlToId(chainLink.species.url);
 
@@ -31,13 +33,17 @@ export const findIdInChain = (
 
     // Else, if there are no futher nodes to investigate, remove what we just added and return.
     if(chainLink.evolves_to.length <= 0) {
-        if(evolutionLineProvided) evolutionLine!.pop(); //FIXME:  We need to pop off as many times as we have recursed.  Test with Dustox.
+        if(evolutionLineProvided) {
+            for(let i = 0; i < trialDepth; i++) {
+                evolutionLine!.pop(); //FIXME:  We need to pop off as many times as we have recursed.  Test with Dustox.
+            }
+        }
         return null;
     }
 
     // Else, investigate further nodes.
     for(const nextLink of chainLink.evolves_to) {
-        const result = findIdInChain(nextLink, speciesId, evolutionLine, evolutionLineProvided);
+        const result = findIdInChain(nextLink, speciesId, evolutionLine, evolutionLineProvided, trialDepth + 1);
         if(result) return result;
     }
 
