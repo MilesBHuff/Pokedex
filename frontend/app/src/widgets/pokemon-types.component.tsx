@@ -3,7 +3,9 @@ import type {PokemonType} from 'pokenode-ts';
 import type {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonTypesComponent: FunctionComponent<{types: Array<PokemonType>}> = props => (
+export const PokemonTypesComponent: FunctionComponent<{
+    types: ReadonlyArray<PokemonType>,
+}> = props => (
     <ul className="pokemon-types">
         {props.types.map((type, index) => (
             <li key={index} className={type.type.name}>

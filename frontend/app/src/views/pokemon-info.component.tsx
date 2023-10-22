@@ -41,7 +41,9 @@ export const PokemonInfoComponent: FunctionComponent = () => {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
+export const PokemonInfoCore: FunctionComponent<{
+    id: number,
+}> = props => {
     const navigate = useNavigate();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

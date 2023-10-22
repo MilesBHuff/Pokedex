@@ -5,7 +5,9 @@ import {Fragment} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 //TODO: Display in a table.
-export const PokemonAbilitiesComponent: FunctionComponent<{abilities: ReadonlyArray<PokemonAbility>}> = props => <>
+export const PokemonAbilitiesComponent: FunctionComponent<{
+    abilities: ReadonlyArray<PokemonAbility>,
+}> = props => <>
     {[...props.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <Fragment key={index}>
         {displayifyName(ability.ability.name)}
         {index < props.abilities.length - 1 ? ', ' : ''}
