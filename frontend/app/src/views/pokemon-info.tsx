@@ -42,9 +42,9 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     const navigate = useNavigate();
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: pokemon, error: pokemonError, isLoading: pokemonLoading} = usePokemonByIdQuery(props.id);
+    const {data: pokemon, error: pokemonError, isFetching: pokemonLoading} = usePokemonByIdQuery(props.id);
     // useEffect(() => console.debug(pokemon), [pokemon]);
-    const {data: species, isLoading: speciesLoading} = useSpeciesByIdQuery(props.id);
+    const {data: species, isFetching: speciesLoading} = useSpeciesByIdQuery(props.id);
     // useEffect(() => console.debug(species), [species]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

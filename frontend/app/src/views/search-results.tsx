@@ -27,7 +27,7 @@ export const SearchResults: FunctionComponent = () => {
     useEffect(parseQuery, [searchParams]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: pokemonsData, error: pokemonsError, isLoading: pokemonsLoading} = useSpeciesListQuery({offset: 0, limit: 9999}); //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
+    const {data: pokemonsData, error: pokemonsError, isFetching: pokemonsLoading} = useSpeciesListQuery({offset: 0, limit: 9999}); //NOTE: `Infinity` doesn't work, so I'm using an arbitrarily high number instead.
     // useEffect(() => console.debug(pokemonsData), [pokemonsData]);
     const [pokemons, setPokemons] = useState([] as Array<BasicPokemonInfo>);
 

@@ -10,7 +10,7 @@ export const EvolutionsViewer: FunctionComponent<{
 }> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: evolutions, error: evolutionsError, isLoading: evolutionsLoading} = useEvolutionsByIdQuery(props.evolutionId);
+    const {data: evolutions, error: evolutionsError, isFetching: evolutionsLoading} = useEvolutionsByIdQuery(props.evolutionId);
     // useEffect(() => console.debug(evolutions), [evolutions]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
