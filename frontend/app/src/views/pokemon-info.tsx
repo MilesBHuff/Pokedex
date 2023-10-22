@@ -50,7 +50,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
         {pokemonLoading || speciesLoading ? <>
-            <h2>Loading...</h2>
+            <h2>Loading... (#{props.id})</h2>
             <Spinner />
         </> : pokemonError ? <>
             <h2>Pokémon #{props.id}</h2>
