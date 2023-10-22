@@ -63,7 +63,13 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
                         {displayifyName(chainLink.name)}
                     </Link>
                 )}
-                {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : '' /* NOTE: This works fine even when we're using the `initialEvolutionLine`. */}
+                {/* NOTE: The below works fine even when we're using the `initialEvolutionLine`.
+                  * It should only break if `initialEvolutionLine` and `fullEvolutionLine` have the same length,
+                  * but if that's the case, then we're at the end of a chain;  and the ends of chains don't have evolutions, meaning they can't be rebranched, meaning this edge case is impossible.
+                  * So while this *looks* like it would cause a bug, it actually works perfectly every time.
+                  * Accordingly, it's not worth the extra CPU time it would take to *properly* consider the `isReloading` condition.
+                  */}
+                {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : ''}
             </Fragment>
         ))}
 
