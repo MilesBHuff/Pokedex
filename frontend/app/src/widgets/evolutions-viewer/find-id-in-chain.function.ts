@@ -31,12 +31,12 @@ export const findIdInChain = (
 
     // Else, if there are no futher nodes to investigate, remove what we just added and return.
     if(chainLink.evolves_to.length <= 0) {
-        if(evolutionLineProvided) evolutionLine!.pop();
+        if(evolutionLineProvided) evolutionLine!.pop(); //FIXME:  We need to pop off as many times as we have recursed.  Test with Dustox.
         return null;
     }
 
     // Else, investigate further nodes.
-    for(const nextLink of chainLink.evolves_to) { //BUG:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
+    for(const nextLink of chainLink.evolves_to) {
         const result = findIdInChain(nextLink, speciesId, evolutionLine, evolutionLineProvided);
         if(result) return result;
     }
