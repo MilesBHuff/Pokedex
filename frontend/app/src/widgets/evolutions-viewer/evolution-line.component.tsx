@@ -19,7 +19,7 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
     const rerenderComponent = () => {
         setEvolutionCounter(evolutionCounter + 1);
         setIsReloading(true);
-    }
+    };
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /* Whenever the props change, we need to rebuild the evolution line from scratch. */
@@ -70,12 +70,13 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
         {isBranching ? <>
             {isReloading ? <>
                 <SpinnerComponent inline={true} />
-                {/* <button type="button" disabled={true}>Rebranch</button> */}
             </> : (
                 <button type="button" onClick={rerenderComponent}>Rebranch</button>
             )}
             <br />
-            <span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.</span>
+            <span className="error notelet">
+                <strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.
+            </span>
         </> : null}
     </>;
 };
