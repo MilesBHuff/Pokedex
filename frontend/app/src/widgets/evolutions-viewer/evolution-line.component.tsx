@@ -6,7 +6,7 @@ import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolut
 import {findIdInChain} from '@/widgets/evolutions-viewer/find-id-in-chain.function.ts';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import type {ChainLink} from 'pokenode-ts';
-import type {FunctionComponent} from 'react';
+import type {FunctionComponent, MouseEventHandler} from 'react';
 import {Fragment, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
@@ -16,61 +16,77 @@ export const EvolutionLineComponent: FunctionComponent<{
     initialChainLink: Readonly<ChainLink>,
     speciesId?: number | undefined,
 }> = props => {
-
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const [evolutionCounter, setEvolutionCounter] = useState(0);
-    const [isReloading, setIsReloading] = useState(false);
-    const rerenderComponent = () => {
-        setEvolutionCounter(evolutionCounter + 1);
-        setIsReloading(true);
-    };
-
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    /* Whenever the props change, we need to rebuild the evolution line from scratch. */
+    const [isLoading, setIsLoading] = useState(true);
     const [idValid, setIdValid] = useState(false);
+    const [targetChainLink, setTargetChainLink] = useState(props.initialChainLink);
     const [initialEvolutionLine, setInitialEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [targetChainLink, setTargetChainLink] = useState(null as ChainLink | null);
+    const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
+    const [isBranching, setIsBranching] = useState(false);
 
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /** Whenever the props change, we need to rebuild the evolution line from scratch. */
     const onPropsChange = (): void => {
+
+        // Validate any new ID
         const newIdValid = isValidNumber(props.speciesId);
         setIdValid(newIdValid);
-        if(newIdValid) {
 
-            const newEvolutionLine: Array<BasicPokemonInfo> = [];
-            setTargetChainLink(findIdInChain(props.initialChainLink, props.speciesId!, newEvolutionLine));
-            setInitialEvolutionLine(newEvolutionLine);
-        }
+        // Assemble the line up to and including the target Pokémon
+        const newInitialEvolutionLine = [] as Array<BasicPokemonInfo>;
+        const newTargetChainLink = (
+            props.speciesId === undefined ? null :
+                findIdInChain(props.initialChainLink, props.speciesId, newInitialEvolutionLine)
+        ) ?? props.initialChainLink;
+        setTargetChainLink(newTargetChainLink);
+        setInitialEvolutionLine(newInitialEvolutionLine);
+
+        // Assemble the line following the target Pokémon
+        const newFullEvolutionLine = [...newInitialEvolutionLine];
+        const newIsBranching = !!completeEvolutionLine(newTargetChainLink, newFullEvolutionLine);
+        setFullEvolutionLine(newFullEvolutionLine);
+        setIsBranching(newIsBranching);
+
+        // Done
+        setIsLoading(false);
     };
     useEffect(onPropsChange, [props.initialChainLink, props.speciesId]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    /* When we reload, we need to regenerate the evolutions that come after the `targetChainLink`. */
-    const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [isBranching, setIsBranching] = useState(undefined as boolean | undefined);
-    const onReload = (): void => {
+    const [evolutionCounter, setEvolutionCounter] = useState(0);
+    const rebranch: MouseEventHandler<HTMLButtonElement> = () => {
+        setIsLoading(true);
+        setEvolutionCounter(evolutionCounter + 1);
+    };
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /** Regenerate the evolutions that come after the `targetChainLink`, making sure to generate something different than last time. */
+    const onRebranch = () => {
+        if(evolutionCounter === 0) return;
 
         // Initialize variables
         let newEvolutionsForLine = [] as Array<BasicPokemonInfo>;
-        let newIsBranching = false;
-        let newEvolutionLine = [] as Array<BasicPokemonInfo>;
+        let newFullEvolutionLine = [] as Array<BasicPokemonInfo>;
 
         // Retry until we get a new line
-        while(newEvolutionLine.length === 0 || !!comparePokemonsById(newEvolutionLine, fullEvolutionLine)) {
-            newEvolutionLine = newEvolutionsForLine = [];
-            newIsBranching = !!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine);
-            newEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
+        while(true) {
+            completeEvolutionLine(targetChainLink, newEvolutionsForLine);
+            newFullEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
+            if(!!comparePokemonsById(newFullEvolutionLine, fullEvolutionLine)) break;
+
+            // Reset variables for another run
+            newEvolutionsForLine = [];
+            newFullEvolutionLine = [];
         }
 
-        // Assign to state
-        setFullEvolutionLine(newEvolutionLine);
-        if(isBranching === undefined) setIsBranching(newIsBranching); //NOTE:  This would be better to set once, during `onPropsChange`, since it's always the same value for a given Pokémon.  Unfortunately, we don't know what this is supposed to be for sure until `completeEvolutionLine` has run.  So, as a compromise, I am only setting it conditionally on whether it has been set before.  An extra `if` statement relative to putting this in `onPropsChange`, but still less demanding than repeatedly reloading the DOM.
-        setIsReloading(false);
+        // Done
+        setFullEvolutionLine(newFullEvolutionLine);
+        setIsLoading(false);
     };
-    useEffect(onReload, [targetChainLink, evolutionCounter]);
+    useEffect(onRebranch, [evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
-        {(isReloading ? initialEvolutionLine : fullEvolutionLine).map((chainLink, index) => (
+        {(isLoading ? initialEvolutionLine : fullEvolutionLine).map((chainLink, index) => (
             <Fragment key={index}>
                 {idValid && chainLink.id === props.speciesId ? (
                     displayifyName(chainLink.name)
@@ -84,17 +100,17 @@ export const EvolutionLineComponent: FunctionComponent<{
                   * It should only break if `initialEvolutionLine` and `fullEvolutionLine` have the same length,
                   * but if that's the case, then we're at the end of a chain;  and the ends of chains don't have evolutions, meaning they can't be rebranched, meaning this edge case is impossible.
                   * So while this *looks* like it would cause a bug, it actually works perfectly every time.
-                  * Accordingly, it's not worth the extra CPU time it would take to *properly* consider the `isReloading` condition.
+                  * Accordingly, it's not worth the extra CPU time it would take to *properly* consider the `isLoading` condition.
                   */}
                 {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : ''}
             </Fragment>
         ))}
 
         {isBranching ? <>
-            {isReloading ? (
+            {isLoading ? (
                 <SpinnerComponent inline={true} />
             ) : (
-                <button type="button" className="inline-button" onClick={rerenderComponent}>Rebranch</button>
+                <button type="button" className="inline-button" onClick={rebranch}>Rebranch</button>
             )}
 
             <br />
