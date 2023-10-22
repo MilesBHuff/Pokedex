@@ -1,4 +1,5 @@
 import type {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import {comparePokemonsById} from '@/utilities/compare-pokemon-by-id.function.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.ts';
@@ -54,9 +55,7 @@ export const EvolutionLineComponent: FunctionComponent<{
         let newEvolutionLine = [] as Array<BasicPokemonInfo>;
 
         // Retry until we get a new line
-        //TODO: There's surely a more-performant way to do this than stringification...
-        const stringifiedOldEvolutionLine = JSON.stringify(fullEvolutionLine);
-        while(newEvolutionLine.length === 0 || JSON.stringify(newEvolutionLine) === stringifiedOldEvolutionLine) {
+        while(newEvolutionLine.length === 0 || !!comparePokemonsById(newEvolutionLine, fullEvolutionLine)) {
             newEvolutionLine = newEvolutionsForLine = [];
             newIsBranching = !!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine);
             newEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
