@@ -52,7 +52,7 @@ export const EvolutionLineComponent: FunctionComponent<{
         let newEvolutionsForLine = [] as Array<BasicPokemonInfo>;
         let newIsBranching = false;
         let newEvolutionLine = [] as Array<BasicPokemonInfo>;
-        
+
         // Retry until we get a new line
         //TODO: There's surely a more-performant way to do this than stringification...
         const stringifiedOldEvolutionLine = JSON.stringify(fullEvolutionLine);
@@ -92,9 +92,9 @@ export const EvolutionLineComponent: FunctionComponent<{
         ))}
 
         {isBranching ? <>
-            {isReloading ? <>
+            {isReloading ? (
                 <SpinnerComponent inline={true} />
-            </> : (
+            ) : (
                 <button type="button" className="inline-button" onClick={rerenderComponent}>Rebranch</button>
             )}
 
