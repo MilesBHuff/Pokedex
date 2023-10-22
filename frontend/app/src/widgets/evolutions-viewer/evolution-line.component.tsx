@@ -45,12 +45,26 @@ export const EvolutionLineComponent: FunctionComponent<{
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /* When we reload, we need to regenerate the evolutions that come after the `targetChainLink`. */
     const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [isBranching, setIsBranching] = useState(false); //TODO: Set this in `onPropsChange`.
+    const [isBranching, setIsBranching] = useState(false);
+    const onReload = (): void => {
 
-    const onReload = (): void => { //TODO: Re-run if we end-up with the same tree we had before.
-        const newEvolutionsForLine: Array<BasicPokemonInfo> = [];
-        setIsBranching(!!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine));
-        setFullEvolutionLine(initialEvolutionLine.concat(newEvolutionsForLine));
+        // Initialize variables
+        let newEvolutionsForLine = [] as Array<BasicPokemonInfo>;
+        let isBranching = false;
+        let newEvolutionLine = [] as Array<BasicPokemonInfo>;
+        
+        // Retry until we get a new line
+        //TODO: There's surely a more-performant way to do this than stringification...
+        const stringifiedOldEvolutionLine = JSON.stringify(fullEvolutionLine);
+        while(newEvolutionLine.length === 0 || JSON.stringify(newEvolutionLine) === stringifiedOldEvolutionLine) {
+            newEvolutionLine = newEvolutionsForLine = [];
+            isBranching = !!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine);
+            newEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
+        }
+
+        // Assign to state
+        setFullEvolutionLine(newEvolutionLine);
+        setIsBranching(isBranching); //TODO: Set this in `onPropsChange`;  it will always be the same value for a given ID.  The tricky thing, though, is that we don't know what this is supposed to be until `completeEvolutionLine` has run...
         setIsReloading(false);
     };
     useEffect(onReload, [targetChainLink, evolutionCounter]);
