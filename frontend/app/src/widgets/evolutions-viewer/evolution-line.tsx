@@ -36,9 +36,9 @@ export const EvolutionLine: FunctionComponent<{initialChainLink: ChainLink, spec
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /* When we reload, we need to regenerate the evolutions that come after the `targetChainLink`. */
     const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [isBranching, setIsBranching] = useState(false);
+    const [isBranching, setIsBranching] = useState(false); //TODO: Set this in `onPropsChange`.
 
-    const onReload = (): void => {
+    const onReload = (): void => { //TODO: Re-run if we end-up with the same tree we had before.
         const newEvolutionsForLine: Array<BasicPokemonInfo> = [];
         setIsBranching(!!completeEvolutionLine(targetChainLink ?? props.initialChainLink, newEvolutionsForLine));
         setFullEvolutionLine(initialEvolutionLine.concat(newEvolutionsForLine));
