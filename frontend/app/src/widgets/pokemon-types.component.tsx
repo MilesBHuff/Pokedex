@@ -1,6 +1,6 @@
 import {displayifyName} from '@/utilities/displayify-name.function';
-import {PokemonType} from 'pokenode-ts';
-import {FunctionComponent} from 'react';
+import type {PokemonType} from 'pokenode-ts';
+import type {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonTypesComponent: FunctionComponent<{types: Array<PokemonType>}> = props => (

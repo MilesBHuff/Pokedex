@@ -1,5 +1,5 @@
-import {FunctionComponent} from 'react';
-import {FallbackProps} from 'react-error-boundary';
+import type {FunctionComponent} from 'react';
+import type {FallbackProps} from 'react-error-boundary';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const ReactErrorComponent: FunctionComponent<FallbackProps> = props => (

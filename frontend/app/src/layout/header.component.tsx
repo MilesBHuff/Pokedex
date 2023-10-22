@@ -1,5 +1,5 @@
 import {SearchBarComponent} from '@/widgets/search-bar.component.tsx';
-import {FunctionComponent, MouseEventHandler} from 'react';
+import type {FunctionComponent, MouseEventHandler} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

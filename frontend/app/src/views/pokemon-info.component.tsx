@@ -8,7 +8,8 @@ import {PokemonMovesComponent} from '@/widgets/pokemon-moves.component';
 import {PokemonSpritesComponent} from '@/widgets/pokemon-sprites.component.tsx';
 import {PokemonTypesComponent} from '@/widgets/pokemon-types.component.tsx';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
-import {FunctionComponent, useEffect, useState} from 'react';
+import type {FunctionComponent} from 'react';
+import {useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

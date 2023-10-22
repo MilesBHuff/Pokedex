@@ -1,6 +1,7 @@
 import {useAppSelector} from '@/redux/hooks.ts';
 import {selectHistory} from '@/redux/slices/search.slice.ts';
-import {Fragment, FunctionComponent} from 'react';
+import type {FunctionComponent} from 'react';
+import {Fragment} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

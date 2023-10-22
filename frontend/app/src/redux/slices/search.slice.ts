@@ -1,4 +1,5 @@
-import {PayloadAction, Selector, createSlice} from '@reduxjs/toolkit';
+import type {PayloadAction, Selector} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** The maximum number of search terms to remember. */

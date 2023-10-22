@@ -1,6 +1,7 @@
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
-import {PokemonAbility} from 'pokenode-ts';
-import {Fragment, FunctionComponent} from 'react';
+import type {PokemonAbility} from 'pokenode-ts';
+import type {FunctionComponent} from 'react';
+import {Fragment} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonAbilitiesComponent: FunctionComponent<{abilities: ReadonlyArray<PokemonAbility>}> = props => <>

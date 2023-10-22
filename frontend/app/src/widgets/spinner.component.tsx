@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import type {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const SpinnerComponent: FunctionComponent<{inline?: boolean | undefined}> = props => props.inline ? (

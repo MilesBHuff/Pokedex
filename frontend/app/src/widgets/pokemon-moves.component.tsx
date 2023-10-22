@@ -1,6 +1,7 @@
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
-import {PokemonMove} from 'pokenode-ts';
-import {Fragment, FunctionComponent} from 'react';
+import type {PokemonMove} from 'pokenode-ts';
+import type {FunctionComponent} from 'react';
+import {Fragment} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const PokemonMovesComponent: FunctionComponent<{moves: ReadonlyArray<PokemonMove>}> = props => <>

@@ -1,6 +1,6 @@
-import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import type {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {urlToId} from '@/utilities/url-to-id.ts';
-import {ChainLink} from 'pokenode-ts';
+import type {ChainLink} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** Fill out a provided `evolutionsLine` with the rest of the evolution chain.

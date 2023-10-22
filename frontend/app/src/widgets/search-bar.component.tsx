@@ -1,6 +1,7 @@
 import {useAppSelector} from '@/redux/hooks.ts';
 import {selectHistory} from '@/redux/slices/search.slice.ts';
-import {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandler, useState} from 'react';
+import type {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandler} from 'react';
+import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

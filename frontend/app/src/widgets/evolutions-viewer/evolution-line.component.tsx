@@ -1,10 +1,11 @@
-import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import type {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.ts';
 import {findIdInChain} from '@/widgets/evolutions-viewer/find-id-in-chain.function.ts';
-import {ChainLink} from 'pokenode-ts';
-import {Fragment, FunctionComponent, useEffect, useState} from 'react';
+import type {ChainLink} from 'pokenode-ts';
+import type {FunctionComponent} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////

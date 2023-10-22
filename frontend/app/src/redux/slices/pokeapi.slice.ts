@@ -1,7 +1,7 @@
 import {urlifyParams} from '@/utilities/urlify-params.function';
 import {urlifyPath} from '@/utilities/urlify-path.function';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {EvolutionChain, NamedAPIResourceList, Pokemon, PokemonSpecies} from 'pokenode-ts';
+import type {EvolutionChain, NamedAPIResourceList, Pokemon, PokemonSpecies} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
 export interface PokeapiQueryOptions {

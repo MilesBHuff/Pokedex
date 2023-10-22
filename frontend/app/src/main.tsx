@@ -1,7 +1,7 @@
 import {store} from '@/redux/store';
 import {routes} from '@/routes.tsx';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
-import React from 'react';
+import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
@@ -15,11 +15,11 @@ try {
     if(!root) throw new ReferenceError('No root element!');
 
     ReactDOM.createRoot(root).render(
-        <React.StrictMode>
+        <StrictMode>
             <Provider store={store}>
                 <RouterProvider router={router} fallbackElement={<SpinnerComponent />} />
             </Provider>
-        </React.StrictMode>,
+        </StrictMode>,
     );
 } catch(error) {
     console.error(error);

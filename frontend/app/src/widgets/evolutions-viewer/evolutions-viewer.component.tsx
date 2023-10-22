@@ -1,7 +1,7 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {EvolutionLineComponent} from '@/widgets/evolutions-viewer/evolution-line.component.tsx';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
-import {FunctionComponent} from 'react';
+import type {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
 export const EvolutionsViewerComponent: FunctionComponent<{

@@ -1,11 +1,12 @@
 import {useAppDispatch} from '@/redux/hooks.ts';
 import {useSpeciesListQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {searchSlice} from '@/redux/slices/search.slice.ts';
-import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
+import type {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
-import {FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
+import type {FunctionComponent, MouseEventHandler} from 'react';
+import {useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
