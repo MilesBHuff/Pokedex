@@ -16,21 +16,34 @@ export const EvolutionLineComponent: FunctionComponent<{
     initialChainLink: Readonly<ChainLink>,
     speciesId?: number | undefined,
 }> = props => {
+
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /* State variables */
+
+    // Spinner control
     const [isLoading, setIsLoading] = useState(true);
     const [isBranching, setIsBranching] = useState(false);
+
+    // Knowledge
     const [idValid, setIdValid] = useState(false);
+    const [isTree, setIsTree] = useState(false);
+
+    // Evolution storage
     const [targetChainLink, setTargetChainLink] = useState(props.initialChainLink);
     const [initialEvolutionLine, setInitialEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
     const [fullEvolutionLine, setFullEvolutionLine] = useState([] as Array<BasicPokemonInfo>);
-    const [isTree, setIsTree] = useState(false);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    /* Logic controllers */
+
     const onPropsChange = () => setIsLoading(true);
-    useEffect(onPropsChange, [props.initialChainLink, props.speciesId]);
+    useEffect(onPropsChange, [props]);
+
+    const rebranch: MouseEventHandler<HTMLButtonElement> = () => setIsBranching(true);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /** Whenever the props change, we need to rebuild the evolution line from scratch. */
-    const onLoad = (): void => {
+    const onLoading = (): void => {
         if(!isLoading) return;
 
         // Validate any new ID
@@ -39,10 +52,9 @@ export const EvolutionLineComponent: FunctionComponent<{
 
         // Assemble the line up to and including the target Pokémon
         const newInitialEvolutionLine = [] as Array<BasicPokemonInfo>;
-        const newTargetChainLink = (
-            props.speciesId === undefined ? null :
-                findIdInChain(props.initialChainLink, props.speciesId, newInitialEvolutionLine)
-        ) ?? props.initialChainLink;
+        const newTargetChainLink = (props.speciesId === undefined ? null : (
+            findIdInChain(props.initialChainLink, props.speciesId, newInitialEvolutionLine)
+        )) ?? props.initialChainLink;
         setTargetChainLink(newTargetChainLink);
         setInitialEvolutionLine(newInitialEvolutionLine);
 
@@ -55,14 +67,11 @@ export const EvolutionLineComponent: FunctionComponent<{
         // Done
         setIsLoading(false);
     };
-    useEffect(onLoad, [isLoading]);
-
-    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const rebranch: MouseEventHandler<HTMLButtonElement> = () => setIsBranching(true);
+    useEffect(onLoading, [isLoading]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     /** Regenerate the evolutions that come after the `targetChainLink`, making sure to generate something different than last time. */
-    const onBranch = () => {
+    const onBranching = () => {
         if(!isBranching) return;
 
         // Initialize variables
@@ -84,7 +93,7 @@ export const EvolutionLineComponent: FunctionComponent<{
         setFullEvolutionLine(newFullEvolutionLine);
         setIsBranching(false);
     };
-    useEffect(onBranch, [isBranching]);
+    useEffect(onBranching, [isBranching]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return isLoading ? (
