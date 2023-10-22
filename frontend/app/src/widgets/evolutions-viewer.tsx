@@ -3,6 +3,7 @@ import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/isValidNumber.ts';
 import {urlToId} from '@/utilities/url-to-id';
+import {Spinner} from '@/widgets/spinner.tsx';
 import {ChainLink} from 'pokenode-ts';
 import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
@@ -11,17 +12,23 @@ import {Link} from 'react-router-dom';
 export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId?: number | undefined}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    const {data: evolutions} = useEvolutionsByIdQuery(props.evolutionId);
+    const {data: evolutions, error: evolutionsError, isLoading: evolutionsLoading} = useEvolutionsByIdQuery(props.evolutionId);
     // useEffect(() => console.debug(evolutions), [evolutions]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    return <>
-        {evolutions ? (
+    return (
+        evolutionsLoading ? <>
+            <Spinner />
+        </> : evolutionsError ? <>
+            <span className="error">Failed to load data!</span>
+        </> : !evolutions ? <>
+            <span>No data!</span>
+        </> : <>
             <span className="evolutions-viewer">
                 <EvolutionLine chainLink={evolutions.chain} speciesId={props.speciesId} />
             </span>
-        ) : null}
-    </>;
+        </>
+    );
 };
 
 ////////////////////////////////////////////////////////////////////////////////
