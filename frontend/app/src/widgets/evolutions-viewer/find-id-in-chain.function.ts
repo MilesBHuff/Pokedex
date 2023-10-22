@@ -12,7 +12,7 @@ import type {ChainLink} from 'pokenode-ts';
  * @returns the `ChainLink` that contained the species ID, or `null` if there were no matches.
 **/
 export const findIdInChain = (
-    chainLink: ChainLink,
+    chainLink: Readonly<ChainLink>,
     speciesId: number,
     evolutionLine?: Array<BasicPokemonInfo> | undefined,
     evolutionLineProvided: boolean = !!evolutionLine,

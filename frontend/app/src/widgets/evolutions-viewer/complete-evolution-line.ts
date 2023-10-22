@@ -11,7 +11,7 @@ import type {ChainLink} from 'pokenode-ts';
  * @returns the depth at which the chain branches, or `0` if it remains linear.
 **/
 export const completeEvolutionLine = (
-    chainLink: ChainLink,
+    chainLink: Readonly<ChainLink>,
     evolutionLine: Array<BasicPokemonInfo>,
     depth: number = 0,
     branchingFound: boolean = false,

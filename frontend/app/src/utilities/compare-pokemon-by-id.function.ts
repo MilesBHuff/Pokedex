@@ -1,7 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-/** Figure out whether two `Array`s of Pokemon are identical.
- * @returns whether the two `Array`s have the same Pokémon in them.
-**/
+/** @returns whether two `Array`s of Pokemon are effectively identical. */
 export const comparePokemonsById = <T extends {id: number}>(
     list1: ReadonlyArray<T>,
     list2: ReadonlyArray<T>,
