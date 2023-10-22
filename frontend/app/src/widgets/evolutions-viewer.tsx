@@ -20,17 +20,17 @@ export const EvolutionsViewer: FunctionComponent<{
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
-        evolutionsLoading ? <>
+        evolutionsLoading ? (
             <Spinner />
-        </> : evolutionsError ? <>
+        ) : evolutionsError ? (
             <span className="error">Failed to load data!</span>
-        </> : !evolutions ? <>
-            <span>No data!</span>
-        </> : <>
+        ) : !evolutions ? (
+            'No data!'
+        ) : (
             <span className="evolutions-viewer">
                 <EvolutionLine chainLink={evolutions.chain} speciesId={props.speciesId} />
             </span>
-        </>
+        )
     );
 };
 
@@ -58,13 +58,13 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
     return <>
         {line.map((link, index) => (
             <Fragment key={index}>
-                {idValid && link.id === props.speciesId ? <>
-                    {displayifyName(link.name)}
-                </> : <>
+                {idValid && link.id === props.speciesId ? (
+                    displayifyName(link.name)
+                ) : (
                     <Link to={`/pokemon?id=${link.id}`}>
                         {displayifyName(link.name)}
                     </Link>
-                </>}
+                )}
                 {index < line.length - 1 ? ' 🠞 ' : ''}
             </Fragment>
         ))}
