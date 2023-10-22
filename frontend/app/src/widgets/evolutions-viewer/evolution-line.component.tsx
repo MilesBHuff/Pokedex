@@ -71,7 +71,7 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
             {isReloading ? <>
                 <SpinnerComponent inline={true} />
             </> : (
-                <button type="button" onClick={rerenderComponent}>Rebranch</button>
+                <button type="button" className="inline-button" onClick={rerenderComponent}>Rebranch</button>
             )}
             <br />
             <span className="error notelet">

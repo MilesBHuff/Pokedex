@@ -87,3 +87,10 @@ a {
     @include a();
     color: $color-link;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+.inline-button {
+    //WARN: Quite probossibly not a good idea, but it works well in the `EvolutionsViewer`.
+    margin-top: -100%;
+    margin-bottom: -100%;
+}
