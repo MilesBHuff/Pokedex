@@ -9,7 +9,10 @@ import {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const EvolutionsViewer: FunctionComponent<{evolutionId: number, speciesId?: number | undefined}> = props => {
+export const EvolutionsViewer: FunctionComponent<{
+    evolutionId: number,
+    speciesId?: number | undefined,
+}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const {data: evolutions, error: evolutionsError, isLoading: evolutionsLoading} = useEvolutionsByIdQuery(props.evolutionId);
@@ -48,7 +51,7 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
         setLine(evolutionLine);
         setIsBranching(!!branchingDepth);
         setIdValid(isValidNumber(props.speciesId));
-    }
+    };
     useEffect(onPropsChange, [props, evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -67,7 +70,7 @@ const EvolutionLine: FunctionComponent<{chainLink: ChainLink, speciesId?: number
         ))}
         {isBranching ? <>
             <button type="button" onClick={rerenderComponent}>Rebranch</button>
-            <br/>
+            <br />
             <span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.</span>
         </> : null}
     </>;
@@ -105,7 +108,7 @@ const chainToLine = (
         evolutionLine,
         branchingDepth,
     };
-}
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 /** Find where a Pokémon is in a chain, and return the node that contains that Pokémon.
@@ -125,10 +128,10 @@ const findIdInChain = (
 
     // Assume that this is either the matching node *or* a step on the way to the matching node.
     if(evolutionLineProvided) evolutionLine!.push({
-        name: chainLink.species.name, 
+        name: chainLink.species.name,
         id: chainLinkSpeciesId,
     });
-    
+
     // If the current node matches, then return it.
     if(chainLinkSpeciesId === speciesId) {
         return chainLink;
@@ -143,7 +146,7 @@ const findIdInChain = (
     // Else, investigate further nodes.
     for(const nextLink of chainLink.evolves_to) { //BUG:  All possible intermediate branches are shown in the line;  view Dustox to see this in action.
         const result = findIdInChain(nextLink, speciesId, evolutionLine, evolutionLineProvided);
-        if(result) return result
+        if(result) return result;
     }
 
     // Fallback return, to please TypeScript.
@@ -164,7 +167,7 @@ const completeEvolutionLine = (
     depth: number = 0,
     branchingFound: boolean = false,
 ): number => {
-    
+
     // If there are no deeper `chainLink`s, then we're done!
     if(chainLink.evolves_to.length <= 0) {
         return branchingFound ? depth : 0;
@@ -179,10 +182,10 @@ const completeEvolutionLine = (
 
     // Save the chosen `chainLink` in the `evolutionLine`.
     evolutionLine.push({
-        name: nextChainLink.species.name, 
+        name: nextChainLink.species.name,
         id: urlToId(nextChainLink.species.url),
     });
 
     // Visit the next chain link.
     return completeEvolutionLine(nextChainLink, evolutionLine, depth + 1, branchingFound);
-}
+};
