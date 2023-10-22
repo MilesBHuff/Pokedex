@@ -5,6 +5,7 @@ import {urlToId} from '@/utilities/url-to-id';
 import {EvolutionsViewer} from '@/widgets/evolutions-viewer/evolutions-viewer';
 import {PokemonAbilities} from '@/widgets/pokemon-abilities';
 import {PokemonMoves} from '@/widgets/pokemon-moves';
+import {PokemonSprites} from '@/widgets/pokemon-sprites.tsx';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
 import {FunctionComponent, useEffect, useState} from 'react';
@@ -75,7 +76,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                         {/* TODO: Hide if no evolutions. Not as easy as it first seems, because it requires passing a value up from the child `EvolutionsViewer` component. */}
                     </li>
                 }
-                <li>{pokemon.sprites.front_default ? <img className="pokemon-sprite" src={pokemon.sprites.front_default} /> : null}</li>{/* TODO: Add a spinner while the image loads. */}
+                <li><PokemonSprites sprites={pokemon.sprites}/></li>
                 <li><strong>Types: </strong>
                     <PokemonTypes types={pokemon.types} />
                 </li>
