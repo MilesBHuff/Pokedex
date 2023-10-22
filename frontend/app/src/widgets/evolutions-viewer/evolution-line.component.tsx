@@ -66,6 +66,7 @@ export const EvolutionLineComponent: FunctionComponent<{
                         {displayifyName(chainLink.name)}
                     </Link>
                 )}
+
                 {/* NOTE: The below works fine even when we're using the `initialEvolutionLine`.
                   * It should only break if `initialEvolutionLine` and `fullEvolutionLine` have the same length,
                   * but if that's the case, then we're at the end of a chain;  and the ends of chains don't have evolutions, meaning they can't be rebranched, meaning this edge case is impossible.
@@ -82,6 +83,7 @@ export const EvolutionLineComponent: FunctionComponent<{
             </> : (
                 <button type="button" className="inline-button" onClick={rerenderComponent}>Rebranch</button>
             )}
+
             <br />
             <span className="error notelet">
                 <strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.
