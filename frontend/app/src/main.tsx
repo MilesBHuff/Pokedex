@@ -1,6 +1,6 @@
 import {store} from '@/redux/store';
 import {routes} from '@/routes.tsx';
-import {Spinner} from '@/widgets/spinner.tsx';
+import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
@@ -17,7 +17,7 @@ try {
     ReactDOM.createRoot(root).render(
         <React.StrictMode>
             <Provider store={store}>
-                <RouterProvider router={router} fallbackElement={<Spinner />} />
+                <RouterProvider router={router} fallbackElement={<SpinnerComponent />} />
             </Provider>
         </React.StrictMode>,
     );

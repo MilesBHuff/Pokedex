@@ -4,12 +4,12 @@ import {searchSlice} from '@/redux/slices/search.slice.ts';
 import {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
-import {Spinner} from '@/widgets/spinner.tsx';
+import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import {FunctionComponent, MouseEventHandler, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const SearchResults: FunctionComponent = () => {
+export const SearchResultsComponent: FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -85,7 +85,7 @@ export const SearchResults: FunctionComponent = () => {
             <h2>Search for "{query}"</h2>
 
             {pokemonsLoading ? (
-                <Spinner />
+                <SpinnerComponent />
             ) : pokemonsError ? (
                 <p className="error">Failed to load data!</p>
             ) : !pokemonsData ? (

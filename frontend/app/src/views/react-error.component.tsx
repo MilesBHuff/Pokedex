@@ -2,7 +2,7 @@ import {FunctionComponent} from 'react';
 import {FallbackProps} from 'react-error-boundary';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const ReactError: FunctionComponent<FallbackProps> = props => (
+export const ReactErrorComponent: FunctionComponent<FallbackProps> = props => (
     <div id="error" className="error view">
         <h2>Unexpected Application Error!</h2>{/* Same title as used by the default error page. */}
         <p>{props.error.message}</p>

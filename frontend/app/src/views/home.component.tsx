@@ -3,7 +3,7 @@ import {FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Home: FunctionComponent = () => {
+export const HomeComponent: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [randomPokemonId, setRandomPokemonId] = useState(NaN);

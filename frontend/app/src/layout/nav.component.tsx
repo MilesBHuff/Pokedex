@@ -4,7 +4,7 @@ import {Fragment, FunctionComponent} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Nav: FunctionComponent = () => {
+export const NavComponent: FunctionComponent = () => {
     const location = useLocation();
     const history = useAppSelector(selectHistory);
 

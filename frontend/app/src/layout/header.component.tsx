@@ -1,9 +1,9 @@
-import {SearchBar} from '@/widgets/search-bar';
+import {SearchBarComponent} from '@/widgets/search-bar.component.tsx';
 import {FunctionComponent, MouseEventHandler} from 'react';
 import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const Header: FunctionComponent = () => {
+export const HeaderComponent: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const handleClick: MouseEventHandler<HTMLAnchorElement> = () => {
@@ -17,7 +17,7 @@ export const Header: FunctionComponent = () => {
                 <img src="/favicon.svg" />
                 <h1><Link to="/" onClick={handleClick}>Miles's Pokédex</Link></h1>
             </div>
-            <SearchBar />
+            <SearchBarComponent />
         </header>
     );
 };

@@ -1,10 +1,10 @@
 import {useEvolutionsByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
-import {EvolutionLine} from '@/widgets/evolutions-viewer/evolution-line.tsx';
-import {Spinner} from '@/widgets/spinner.tsx';
+import {EvolutionLineComponent} from '@/widgets/evolutions-viewer/evolution-line.component.tsx';
+import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import {FunctionComponent} from 'react';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const EvolutionsViewer: FunctionComponent<{
+export const EvolutionsViewerComponent: FunctionComponent<{
     evolutionId: number,
     speciesId?: number | undefined,
 }> = props => {
@@ -16,14 +16,14 @@ export const EvolutionsViewer: FunctionComponent<{
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return (
         evolutionsLoading ? (
-            <Spinner inline={true} />
+            <SpinnerComponent inline={true} />
         ) : evolutionsError ? (
             <span className="error">Failed to load data!</span>
         ) : !evolutions ? (
             'No data!'
         ) : (
             <span className="evolutions-viewer">
-                <EvolutionLine initialChainLink={evolutions.chain} speciesId={props.speciesId} />
+                <EvolutionLineComponent initialChainLink={evolutions.chain} speciesId={props.speciesId} />
             </span>
         )
     );

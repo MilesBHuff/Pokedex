@@ -2,17 +2,17 @@ import {totalPokemonInDex} from '@/consts.ts';
 import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.slice.ts';
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
-import {EvolutionsViewer} from '@/widgets/evolutions-viewer/evolutions-viewer';
-import {PokemonAbilities} from '@/widgets/pokemon-abilities';
-import {PokemonMoves} from '@/widgets/pokemon-moves';
-import {PokemonSprites} from '@/widgets/pokemon-sprites.tsx';
-import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
-import {Spinner} from '@/widgets/spinner.tsx';
+import {EvolutionsViewerComponent} from '@/widgets/evolutions-viewer/evolutions-viewer.component';
+import {PokemonAbilitiesComponent} from '@/widgets/pokemon-abilities.component';
+import {PokemonMovesComponent} from '@/widgets/pokemon-moves.component';
+import {PokemonSpritesComponent} from '@/widgets/pokemon-sprites.component.tsx';
+import {PokemonTypesComponent} from '@/widgets/pokemon-types.component.tsx';
+import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const PokemonInfo: FunctionComponent = () => {
+export const PokemonInfoComponent: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
@@ -31,7 +31,7 @@ export const PokemonInfo: FunctionComponent = () => {
         <div id="pokemon-info" className="view">
             {id === undefined ? <>
                 <h2>Loading...</h2>
-                <Spinner />
+                <SpinnerComponent />
             </> : (
                 <PokemonInfoCore id={id} />
             )}
@@ -53,7 +53,7 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
     return <>
         {pokemonLoading || speciesLoading ? <>
             <h2>Loading... (#{props.id})</h2>
-            <Spinner />
+            <SpinnerComponent />
         </> : pokemonError ? <>
             <h2>Pokémon #{props.id}</h2>
             <p className="error">Failed to load data!</p>
@@ -72,19 +72,19 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
-                        <EvolutionsViewer evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id} />
+                        <EvolutionsViewerComponent evolutionId={urlToId(species.evolution_chain.url)} speciesId={species.id} />
                         {/* TODO: Hide if no evolutions. Not as easy as it first seems, because it requires passing a value up from the child `EvolutionsViewer` component. */}
                     </li>
                 }
-                <li><PokemonSprites sprites={pokemon.sprites}/></li>
+                <li><PokemonSpritesComponent sprites={pokemon.sprites}/></li>
                 <li><strong>Types: </strong>
-                    <PokemonTypes types={pokemon.types} />
+                    <PokemonTypesComponent types={pokemon.types} />
                 </li>
                 <li><strong>Abilities: </strong>
-                    <PokemonAbilities abilities={pokemon.abilities} />
+                    <PokemonAbilitiesComponent abilities={pokemon.abilities} />
                 </li>
                 <li><strong>Moves: </strong>
-                    <PokemonMoves moves={pokemon.moves} />
+                    <PokemonMovesComponent moves={pokemon.moves} />
                 </li>
             </ul>
         </>}

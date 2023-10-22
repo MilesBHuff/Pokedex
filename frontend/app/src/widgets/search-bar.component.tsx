@@ -4,7 +4,7 @@ import {ChangeEventHandler, FormEventHandler, FunctionComponent, MouseEventHandl
 import {useNavigate} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const SearchBar: FunctionComponent = () => {
+export const SearchBarComponent: FunctionComponent = () => {
 
     const history = useAppSelector(selectHistory);
     const navigate = useNavigate();

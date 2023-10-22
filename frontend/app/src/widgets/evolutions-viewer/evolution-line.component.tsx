@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
 /** Displays an evolution chain in the form of a line. */
-export const EvolutionLine: FunctionComponent<{initialChainLink: ChainLink, speciesId?: number | undefined}> = props => {
+export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainLink, speciesId?: number | undefined}> = props => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [evolutionCounter, setEvolutionCounter] = useState(0);
