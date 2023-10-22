@@ -15,8 +15,7 @@ export const PokemonInfo: FunctionComponent = () => {
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     const [searchParams] = useSearchParams();
-    /** The Pokémon's National 'Dex Number */
-    const [id, setId] = useState(undefined as number | undefined);
+    const [id, setId] = useState(undefined as number | undefined); // The Pokémon's National 'Dex Number
 
     /** Get and validate Pokémon ID */
     const parseId = (): void => {
@@ -32,9 +31,9 @@ export const PokemonInfo: FunctionComponent = () => {
             {id === undefined ? <>
                 <h2>Loading...</h2>
                 <Spinner />
-            </> : <>
+            </> : (
                 <PokemonInfoCore id={id} />
-            </>}
+            )}
         </div>
     );
 };
