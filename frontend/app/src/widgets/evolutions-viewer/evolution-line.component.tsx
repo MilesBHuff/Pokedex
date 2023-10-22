@@ -82,7 +82,7 @@ export const EvolutionLineComponent: FunctionComponent<{
         while(true) {
             completeEvolutionLine(targetChainLink, newEvolutionsForLine);
             newFullEvolutionLine = initialEvolutionLine.concat(newEvolutionsForLine);
-            if(!!comparePokemonsById(newFullEvolutionLine, fullEvolutionLine)) break;
+            if(!comparePokemonsById(newFullEvolutionLine, fullEvolutionLine)) break;
 
             // Reset variables for another run
             newEvolutionsForLine = [];
