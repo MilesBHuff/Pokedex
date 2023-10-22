@@ -3,9 +3,11 @@ import {usePokemonByIdQuery, useSpeciesByIdQuery} from '@/redux/slices/pokeapi.s
 import {displayifyName} from '@/utilities/displayify-name.function';
 import {urlToId} from '@/utilities/url-to-id';
 import {EvolutionsViewer} from '@/widgets/evolutions-viewer/evolutions-viewer';
+import {PokemonAbilities} from '@/widgets/pokemon-abilities';
+import {PokemonMoves} from '@/widgets/pokemon-moves';
 import {PokemonTypes} from '@/widgets/pokemon-types.tsx';
 import {Spinner} from '@/widgets/spinner.tsx';
-import {Fragment, FunctionComponent, useEffect, useState} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,18 +81,10 @@ export const PokemonInfoCore: FunctionComponent<{id: number}> = props => {
                     <PokemonTypes types={pokemon.types} />
                 </li>
                 <li><strong>Abilities: </strong>
-                    {[...pokemon.abilities].sort((a, b) => a.ability.name.localeCompare(b.ability.name)).map((ability, index) => <Fragment key={index}>
-                        {displayifyName(ability.ability.name)}
-                        {index < pokemon.abilities.length - 1 ? ', ' : ''}
-                        {index === pokemon.abilities.length - 1 && pokemon.abilities.length > 1 ? '.' : ''}
-                    </Fragment>)}
+                    <PokemonAbilities abilities={pokemon.abilities} />
                 </li>
                 <li><strong>Moves: </strong>
-                    {[...pokemon.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <Fragment key={index}>
-                        {displayifyName(move.move.name)}
-                        {index < pokemon.moves.length - 1 ? ', ' : ''}
-                        {index === pokemon.moves.length - 1 && pokemon.moves.length > 1 ? '.' : ''}
-                    </Fragment>)}
+                    <PokemonMoves moves={pokemon.moves} />
                 </li>
             </ul>
         </>}
