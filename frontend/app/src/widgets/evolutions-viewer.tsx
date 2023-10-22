@@ -160,11 +160,11 @@ const completeEvolutionLine = (
     
     // If there are no deeper `chainLink`s, then we're done!
     if(chainLink.evolves_to.length <= 0) {
-        return branchingFound ? depth : 0; //BUG:  Wurmple is not considered to be branching.
+        return branchingFound ? depth : 0;
     }
 
     // Check evolutions for branching.
-    branchingFound = chainLink.evolves_to.length > 1;
+    if(!branchingFound) branchingFound = chainLink.evolves_to.length > 1;
 
     // If branching was found, set the `index` at random;  else, set it to `0`.
     const index = branchingFound ? Math.floor(Math.random() * chainLink.evolves_to.length) : 0;
