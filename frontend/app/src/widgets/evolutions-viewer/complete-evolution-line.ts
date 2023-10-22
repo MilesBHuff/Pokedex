@@ -3,7 +3,7 @@ import {urlToId} from '@/utilities/url-to-id.ts';
 import type {ChainLink} from 'pokenode-ts';
 
 ////////////////////////////////////////////////////////////////////////////////
-/** Fill out a provided `evolutionsLine` with the rest of the evolution chain.
+/** Fill out a provided `evolutionLine` with the rest of the evolution chain.
  * @param chainLink The `ChainLink` to start from.
  * @param evolutionLine Where to store the path taken through the chain.
  * @param [depth] The number of times this function has recursed.  Please do not provide this paramter yourself.
