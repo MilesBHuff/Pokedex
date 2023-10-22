@@ -53,10 +53,8 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
     useEffect(onReload, [targetChainLink, evolutionCounter]);
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    return isReloading ? (
-        <SpinnerComponent inline={true} />
-    ) : <>
-        {fullEvolutionLine.map((chainLink, index) => (
+    return <>
+        {(isReloading ? initialEvolutionLine : fullEvolutionLine).map((chainLink, index) => (
             <Fragment key={index}>
                 {idValid && chainLink.id === props.speciesId ? (
                     displayifyName(chainLink.name)
@@ -65,12 +63,17 @@ export const EvolutionLineComponent: FunctionComponent<{initialChainLink: ChainL
                         {displayifyName(chainLink.name)}
                     </Link>
                 )}
-                {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : ''}
+                {index < fullEvolutionLine.length - 1 ? ' 🠞 ' : '' /* NOTE: This works fine even when we're using the `initialEvolutionLine`. */}
             </Fragment>
         ))}
 
         {isBranching ? <>
-            <button type="button" onClick={rerenderComponent}>Rebranch</button>
+            {isReloading ? <>
+                <SpinnerComponent inline={true} />
+                {/* <button type="button" disabled={true}>Rebranch</button> */}
+            </> : (
+                <button type="button" onClick={rerenderComponent}>Rebranch</button>
+            )}
             <br />
             <span className="error notelet"><strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.</span>
         </> : null}
