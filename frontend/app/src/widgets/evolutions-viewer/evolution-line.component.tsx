@@ -86,7 +86,7 @@ export const EvolutionLineComponent: FunctionComponent<{
 
             <br />
             <span className="error notelet">
-                <strong>Warning:</strong> This Pokémon has a branching evolution chain that is not well-supported by this application.
+                <strong>Note:</strong> The above is one of multiple possible evolution chains for this Pokémon.
             </span>
         </> : null}
     </>;
