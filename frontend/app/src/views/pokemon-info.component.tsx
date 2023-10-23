@@ -54,24 +54,21 @@ export const PokemonInfoCore: FunctionComponent<{
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     return <>
-        {pokemonLoading || speciesLoading ? <>
-            <h2>Loading... (#{props.id})</h2>
+        <div className="title-with-actions">
+            <div className="actions">
+                <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id - 1}`)} disabled={props.id - 1 < 1}>prev</button>
+                <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id + 1}`)} disabled={props.id + 1 > totalPokemonInDex}>next</button>
+            </div>
+            <h2>{pokemonLoading || speciesLoading ? 'Loading...' : displayifyName(species?.name ?? pokemon?.name ?? '???')} (#{props.id})</h2>
+        </div>
+        {pokemonLoading || speciesLoading ? (
             <SpinnerComponent />
-        </> : pokemonError ? <>
-            <h2>Pokémon #{props.id}</h2>
+        ) : pokemonError ? <>
             <p className="error">Failed to load data!</p>
             <p>Did you enter a valid Pokédex index?</p>
-        </> : !pokemon ? <>
-            <h2>Pokémon #{props.id}</h2>
+        </> : !pokemon ? (
             <p>No data!</p>
-        </> : <>
-            <div className="title-with-actions">
-                <div className="actions">
-                    <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id - 1}`)} disabled={props.id - 1 < 1}>prev</button>
-                    <button className="button-secondary" onClick={() => void navigate(`/pokemon?id=${props.id + 1}`)} disabled={props.id + 1 > totalPokemonInDex}>next</button>
-                </div>
-                <h2>{displayifyName(species?.name ?? pokemon.name)} (#{props.id})</h2>
-            </div>
+        ) : <>
             <ul>
                 {!species ? null :
                     <li><strong>Evolution Tree: </strong>
