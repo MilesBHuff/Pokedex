@@ -31,6 +31,10 @@
 
     >button, li >button {
         @include button($color-input-background);
+        margin: unset;
+
+        text-transform: unset;
+        font-size: $font-size;
 
         border-radius: unset;
         border: unset;
@@ -39,7 +43,7 @@
         color: $color-input-foreground;
 
         width: 100%;
-        padding: $spacing-medium $icon-size;
+        padding: $spacing-small $icon-size;
         text-align: right;
     }
 }
