@@ -2,7 +2,7 @@ import type {BasicPokemonInfo} from '@/types/pokemon.type.ts';
 import {comparePokemonsById} from '@/utilities/compare-pokemon-by-id.function.ts';
 import {displayifyName} from '@/utilities/displayify-name.function.ts';
 import {isValidNumber} from '@/utilities/is-valid-number';
-import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.ts';
+import {completeEvolutionLine} from '@/widgets/evolutions-viewer/complete-evolution-line.function';
 import {findIdInChain} from '@/widgets/evolutions-viewer/find-id-in-chain.function.ts';
 import {SpinnerComponent} from '@/widgets/spinner.component.tsx';
 import type {ChainLink} from 'pokenode-ts';
