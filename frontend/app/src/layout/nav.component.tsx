@@ -34,7 +34,7 @@ export const NavComponent: FunctionComponent = () => {
     return (
         <nav id="nav">
             <ul>{
-                entries.map((entry, index) => <Fragment key={index}>
+                entries.map(entry => <Fragment key={entry.path}>
                     {entry.show === false ? (
                         null
                     ) : entry.path !== location.pathname ? (

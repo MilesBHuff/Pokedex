@@ -7,8 +7,8 @@ export const PokemonTypesComponent: FunctionComponent<{
     types: ReadonlyArray<PokemonType>,
 }> = props => (
     <ul className="pokemon-types">
-        {props.types.map((type, index) => (
-            <li key={index} className={type.type.name}>
+        {props.types.map(type => (
+            <li key={type.type.name} className={type.type.name}>
                 {displayifyName(type.type.name)}
             </li>
         ))}

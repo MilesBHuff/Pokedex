@@ -8,7 +8,7 @@ import {Fragment} from 'react';
 export const PokemonMovesComponent: FunctionComponent<{
     moves: ReadonlyArray<PokemonMove>,
 }> = props => <>
-    {[...props.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <Fragment key={index}>
+    {[...props.moves].sort((a, b) => a.move.name.localeCompare(b.move.name)).map((move, index) => <Fragment key={move.move.name}>
         {displayifyName(move.move.name)}
         {index < props.moves.length - 1 ? ', ' : ''}
         {index === props.moves.length - 1 && props.moves.length > 1 ? '.' : ''}

@@ -72,8 +72,8 @@ export const SearchBarComponent: FunctionComponent = () => {
 
             {history.length <= 0 ? null :
                 <ul className="history">{
-                    history.map((entry, index) => (
-                        <li key={index}>
+                    history.map(entry => (
+                        <li key={entry}>
                             <button type="button" onClick={handleSelection}>{entry}</button>
                         </li>
                     ))

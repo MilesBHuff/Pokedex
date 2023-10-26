@@ -100,7 +100,7 @@ export const EvolutionLineComponent: FunctionComponent<{
         <SpinnerComponent inline={true} />
     ) : <>
         {(isBranching ? initialEvolutionLine : fullEvolutionLine).map((chainLink, index) => (
-            <Fragment key={index}>
+            <Fragment key={chainLink.id}>
                 {idValid && chainLink.id === props.speciesId ? (
                     displayifyName(chainLink.name)
                 ) : (
